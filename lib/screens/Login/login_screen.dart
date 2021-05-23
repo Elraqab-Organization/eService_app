@@ -45,13 +45,17 @@ class LoginScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
                   child: Material(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(22.0),
+                    ),
                     child: MaterialButton(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(22.0)),
+                        borderRadius: BorderRadius.circular(22.0),
+                      ),
                       elevation: 18.0,
                       minWidth: double.maxFinite,
                       height: 60,
-                      clipBehavior: Clip.antiAlias,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
                       onPressed: () {},
                       color: Colors.black,
                       child: Text('Log in',
