@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatelessWidget {
-  final Color primaryColor = Color(0xff18203d);
-  final Color secondaryColor = Color(0xff232c51);
-
-  final Color logoGreen = Color(0xff25bcbb);
-
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -46,11 +41,11 @@ class LoginScreen extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
                   child: Material(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(22.0),
+                      borderRadius: BorderRadius.circular(70.0),
                     ),
                     child: MaterialButton(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(22.0),
+                        borderRadius: BorderRadius.circular(70.0),
                       ),
                       elevation: 18.0,
                       minWidth: double.maxFinite,
@@ -65,31 +60,32 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                MaterialButton(
-                  elevation: 0,
-                  minWidth: double.maxFinite,
-                  height: 50,
-                  onPressed: () {
-                    //Here goes the logic for Google SignIn discussed in the next section
-                  },
-                  color: Colors.white,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                          // FontAwesomeIcons.google
-                          Icons.ac_unit_sharp),
-                      SizedBox(width: 10),
-                      Text('Log in with Google',
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                  child: Material(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(70.0),
+                    ),
+                    child: MaterialButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(70.0),
+                      ),
+                      elevation: 18.0,
+                      minWidth: double.maxFinite,
+                      height: 60,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      onPressed: () {},
+                      color: Colors.white,
+                      child: Text('Log in with Google',
                           style: TextStyle(color: Colors.black, fontSize: 16)),
-                    ],
+                      textColor: Colors.black,
+                    ),
                   ),
-                  textColor: Colors.white,
                 ),
                 SizedBox(height: 125),
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: _buildFooterLogo(),
+                  child: _buildSignUp(),
                 )
               ],
             ),
@@ -97,11 +93,11 @@ class LoginScreen extends StatelessWidget {
         ));
   }
 
-  _buildFooterLogo() {
+  _buildSignUp() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Text('No Account?',
+        Text("Don't have an account?",
             textAlign: TextAlign.start,
             style: GoogleFonts.openSans(
               color: Colors.white,
