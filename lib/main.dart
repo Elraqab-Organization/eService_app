@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
-import './screens/Login/login_screen.dart';
+import 'package:e_service_app/dependency/dependency.dart' as dep;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'app_view.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Auth',
-      theme: ThemeData(
-        primaryColor: Colors.black,
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      home: LoginScreen(),
-    );
-  }
+  // runApp(MyApp());
+  dep.init();
+  WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+  return runApp(
+    ProviderScope(child: AppView()),
+  );
 }
