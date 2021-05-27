@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../components/rounded_rectangle_button.dart';
+import '../../components/custom_text_field.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
@@ -21,7 +23,7 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 110),
+                SizedBox(height: 25),
                 Text(
                   'Login into your account',
                   textAlign: TextAlign.start,
@@ -33,56 +35,28 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 50,
                 ),
-                _buildTextField(nameController, 'Username Or Email'),
+                CustomerTextField(nameController, 'Username Or Email'),
                 SizedBox(height: 20),
-                _buildTextField(passwordController, 'Password'),
+                CustomerTextField(passwordController, 'Password'),
                 SizedBox(height: 30),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                  child: Material(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(70.0),
-                    ),
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(70.0),
-                      ),
-                      elevation: 18.0,
-                      minWidth: double.maxFinite,
-                      height: 60,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      onPressed: () {},
-                      color: Colors.black,
-                      child: Text('Log in',
-                          style: TextStyle(color: Colors.white, fontSize: 16)),
-                      textColor: Colors.white,
-                    ),
-                  ),
+                RoundedRectangleButton(
+                  EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                  BorderRadius.circular(70.0),
+                  Colors.black,
+                  Colors.black,
+                  Text('Log in',
+                      style: TextStyle(color: Colors.white, fontSize: 16)),
                 ),
                 SizedBox(height: 20),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                  child: Material(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(70.0),
-                    ),
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(70.0),
-                      ),
-                      elevation: 18.0,
-                      minWidth: double.maxFinite,
-                      height: 60,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      onPressed: () {},
-                      color: Colors.white,
-                      child: Text('Log in with Google',
-                          style: TextStyle(color: Colors.black, fontSize: 16)),
-                      textColor: Colors.black,
-                    ),
-                  ),
+                RoundedRectangleButton(
+                  EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                  BorderRadius.circular(70.0),
+                  Colors.white,
+                  Colors.black,
+                  Text('Log in with Google',
+                      style: TextStyle(color: Colors.black, fontSize: 16)),
                 ),
-                SizedBox(height: 125),
+                SizedBox(height: 75),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: _buildSignUp(),
@@ -104,24 +78,6 @@ class LoginScreen extends StatelessWidget {
               fontSize: 20,
             )),
       ],
-    );
-  }
-
-  _buildTextField(TextEditingController controller, String labelText) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-          color: Colors.deepOrangeAccent,
-          border: Border(bottom: BorderSide(width: 2.0, color: Colors.white))),
-      child: TextField(
-        controller: controller,
-        style: TextStyle(color: Colors.white),
-        decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 10),
-            labelText: labelText,
-            labelStyle: TextStyle(color: Colors.white),
-            border: InputBorder.none),
-      ),
     );
   }
 }
