@@ -1,6 +1,6 @@
 import 'package:delayed_display/delayed_display.dart';
-import 'package:e_service_app/screen/view/custom_app_bar.dart';
-import 'package:e_service_app/screen/view/text_component.dart';
+import 'package:e_service_app/components/custom_app_bar.dart';
+import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
