@@ -45,21 +45,26 @@ class RegisterScreen extends StatelessWidget {
                 CustomerTextField(passwordController, 'Repeat Password'),
                 SizedBox(height: 30),
                 RoundedRectangleButton(
-                  EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                  BorderRadius.circular(70.0),
-                  Colors.black,
-                  Colors.black,
-                  Text('Log in',
-                      style: TextStyle(color: Colors.white, fontSize: 16)),
-                ),
+                    EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                    BorderRadius.circular(70.0),
+                    Colors.black,
+                    Colors.black,
+                    Text(
+                      'Log in',
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    null),
                 SizedBox(height: 20),
                 RoundedRectangleButton(
                   EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
                   BorderRadius.circular(70.0),
                   Colors.white,
                   Colors.black,
-                  Text('Log in with Google',
-                      style: TextStyle(color: Colors.black, fontSize: 16)),
+                  Text(
+                    'Log in with Google',
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                  ),
+                  null
                 ),
                 SizedBox(height: 125),
                 Align(

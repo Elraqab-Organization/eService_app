@@ -1,3 +1,4 @@
+import 'package:e_service_app/dependency/const.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../components/rounded_rectangle_button.dart';
@@ -44,22 +45,27 @@ class LoginScreen extends StatelessWidget {
                   BorderRadius.circular(70.0),
                   Colors.black,
                   Colors.black,
-                  Text('Log in',
-                      style: TextStyle(color: Colors.white, fontSize: 16)),
+                  Text(
+                    'Log in',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                  null,
                 ),
                 SizedBox(height: 20),
                 RoundedRectangleButton(
-                  EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                  BorderRadius.circular(70.0),
-                  Colors.white,
-                  Colors.black,
-                  Text('Log in with Google',
-                      style: TextStyle(color: Colors.black, fontSize: 16)),
-                ),
+                    EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                    BorderRadius.circular(70.0),
+                    Colors.white,
+                    Colors.black,
+                    Text(
+                      'Log in with Google',
+                      style: TextStyle(color: Colors.black, fontSize: 16),
+                    ),
+                    null),
                 SizedBox(height: 75),
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: _buildSignUp(),
+                  child: _buildSignUp(context),
                 )
               ],
             ),
@@ -67,16 +73,19 @@ class LoginScreen extends StatelessWidget {
         ));
   }
 
-  _buildSignUp() {
+  _buildSignUp(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Text("Don't have an account?",
-            textAlign: TextAlign.start,
-            style: GoogleFonts.openSans(
-              color: Colors.white,
-              fontSize: 20,
-            )),
+        InkWell(
+          onDoubleTap: () => {Navigator.pushNamed(context, rRegisterScreen)},
+          child: Text("Don't have an account?",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.openSans(
+                color: Colors.white,
+                fontSize: 20,
+              )),
+        ),
       ],
     );
   }
