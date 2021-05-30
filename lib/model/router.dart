@@ -1,6 +1,7 @@
 import 'package:e_service_app/app.dart';
 import 'package:e_service_app/screen/page/login_screen.dart';
 import 'package:e_service_app/screen/page/register_screen.dart';
+import 'package:e_service_app/screen/page/search_view_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,9 @@ class RouteManager {
         break;
       case "/register":
         builder = (BuildContext context) => RegisterScreen();
+        break;
+      case "/search_view":
+        builder = (BuildContext context) => SearchView();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);
