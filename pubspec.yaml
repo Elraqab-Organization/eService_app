@@ -32,8 +32,11 @@ dependencies:
   flutter_riverpod: ^0.14.0+3
   flutter_svg: ^0.22.0
   google_fonts: ^2.1.0
+<<<<<<< HEAD
   bottom_navy_bar: ^6.0.0
   delayed_display: ^2.0.0
+=======
+>>>>>>> lutfi_branch
 
 dev_dependencies:
   flutter_test:

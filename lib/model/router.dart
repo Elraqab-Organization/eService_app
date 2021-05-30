@@ -1,4 +1,6 @@
 import 'package:e_service_app/app.dart';
+import 'package:e_service_app/screen/page/login_screen.dart';
+import 'package:e_service_app/screen/page/register_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +11,12 @@ class RouteManager {
     switch (settings.name) {
       case "/":
         builder = (BuildContext context) => App(currentIndex: "0");
+        break;
+      case "/login":
+        builder = (BuildContext context) => LoginScreen();
+        break;
+      case "/register":
+        builder = (BuildContext context) => RegisterScreen();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);
