@@ -1,3 +1,4 @@
+import 'package:e_service_app/app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,7 @@ class RouteManager {
 
     switch (settings.name) {
       case "/":
-        // builder = (BuildContext context) => App(currentIndex: settings.name);
+        builder = (BuildContext context) => App(currentIndex: "0");
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

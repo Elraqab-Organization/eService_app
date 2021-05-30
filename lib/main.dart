@@ -7,8 +7,6 @@ import 'app_view.dart';
 void main() {
   // runApp(MyApp());
   dep.init();
-  WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
   return runApp(
     ProviderScope(child: AppView()),
   );
