@@ -1,12 +1,7 @@
 import 'package:e_service_app/app.dart';
-<<<<<<< HEAD:lib/model/router.dart
-import 'package:e_service_app/screen/page/login_screen.dart';
-import 'package:e_service_app/screen/page/register_screen.dart';
-import 'package:e_service_app/screen/page/search_view_screen.dart';
-=======
 import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/register/register_screen.dart';
->>>>>>> ahmad_branch:lib/app/router.dart
+import 'package:e_service_app/screens/search_view_screen/search_view_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
