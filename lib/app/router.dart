@@ -10,10 +10,10 @@ class RouteManager {
 
     switch (settings.name) {
       case "/":
-        builder = (BuildContext context) => LoginScreen();
+        builder = (BuildContext context) => App(currentIndex: "0");
         break;
       case "/login":
-        builder = (BuildContext context) => App(currentIndex: "0");
+        builder = (BuildContext context) => LoginScreen();
         break;
       case "/register":
         builder = (BuildContext context) => RegisterScreen();
