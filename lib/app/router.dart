@@ -1,5 +1,6 @@
 import 'package:e_service_app/app.dart';
 import 'package:e_service_app/screens/login/login_screen.dart';
+import 'package:e_service_app/screens/main_services/main_services.dart';
 import 'package:e_service_app/screens/register/register_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +10,11 @@ class RouteManager {
     WidgetBuilder builder;
 
     switch (settings.name) {
+      // case "/":
+      //   builder = (BuildContext context) => App(currentIndex: "0");
+      //   break;
       case "/":
-        builder = (BuildContext context) => App(currentIndex: "0");
+        builder = (BuildContext context) => MainServices();
         break;
       case "/login":
         builder = (BuildContext context) => LoginScreen();
