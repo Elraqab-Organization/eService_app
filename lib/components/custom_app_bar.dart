@@ -1,4 +1,4 @@
-import 'package:e_service_app/screen/view/text_component.dart';
+import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -1,6 +1,7 @@
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:delayed_display/delayed_display.dart';
-import 'package:e_service_app/screen/view/custom_app_bar.dart';
-import 'package:e_service_app/screen/view/text_component.dart';
+import 'package:e_service_app/components/custom_app_bar.dart';
+import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -73,94 +74,103 @@ class _AppState extends State<App> {
         ),
         bottomNavigationBar: MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-          child: _getBottomNav(),
+          child: BottomNavBar(
+            currentIndex: widget.currentIndex,
+            callBack: _onItemTapped,
+          ),
         ),
       ),
     );
   }
+}
 
-  Container _getBottomNav() {
+class BottomNavBar extends StatefulWidget {
+  final String currentIndex;
+  final Function callBack;
+
+  BottomNavBar({this.currentIndex, this.callBack});
+
+  @override
+  _BottomNavBarState createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  String activeIndex = '0';
+  final items = [
+    {
+      'icon': 'lib/assets/icon/outline_home_white_36dp.svg',
+      'title': 'Home',
+    },
+    {
+      'icon': 'lib/assets/icon/icons8-heart-30 (1).svg',
+      'title': 'Saved',
+    },
+    {
+      'icon': 'lib/assets/icon/outline_question_answer_white_36dp.svg',
+      'title': 'Notification',
+    },
+    {
+      'icon': 'lib/assets/icon/outline_account_circle_white_36dp.svg',
+      'title': 'Profile',
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      height: 75,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _getNavItem(
-            index: "0",
-            active: false,
-            iconActive:
-                SvgPicture.asset("lib/assets/icon/outline_home_white_36dp.svg"),
-            title: "Home",
-          ),
-          _getNavItem(
-            index: "1",
-            active: false,
-            iconActive:
-                SvgPicture.asset("lib/assets/icon/icons8-heart-30 (1).svg"),
-            title: "Home",
-          ),
-          _getNavItem(
-            index: "2",
-            active: false,
-            iconActive: SvgPicture.asset(
-                "lib/assets/icon/outline_question_answer_white_36dp.svg"),
-            title: "Home",
-          ),
-          _getNavItem(
-            index: "3",
-            active: false,
-            iconActive: SvgPicture.asset(
-                "lib/assets/icon/outline_account_circle_white_36dp.svg"),
-            title: "Home",
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _getNavItem({
-    String index,
-    SvgPicture iconActive,
-    bool active,
-    String title,
-  }) {
-    return InkWell(
-      onTap: () => {
-        setState(() {
-          widget.currentIndex = index.toString();
-        })
-      },
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 100),
-        width: widget.currentIndex == index ? 130.0 : 56.0,
-        padding: EdgeInsets.all(16.0),
-        decoration: BoxDecoration(
-          borderRadius: active
-              ? BorderRadius.circular(30.0)
-              : BorderRadius.circular(50.0),
-          color: Color.fromRGBO(249, 112, 104, 1),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            iconActive,
-            widget.currentIndex == index
-                ? DelayedDisplay(
-                    delay: Duration(milliseconds: 50),
-                    child: TextComponent(
-                      textColor: Colors.white,
-                      title: title,
-                      align: TextAlign.center,
-                      fontSize: 16.0,
-                      weight: FontWeight.w600,
-                    ),
-                  )
-                : SizedBox()
-          ],
-        ),
-      ),
-    );
+        height: 75,
+        width: MediaQuery.of(context).size.width,
+        child: ListView.builder(
+          itemCount: items.length,
+          padding: EdgeInsets.all(8.0),
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: InkWell(
+                onTap: () => {widget.callBack(index)},
+                child: AnimatedContainer(
+                  onEnd: () {
+                    Future.delayed(Duration(milliseconds: 200), () {
+                      setState(() => {activeIndex = widget.currentIndex});
+                    });
+                  },
+                  duration: const Duration(milliseconds: 100),
+                  width: widget.currentIndex == index.toString() ? 150.0 : 60.0,
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    borderRadius: index.toString() == widget.currentIndex
+                        ? BorderRadius.circular(30.0)
+                        : BorderRadius.circular(50.0),
+                    color: Color.fromRGBO(249, 112, 104, 1),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: widget.currentIndex == index.toString()
+                        ? MainAxisAlignment.spaceBetween
+                        : MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(items[index]['icon']),
+                      SizedBox(),
+                      widget.currentIndex == index.toString() &&
+                              activeIndex == widget.currentIndex
+                          ? DelayedDisplay(
+                              delay: Duration(milliseconds: 50),
+                              child: TextComponent(
+                                textColor: Colors.white,
+                                title: items[index]['title'],
+                                align: TextAlign.center,
+                                fontSize: 16.0,
+                                weight: FontWeight.w600,
+                              ),
+                            )
+                          : SizedBox(),
+                      SizedBox(),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ));
   }
 }
