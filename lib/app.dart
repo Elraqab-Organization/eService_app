@@ -136,7 +136,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     });
                   },
                   duration: const Duration(milliseconds: 100),
-                  width: widget.currentIndex == index.toString() ? 150.0 : 56.0,
+                  width: widget.currentIndex == index.toString() ? 150.0 : 60.0,
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
                     borderRadius: index.toString() == widget.currentIndex
@@ -145,7 +145,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     color: Color.fromRGBO(249, 112, 104, 1),
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: widget.currentIndex == index.toString()
+                        ? MainAxisAlignment.spaceBetween
+                        : MainAxisAlignment.center,
                     children: [
                       SvgPicture.asset(items[index]['icon']),
                       SizedBox(),
