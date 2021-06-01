@@ -7,10 +7,13 @@ class TextComponent extends StatelessWidget {
   final Color textColor;
   final TextAlign align;
   final FontWeight weight;
+  final line;
+
   TextComponent({
     this.fontSize,
     this.textColor,
     this.title,
+    this.line = 1,
     this.align = TextAlign.center,
     this.weight = FontWeight.w900,
   });
@@ -19,6 +22,7 @@ class TextComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
+      maxLines: line,
       textAlign: align,
       style: GoogleFonts.openSans(
         textStyle: TextStyle(

@@ -1,4 +1,3 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:e_service_app/components/custom_app_bar.dart';
 import 'package:e_service_app/components/text_component.dart';
@@ -51,33 +50,31 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 70,
-                  ),
-                  MediaQuery(
-                    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-                    child: Container(child: callPage(widget.currentIndex)),
-                  ),
-                ],
-              ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 70,
+                ),
+                MediaQuery(
+                  data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                  child: Container(child: callPage(widget.currentIndex)),
+                ),
+              ],
             ),
-            CustomAppBar(),
-          ],
-        ),
-        bottomNavigationBar: MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-          child: BottomNavBar(
-            currentIndex: widget.currentIndex,
-            callBack: _onItemTapped,
           ),
+          CustomAppBar(),
+        ],
+      ),
+      bottomNavigationBar: MediaQuery(
+        data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+        child: BottomNavBar(
+          currentIndex: widget.currentIndex,
+          callBack: _onItemTapped,
         ),
       ),
     );
