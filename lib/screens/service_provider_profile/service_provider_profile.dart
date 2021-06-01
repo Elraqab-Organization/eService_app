@@ -17,7 +17,10 @@ class ServiceProviderProfile extends StatelessWidget {
             builder: (context, viewmodel, _) => Column(
               children: [
                 ProfileInformation(),
-                ProfileReviews(),
+                Expanded(
+                  flex: 2,
+                  child: ProfileReviews(),
+                ),
               ],
             ),
           ),

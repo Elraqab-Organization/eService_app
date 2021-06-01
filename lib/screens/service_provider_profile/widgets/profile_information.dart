@@ -36,7 +36,7 @@ class ProfileInformation extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25.0),
                 ),
                 child:
-                    SvgPicture.asset('lib/assets/icon/1-intro-photo-final.svg'),
+                    SvgPicture.asset('lib/assets/icon/avatar-svgrepo-com.svg'),
               ),
               Row(
                 children: [
