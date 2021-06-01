@@ -17,11 +17,15 @@ class ServiceBranches extends StatelessWidget {
               ),
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.all(24.0),
+                  clipBehavior: Clip.none,
+                  padding: EdgeInsets.only(
+                      left: 24.0, top: 24.0, right: 40.0, bottom: 24.0),
                   color: Color.fromRGBO(237, 242, 239, 1),
                   child: ListView.builder(
+                    clipBehavior: Clip.none,
                     itemCount: 20,
                     itemBuilder: (context, index) => Container(
+                      clipBehavior: Clip.none,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25.0),
                         color: Colors.white,
@@ -36,8 +40,8 @@ class ServiceBranches extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(24.0),
                       margin: EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Stack(
+                        clipBehavior: Clip.none,
                         children: [
                           TextComponent(
                             title: 'Construction tools',
@@ -45,17 +49,21 @@ class ServiceBranches extends StatelessWidget {
                             textColor: Colors.black,
                             weight: FontWeight.w600,
                           ),
-                          Container(
-                            width: 50.0,
-                            height: 50.0,
-                            margin: EdgeInsets.all(0.0),
-                            decoration: BoxDecoration(
-                              color: Color.fromRGBO(33, 39, 56, 1),
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
-                            child: Icon(
-                              FontAwesomeIcons.angleLeft,
-                              color: Colors.white,
+                          Positioned(
+                            right: -40,
+                            bottom: -15,
+                            child: Container(
+                              width: 50.0,
+                              height: 50.0,
+                              margin: EdgeInsets.all(0.0),
+                              decoration: BoxDecoration(
+                                color: Color.fromRGBO(33, 39, 56, 1),
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
+                              child: Icon(
+                                FontAwesomeIcons.angleRight,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ],
