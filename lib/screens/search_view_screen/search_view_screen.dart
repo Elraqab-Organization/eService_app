@@ -9,6 +9,6 @@ class SearchView extends StatefulWidget {
 class _SearchViewState extends State<SearchView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SearchAreaBox());
+    return SafeArea(child: Scaffold(body: SearchAreaBox()));
   }
 }

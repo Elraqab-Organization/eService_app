@@ -12,7 +12,7 @@ class ShowModalBottom extends StatelessWidget {
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) => SearchCardResult("Ahmed Mousa")),
       decoration: BoxDecoration(
-          color: Colors.black87,
+          color: Color(0xff212738),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),

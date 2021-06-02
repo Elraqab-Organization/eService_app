@@ -9,7 +9,7 @@ class SearchCardResult extends StatelessWidget {
     return SizedBox(
       child: Container(
         child: Stack(
-          overflow: Overflow.visible,
+          clipBehavior: Clip.none,
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 8, bottom: 5),
@@ -31,7 +31,7 @@ class SearchCardResult extends StatelessWidget {
                 top: -18,
                 left: 220,
                 child: CircleAvatar(
-                  backgroundColor: Colors.pinkAccent,
+                  backgroundColor: Color(0xffF97068),
                   radius: 21,
                   child: IconButton(
                     padding: EdgeInsets.zero,
@@ -44,7 +44,7 @@ class SearchCardResult extends StatelessWidget {
                 top: -18,
                 left: 270,
                 child: CircleAvatar(
-                  backgroundColor: Colors.pinkAccent,
+                  backgroundColor: Color(0xffF97068),
                   radius: 21,
                   child: IconButton(
                     padding: EdgeInsets.zero,
@@ -57,7 +57,7 @@ class SearchCardResult extends StatelessWidget {
                 top: -18,
                 left: 320,
                 child: CircleAvatar(
-                  backgroundColor: Colors.pinkAccent,
+                  backgroundColor: Color(0xffF97068),
                   radius: 21,
                   child: IconButton(
                     padding: EdgeInsets.zero,
