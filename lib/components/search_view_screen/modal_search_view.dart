@@ -9,6 +9,7 @@ class ShowModalBottom extends StatelessWidget {
       padding: EdgeInsets.all(24.0),
       height: 350.0,
       child: ListView.builder(
+          padding: EdgeInsets.only(top: 24.0, left: 8.0, right: 8.0),
           itemCount: filterTags.length,
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) => SearchCardResult(

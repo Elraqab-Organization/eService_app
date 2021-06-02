@@ -30,10 +30,16 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                     height: 140,
                   ),
                   FilterSearch(viewmodel: viewmodel),
+                  SizedBox(
+                    height: 20.0,
+                  ),
                   Expanded(
                     child: Container(
+                      clipBehavior: Clip.none,
                       child: ListView.builder(
-                        clipBehavior: Clip.none,
+                        padding:
+                            EdgeInsets.only(top: 24.0, left: 8.0, right: 8.0),
+                        clipBehavior: Clip.hardEdge,
                         itemBuilder: (context, index) => SearchCardResult(
                             "Ahmad", Color.fromRGBO(33, 39, 56, 1)),
                       ),

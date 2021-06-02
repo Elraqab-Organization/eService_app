@@ -17,11 +17,11 @@ class RouteManager {
 
     switch (settings.name) {
       case "/":
+        builder = (BuildContext context) => App(currentIndex: "0");
+        break;
+      case "/service_providers":
         builder = (BuildContext context) => ServiceProviders();
         break;
-      // case "/":
-      //   builder = (BuildContext context) => App(currentIndex: "0");
-      //   break;
       case "/service_branches":
         builder = (BuildContext context) => ServiceBranches();
         break;

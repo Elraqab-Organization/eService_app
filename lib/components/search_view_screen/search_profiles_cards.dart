@@ -8,6 +8,7 @@ class SearchCardResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 30.0),
       padding: EdgeInsets.all(12.0),
       child: Stack(
         clipBehavior: Clip.none,
@@ -62,12 +63,11 @@ class SearchCardResult extends StatelessWidget {
               )),
         ],
       ),
-      margin: const EdgeInsets.only(top: 30),
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
             color: Colors.grey,
             offset: Offset(0, 3),
-            spreadRadius: 1,
+            spreadRadius: 0.5,
             blurRadius: 5),
       ], borderRadius: BorderRadius.circular(10), color: Colors.white),
     );
