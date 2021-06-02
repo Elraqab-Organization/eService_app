@@ -1,11 +1,10 @@
 import 'package:e_service_app/components/custom_return_bar.dart';
-import 'package:e_service_app/components/text_component.dart';
+import 'package:e_service_app/components/search_view_screen/search_profiles_cards.dart';
 import 'package:e_service_app/screens/service_providers/service_providers_viewmodel.dart';
 import 'package:e_service_app/screens/service_providers/widgets/filter_search.dart';
 import 'package:e_service_app/screens/view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ServiceProviders extends StatefulWidget {
   @override
@@ -31,6 +30,15 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                     height: 140,
                   ),
                   FilterSearch(viewmodel: viewmodel),
+                  Expanded(
+                    child: Container(
+                      child: ListView.builder(
+                        clipBehavior: Clip.none,
+                        itemBuilder: (context, index) => SearchCardResult(
+                            "Ahmad", Color.fromRGBO(33, 39, 56, 1)),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

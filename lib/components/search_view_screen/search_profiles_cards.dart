@@ -2,77 +2,74 @@ import 'package:flutter/material.dart';
 
 class SearchCardResult extends StatelessWidget {
   final String _profileName;
+  final Color buttonColor;
 
-  SearchCardResult(this._profileName);
+  SearchCardResult(this._profileName, this.buttonColor);
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Container(
-        child: Stack(
-          overflow: Overflow.visible,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8, bottom: 5),
-              child: CircleAvatar(
-                radius: 40,
+    return Container(
+      padding: EdgeInsets.all(12.0),
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 25,
                 backgroundImage: NetworkImage(
                     "https://img.freepik.com/free-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?size=626&ext=jpg"),
               ),
-            ),
-            Positioned(
-                top: 25,
-                left: 90,
-                right: 50,
-                child: Text(
-                  _profileName,
-                  style: TextStyle(fontSize: 17.0),
-                )),
-            Positioned(
-                top: -18,
-                left: 220,
-                child: CircleAvatar(
-                  backgroundColor: Colors.pinkAccent,
-                  radius: 21,
-                  child: IconButton(
-                    padding: EdgeInsets.zero,
-                    icon: Icon(Icons.chat),
-                    color: Colors.white,
-                    onPressed: () {},
+              SizedBox(
+                width: 25.0,
+              ),
+              Text(
+                _profileName,
+                style: TextStyle(fontSize: 17.0),
+              ),
+            ],
+          ),
+          Positioned(
+              top: -30,
+              left: 230,
+              child: CircleAvatar(
+                backgroundColor: buttonColor,
+                radius: 21,
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  icon: Icon(
+                    Icons.bookmark,
+                    size: 20,
                   ),
-                )),
-            Positioned(
-                top: -18,
-                left: 270,
-                child: CircleAvatar(
-                  backgroundColor: Colors.pinkAccent,
-                  radius: 21,
-                  child: IconButton(
-                    padding: EdgeInsets.zero,
-                    icon: Icon(Icons.bookmark),
-                    color: Colors.white,
-                    onPressed: () {},
+                  color: Colors.white,
+                  onPressed: () {},
+                ),
+              )),
+          Positioned(
+              top: -30,
+              left: 280,
+              child: CircleAvatar(
+                backgroundColor: buttonColor,
+                radius: 21,
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  icon: Icon(
+                    Icons.favorite,
+                    size: 20,
                   ),
-                )),
-            Positioned(
-                top: -18,
-                left: 320,
-                child: CircleAvatar(
-                  backgroundColor: Colors.pinkAccent,
-                  radius: 21,
-                  child: IconButton(
-                    padding: EdgeInsets.zero,
-                    icon: Icon(Icons.favorite),
-                    color: Colors.white,
-                    onPressed: () {},
-                  ),
-                )),
-          ],
-        ),
-        margin: const EdgeInsets.only(left: 25, right: 18, top: 30),
-        height: 70.0,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10), color: Colors.white),
+                  color: Colors.white,
+                  onPressed: () {},
+                ),
+              )),
+        ],
       ),
+      margin: const EdgeInsets.only(top: 30),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+            color: Colors.grey,
+            offset: Offset(0, 3),
+            spreadRadius: 1,
+            blurRadius: 5),
+      ], borderRadius: BorderRadius.circular(10), color: Colors.white),
     );
   }
 }

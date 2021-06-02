@@ -42,23 +42,26 @@ class SearchAreaBox extends StatelessWidget {
             height: 28.0,
           ),
           Container(
-              margin: const EdgeInsets.only(left: 20),
-              height: 50,
-              child: ListView.builder(
-                itemCount: filterTags.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 2),
-                  child: FloatingActionButton.extended(
-                      onPressed: () {
-                        _showModalBottomSheet(context);
-                      },
-                      label: Text(filterTags[index].name)),
-                ),
-              ))
+            margin: const EdgeInsets.only(left: 20),
+            height: 50,
+            child: ListView.builder(
+              itemCount: filterTags.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => Container(
+                margin: const EdgeInsets.symmetric(horizontal: 2),
+                child: FloatingActionButton.extended(
+                    backgroundColor: Color.fromRGBO(249, 112, 104, 1),
+                    onPressed: () {
+                      _showModalBottomSheet(context);
+                    },
+                    label: Text(filterTags[index].name)),
+              ),
+            ),
+          ),
         ],
       ),
       decoration: BoxDecoration(
+          color: Color.fromRGBO(33, 39, 56, 1),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
@@ -67,7 +70,6 @@ class SearchAreaBox extends StatelessWidget {
               offset: Offset(0, 3), // changes position of shadow
             ),
           ],
-          color: Colors.black87,
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30.0),
               bottomRight: Radius.circular(30.0))),
