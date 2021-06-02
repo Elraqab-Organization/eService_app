@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CustomAppBar extends StatefulWidget {
-  double height = 150;
+  double height = 160;
   @override
   _CustomAppBarState createState() => _CustomAppBarState();
 }
@@ -26,10 +26,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextComponent(
                     fontSize: 25,
