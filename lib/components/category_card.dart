@@ -17,8 +17,8 @@ class CategoryCard extends StatelessWidget {
       onTap: () {},
       child: Container(
         padding: EdgeInsets.all(10),
-        height: 170,
-        width: 200,
+        height: 150,
+        width: 150,
         margin: EdgeInsets.all(15),
         decoration: BoxDecoration(
             color: Colors.red, borderRadius: BorderRadius.circular(10)),
@@ -28,7 +28,7 @@ class CategoryCard extends StatelessWidget {
             Icon(
               favorite,
               color: Colors.white,
-              size: 50,
+              size: 30,
             ),
             SizedBox(
               height: 20,
@@ -37,17 +37,17 @@ class CategoryCard extends StatelessWidget {
               child: Text(
                 title,
                 style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 30,
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 110, 0),
-              width: 70,
+              margin: EdgeInsets.fromLTRB(0, 0, 80, 0),
+              width: 50,
               alignment: Alignment.bottomLeft,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -61,9 +61,9 @@ class CategoryCard extends StatelessWidget {
                     color: Colors.amber,
                     size: 20,
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
+                  // SizedBox(
+                  //   width: 10,
+                  // ),
                   Text(
                     rating,
                     style: TextStyle(fontSize: 16),

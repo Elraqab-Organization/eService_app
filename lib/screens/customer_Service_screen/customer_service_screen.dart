@@ -30,9 +30,12 @@ class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
                   width: 120,
                   route: LoginScreen(),
                   icon: Icon(
-                    Icons.ac_unit,
-                    size: 70,
+                    FontAwesomeIcons.wrench,
+                    size: 50,
+                    color: Colors.white,
                   ),
+                  title: "Services",
+                  color: Colors.black,
                 ),
                 SquareButton(
                   height: 120,
@@ -40,8 +43,11 @@ class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
                   route: ServiceBranches(),
                   icon: Icon(
                     Icons.ac_unit,
-                    size: 70,
+                    size: 50,
+                    color: Colors.white,
                   ),
+                  title: "Posts",
+                  color: Colors.pink,
                 ),
                 SquareButton(
                   height: 120,
@@ -49,21 +55,41 @@ class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
                   route: LoginScreen(),
                   icon: Icon(
                     Icons.ac_unit,
-                    size: 70,
+                    size: 50,
+                    color: Colors.white,
                   ),
+                  title: "Orders",
+                  color: Colors.lightBlue,
                 ),
               ],
             ),
             Row(
               children: [
-                Text("Popular Services"),
                 SizedBox(
+                  height: 90,
                   width: 20,
                 ),
-                Text("See all"),
+                Text(
+                  "Popular Services",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+                ),
+                SizedBox(
+                  width: 70,
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Text(
+                    "See all",
+                    style: TextStyle(
+                        fontSize: 26,
+                        color: Colors.deepOrangeAccent,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
               ],
             ),
-            Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CategoryCard(
                   favorite: FontAwesomeIcons.solidHeart,
@@ -78,7 +104,26 @@ class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
                   title: "Computing",
                   rating: "4.5",
                   star: Icons.star,
-                )
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CategoryCard(
+                  favorite: FontAwesomeIcons.solidHeart,
+                  onpresed: () {},
+                  title: "Electrical",
+                  rating: "4.5",
+                  star: Icons.star,
+                ),
+                CategoryCard(
+                  favorite: FontAwesomeIcons.solidHeart,
+                  onpresed: () {},
+                  title: "Computing",
+                  rating: "4.5",
+                  star: Icons.star,
+                ),
               ],
             ),
           ],
