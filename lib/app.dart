@@ -3,6 +3,7 @@ import 'package:e_service_app/components/custom_app_bar.dart';
 import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:e_service_app/screens/customer_Service_screen/customer_service_screen.dart';
 
 // ignore: must_be_immutable
 class App extends StatefulWidget {
@@ -43,7 +44,7 @@ class _AppState extends State<App> {
         );
         break;
       case "3":
-        return Container();
+        return CustomerServiceScreen();
         break;
     }
   }

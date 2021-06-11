@@ -24,7 +24,6 @@ class RegisterScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 110),
                 Text(
                   'Create your account',
                   textAlign: TextAlign.start,
@@ -56,21 +55,21 @@ class RegisterScreen extends StatelessWidget {
                     null),
                 SizedBox(height: 20),
                 RoundedRectangleButton(
-                  EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                  BorderRadius.circular(70.0),
-                  Colors.white,
-                  Colors.black,
-                  Text(
-                    'Log in with Google',
-                    style: TextStyle(color: Colors.black, fontSize: 16),
-                  ),
-                  null
-                ),
-                SizedBox(height: 125),
+                    EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                    BorderRadius.circular(70.0),
+                    Colors.white,
+                    Colors.black,
+                    Text(
+                      'Log in with Google',
+                      style: TextStyle(color: Colors.black, fontSize: 16),
+                    ),
+                    null),
+                SizedBox(height: 75),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: _buildLogin(),
-                )
+                ),
+                SizedBox(height: 75)
               ],
             ),
           ),
