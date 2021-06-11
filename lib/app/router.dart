@@ -10,7 +10,7 @@ import 'package:e_service_app/screens/service_providers/service_providers.dart';
 import 'package:e_service_app/screens/Customer_Posts_Screen/customer_posts_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../components/category_card.dart';
+import '../components/posts_card.dart';
 
 import '../app.dart';
 
@@ -53,8 +53,8 @@ class RouteManager {
       case "/customer_posts_view":
         builder = (BuildContext context) => CustomerPostsServiceScreen();
         break;
-      case "/CategoryCard":
-        builder = (BuildContext context) => CategoryCard();
+      case "/PostsCard":
+        builder = (BuildContext context) => PostsCard();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

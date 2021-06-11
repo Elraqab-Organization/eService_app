@@ -6,11 +6,12 @@ class PostsCard extends StatefulWidget {
 }
 
 class _PostsCardState extends State<PostsCard> {
-  final String userName = '';
-  final String posted = '';
-  final String city = '';
-  final String cancellation = '';
-  final String postBody = '';
+  final String userName = 'Ahmed Mousa';
+  final String posted = '27 min ago';
+  final String city = ' Johor Bahru';
+  final String cancellation = ' Free cancellation';
+  final String postBody =
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s';
 
   @override
   Widget build(BuildContext context) {
@@ -18,82 +19,50 @@ class _PostsCardState extends State<PostsCard> {
       body: ListView(
         children: [
           Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
             clipBehavior: Clip.antiAlias,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 ListTile(
-                  leading: Icon(Icons.arrow_drop_down_circle),
+                  leading: CircleAvatar(
+                    backgroundImage: new AssetImage(
+                      "lib/assets/icon/1-intro-photo-final-image.jpg",
+                    ),
+                  ),
                   title: Text(userName),
                   subtitle: Text(
-                    'Secondary Text',
+                    '$posted / $city / $cancellation',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
+                    '$postBody',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                 ),
                 ButtonBar(
                   alignment: MainAxisAlignment.start,
                   children: [
-                    FlatButton(
-                      onPressed: () {
-                        // Perform some action
-                      },
-                      child: const Text('ACTION 1'),
+                    SizedBox(
+                      width: 15,
                     ),
-                    FlatButton(
-                      onPressed: () {
+                    InkWell(
+                      splashColor: Colors.blue.withAlpha(30),
+                      onTap: () {
                         // Perform some action
                       },
-                      child: const Text('ACTION 2'),
-                    ),
-                  ],
-                ),
-                // Image.asset('assets/card-sample-image.jpg'),
-              ],
-            ),
-          ),
-          Card(
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              children: [
-                ListTile(
-                  leading: Icon(Icons.arrow_drop_down_circle),
-                  title: const Text('Card title 1'),
-                  subtitle: Text(
-                    'Secondary Text',
-                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
-                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                  ),
-                ),
-                ButtonBar(
-                  alignment: MainAxisAlignment.start,
-                  children: [
-                    FlatButton(
-                      onPressed: () {
-                        // Perform some action
-                      },
-                      child: const Text('ACTION 1'),
-                    ),
-                    FlatButton(
-                      onPressed: () {
-                        // Perform some action
-                      },
-                      child: const Text('ACTION 2'),
+                      child: Text(
+                        '9 Proposals',
+                        style: TextStyle(fontSize: 12),
+                      ),
                     ),
                   ],
                 ),
-                // Image.asset('assets/card-sample-image-2.jpg'),
               ],
             ),
           ),
