@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomerTextField extends StatelessWidget {
-  TextEditingController controller;
-  String labelText;
+  final TextEditingController controller;
+  final String labelText;
   CustomerTextField(this.controller, this.labelText);
 
   @override
@@ -22,6 +22,5 @@ class CustomerTextField extends StatelessWidget {
             border: InputBorder.none),
       ),
     );
-    ;
   }
 }
