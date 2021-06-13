@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SearchCardResult extends StatelessWidget {
-  final String _profileName;
+  //
+  final String _username;
+  final String _photoString;
 
-  SearchCardResult(this._profileName);
+  SearchCardResult(this._username, this._photoString);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -15,8 +17,7 @@ class SearchCardResult extends StatelessWidget {
               padding: const EdgeInsets.only(top: 8, bottom: 5),
               child: CircleAvatar(
                 radius: 40,
-                backgroundImage: NetworkImage(
-                    "https://img.freepik.com/free-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?size=626&ext=jpg"),
+                backgroundImage: NetworkImage(_photoString),
               ),
             ),
             Positioned(
@@ -24,7 +25,7 @@ class SearchCardResult extends StatelessWidget {
                 left: 90,
                 right: 50,
                 child: Text(
-                  _profileName,
+                  _username,
                   style: TextStyle(fontSize: 17.0),
                 )),
             Positioned(
