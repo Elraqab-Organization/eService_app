@@ -1,6 +1,8 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:e_service_app/components/custom_app_bar.dart';
 import 'package:e_service_app/components/text_component.dart';
+import 'package:e_service_app/screens/Customer_Posts_Screen/customer_posts_service.dart';
+import 'package:e_service_app/screens/Customer_order_screen/customer_ordder_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:e_service_app/screens/customer_Service_screen/customer_service_screen.dart';
@@ -8,8 +10,9 @@ import 'package:e_service_app/screens/customer_Service_screen/customer_service_s
 // ignore: must_be_immutable
 class App extends StatefulWidget {
   String currentIndex;
+  String route;
 
-  App({this.currentIndex = "0"});
+  App({this.currentIndex = "0", this.route = "/customer_posts_view"});
   @override
   _AppState createState() => _AppState();
 }
@@ -26,10 +29,7 @@ class _AppState extends State<App> {
   Widget callPage(index) {
     switch (index) {
       case "0":
-        return Container(
-          color: Colors.grey,
-          height: 100.0,
-        );
+        return CustomerPostsServiceScreen();
         break;
       case "1":
         return Container(
@@ -44,7 +44,19 @@ class _AppState extends State<App> {
         );
         break;
       case "3":
+        return Container();
+        break;
+      case "/customer_service_view":
+        widget.currentIndex = "0";
         return CustomerServiceScreen();
+        break;
+      case "/customer_posts_view":
+        widget.currentIndex = "0";
+        return CustomerPostsServiceScreen();
+        break;
+      case "/customer_order_view":
+        widget.currentIndex = "0";
+        return CustomerOrderScreen();
         break;
     }
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SquareButton extends StatelessWidget {
-  Widget _route;
+  String _route;
   double _height;
   double _width;
   Icon _icon;
@@ -22,7 +22,7 @@ class SquareButton extends StatelessWidget {
   set color(value) => _color = value;
 
   SquareButton(
-      {Widget route,
+      {String route,
       double height,
       double width,
       Icon icon,
@@ -38,15 +38,11 @@ class SquareButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         InkWell(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => route,
-              ),
-            );
+            Navigator.pushReplacementNamed(context, route);
           },
           child: Container(
             width: width,
@@ -67,7 +63,10 @@ class SquareButton extends StatelessWidget {
             ),
           ),
         ),
-        Text(title)
+        Text(
+          title,
+          textAlign: TextAlign.center,
+        )
       ],
     );
   }

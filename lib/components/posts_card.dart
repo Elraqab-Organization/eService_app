@@ -15,8 +15,9 @@ class _PostsCardState extends State<PostsCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
+    return Container(
+      child: ListView(
+        padding: EdgeInsets.only(top: 16),
         children: [
           Card(
             shape: RoundedRectangleBorder(
@@ -24,7 +25,7 @@ class _PostsCardState extends State<PostsCard> {
             ),
             clipBehavior: Clip.antiAlias,
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              // mainAxisSize: MainAxisSize.min,
               children: [
                 ListTile(
                   leading: CircleAvatar(

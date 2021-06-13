@@ -18,117 +18,114 @@ class CustomerServiceScreen extends StatefulWidget {
 class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
+    return Column(
+      children: [
+        SizedBox(height: 150),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SquareButton(
-                  height: 120,
-                  width: 120,
-                  route: LoginScreen(),
-                  icon: Icon(
-                    FontAwesomeIcons.wrench,
-                    size: 50,
-                    color: Colors.white,
-                  ),
-                  title: "Services",
-                  color: Colors.black,
-                ),
-                SquareButton(
-                  height: 120,
-                  width: 120,
-                  route: ServiceBranches(),
-                  icon: Icon(
-                    Icons.ac_unit,
-                    size: 50,
-                    color: Colors.white,
-                  ),
-                  title: "Posts",
-                  color: Colors.pink,
-                ),
-                SquareButton(
-                  height: 120,
-                  width: 120,
-                  route: LoginScreen(),
-                  icon: Icon(
-                    Icons.ac_unit,
-                    size: 50,
-                    color: Colors.white,
-                  ),
-                  title: "Orders",
-                  color: Colors.lightBlue,
-                ),
-              ],
+            SquareButton(
+              height: 120,
+              width: 120,
+              route: "/customer_service_view",
+              icon: Icon(
+                FontAwesomeIcons.wrench,
+                size: 50,
+                color: Colors.white,
+              ),
+              title: "Services",
+              color: Colors.black,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  height: 90,
-                  width: 20,
-                ),
-                Text(
-                  "Popular Services",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
-                ),
-                SizedBox(
-                  width: 70,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Text(
-                    "See all",
-                    style: TextStyle(
-                        fontSize: 26,
-                        color: Colors.deepOrangeAccent,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
+            SquareButton(
+              height: 120,
+              width: 120,
+              route: "/customer_posts_view",
+              icon: Icon(
+                Icons.ac_unit,
+                size: 50,
+                color: Colors.white,
+              ),
+              title: "Posts",
+              color: Colors.pink,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CategoryCard(
-                  favorite: FontAwesomeIcons.solidHeart,
-                  onpresed: () {},
-                  title: "Electrical",
-                  rating: "4.5",
-                  star: Icons.star,
-                ),
-                CategoryCard(
-                  favorite: FontAwesomeIcons.solidHeart,
-                  onpresed: () {},
-                  title: "Computing",
-                  rating: "4.5",
-                  star: Icons.star,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CategoryCard(
-                  favorite: FontAwesomeIcons.solidHeart,
-                  onpresed: () {},
-                  title: "Electrical",
-                  rating: "4.5",
-                  star: Icons.star,
-                ),
-                CategoryCard(
-                  favorite: FontAwesomeIcons.solidHeart,
-                  onpresed: () {},
-                  title: "Computing",
-                  rating: "4.5",
-                  star: Icons.star,
-                ),
-              ],
+            SquareButton(
+              height: 120,
+              width: 120,
+              route: "/customer_order_view",
+              icon: Icon(
+                Icons.ac_unit,
+                size: 50,
+                color: Colors.white,
+              ),
+              title: "Orders",
+              color: Colors.lightBlue,
             ),
           ],
         ),
-      ),
+        Row(
+          children: [
+            SizedBox(
+              height: 90,
+              width: 20,
+            ),
+            Text(
+              "Popular Services",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+            ),
+            SizedBox(
+              width: 70,
+            ),
+            InkWell(
+              onTap: () {},
+              child: Text(
+                "See all",
+                style: TextStyle(
+                    fontSize: 26,
+                    color: Colors.deepOrangeAccent,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CategoryCard(
+              favorite: FontAwesomeIcons.solidHeart,
+              onpresed: () {},
+              title: "Electrical",
+              rating: "4.5",
+              star: Icons.star,
+            ),
+            CategoryCard(
+              favorite: FontAwesomeIcons.solidHeart,
+              onpresed: () {},
+              title: "Computing",
+              rating: "4.5",
+              star: Icons.star,
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CategoryCard(
+              favorite: FontAwesomeIcons.solidHeart,
+              onpresed: () {},
+              title: "Electrical",
+              rating: "4.5",
+              star: Icons.star,
+            ),
+            CategoryCard(
+              favorite: FontAwesomeIcons.solidHeart,
+              onpresed: () {},
+              title: "Computing",
+              rating: "4.5",
+              star: Icons.star,
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
