@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import '../../components/order_card.dart';
 
-class CustomerOrderScreen extends StatefulWidget {
-  @override
-  _CustomerOrderScreenState createState() => _CustomerOrderScreenState();
-}
+class CustomerOrderScreen extends StatelessWidget {
+  final onTap;
+  final index = 0;
+  CustomerOrderScreen({this.onTap});
 
-class _CustomerOrderScreenState extends State<CustomerOrderScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Ordercard(),
+    return Expanded(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 20.0,
+          ),
+          Ordercard()
+        ],
       ),
     );
   }

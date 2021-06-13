@@ -1,11 +1,9 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:e_service_app/components/custom_app_bar.dart';
+import 'package:e_service_app/components/inner_navigation_tabs.dart';
 import 'package:e_service_app/components/text_component.dart';
-import 'package:e_service_app/screens/Customer_Posts_Screen/customer_posts_service.dart';
-import 'package:e_service_app/screens/Customer_order_screen/customer_ordder_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:e_service_app/screens/customer_Service_screen/customer_service_screen.dart';
 
 // ignore: must_be_immutable
 class App extends StatefulWidget {
@@ -29,7 +27,9 @@ class _AppState extends State<App> {
   Widget callPage(index) {
     switch (index) {
       case "0":
-        return CustomerPostsServiceScreen();
+        return InnerNavigationTabs(
+          tabIndex: 0,
+        );
         break;
       case "1":
         return Container(
@@ -46,36 +46,28 @@ class _AppState extends State<App> {
       case "3":
         return Container();
         break;
-      case "/customer_service_view":
-        widget.currentIndex = "0";
-        return CustomerServiceScreen();
-        break;
-      case "/customer_posts_view":
-        widget.currentIndex = "0";
-        return CustomerPostsServiceScreen();
-        break;
-      case "/customer_order_view":
-        widget.currentIndex = "0";
-        return CustomerOrderScreen();
-        break;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromRGBO(237, 242, 239, 1),
       body: Stack(
         children: [
           SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(
-                  height: 70,
+                  height: 210,
                 ),
                 MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-                  child: Container(child: callPage(widget.currentIndex)),
+                  child: Container(
+                    padding: EdgeInsets.all(16.0),
+                    height: MediaQuery.of(context).size.height - 285,
+                    child: callPage(widget.currentIndex),
+                  ),
                 ),
               ],
             ),

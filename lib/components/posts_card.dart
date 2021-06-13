@@ -17,7 +17,7 @@ class _PostsCardState extends State<PostsCard> {
   Widget build(BuildContext context) {
     return Container(
       child: ListView(
-        padding: EdgeInsets.only(top: 16),
+        padding: EdgeInsets.only(bottom: 16.0),
         children: [
           Card(
             shape: RoundedRectangleBorder(
