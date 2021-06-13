@@ -1,3 +1,4 @@
+import 'package:delayed_display/delayed_display.dart';
 import 'package:e_service_app/model/filter_tags.dart';
 import 'package:flutter/material.dart';
 import 'modal_search_view.dart';
@@ -8,8 +9,16 @@ class SearchAreaBox extends StatefulWidget {
 }
 
 class _SearchAreaBoxState extends State<SearchAreaBox> {
+  //
   bool isShown = false;
   bool isPressed = false;
+
+  //
+  double _width = 405;
+  double _height = 0;
+
+  //
+  String dropdownValue = 'Location';
 
   _showModalBottomSheet(context) {
     showModalBottomSheet(
@@ -25,24 +34,50 @@ class _SearchAreaBoxState extends State<SearchAreaBox> {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        isShown
-            ? Positioned(
-                top: 220,
-                child: Card(
-                    color: Color(0xffF97068),
-                    elevation: 20,
-                    borderOnForeground: false,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(30))),
-                    child: Container(
-                        width: 402,
-                        height: 105,
-                        child: Row(
-                          children: [],
-                        ))))
-            : Positioned(child: Container()),
+        Positioned(
+            top: 200,
+            child: AnimatedContainer(
+                margin: const EdgeInsets.only(left: 3),
+                duration: Duration(seconds: 1),
+                curve: Curves.easeInOut,
+                width: _width,
+                height: _height,
+                color: Color(0xff0ffF97068),
+                child: DelayedDisplay(
+                  delay: Duration(seconds: 3),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.pin_drop_outlined,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                      DropdownButton<String>(
+                        value: dropdownValue,
+                        iconSize: 24,
+                        elevation: 5,
+                        style: const TextStyle(color: Colors.deepPurple),
+                        underline: Container(
+                          height: 2,
+                          color: Colors.deepPurpleAccent,
+                        ),
+                        onChanged: (String newValue) {
+                          setState(() {
+                            dropdownValue = newValue;
+                          });
+                        },
+                        items: <String>['Location', 'Johor', 'Kuala']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      )
+                    ],
+                  ),
+                ))),
         Positioned(
             child: Container(
           width: double.infinity,
@@ -75,24 +110,31 @@ class _SearchAreaBoxState extends State<SearchAreaBox> {
               Container(
                   margin: const EdgeInsets.only(left: 20),
                   height: 50,
-                  child: ListView.builder(
-                    itemCount: filterTags.length,
+                  child: ListView(
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 2),
-                      child: FloatingActionButton.extended(
-                          backgroundColor: Color(0xff0ffF97068),
-                          onPressed: () {
-                            if (filterTags[index].name == "Location") {
+                    children: <Widget>[
+                      _searchTagButton(filterTags[0].name),
+                      _searchTagButton(filterTags[1].name),
+                      _searchTagButton(filterTags[2].name),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 2),
+                        child: FloatingActionButton.extended(
+                            backgroundColor: Color(0xff0ffF97068),
+                            label: Text("location"),
+                            onPressed: () {
                               setState(() {
-                                isShown = !isShown;
+                                if (_height == 105) {
+                                  _height = 0;
+                                } else {
+                                  _width = 405;
+                                  _height = 105;
+                                }
                               });
-                            } else {
-                              _showModalBottomSheet(context);
-                            }
-                          },
-                          label: Text(filterTags[index].name)),
-                    ),
+                              // _showModalBottomSheet(context);
+                            }),
+                      ),
+                      _searchTagButton(filterTags[4].name),
+                    ],
                   ))
             ],
           ),
@@ -111,6 +153,16 @@ class _SearchAreaBoxState extends State<SearchAreaBox> {
                   bottomRight: Radius.circular(30.0))),
         )),
       ],
+    );
+  }
+
+  Widget _searchTagButton(String tag) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 2),
+      child: FloatingActionButton.extended(
+          backgroundColor: Color(0xff0ffF97068),
+          label: Text(tag),
+          onPressed: () => _showModalBottomSheet(context)),
     );
   }
 }
