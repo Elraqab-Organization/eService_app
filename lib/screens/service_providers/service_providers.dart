@@ -1,5 +1,6 @@
 import 'package:e_service_app/components/custom_return_bar.dart';
 import 'package:e_service_app/components/search_view_screen/search_profiles_cards.dart';
+import 'package:e_service_app/model/search_profile.dart';
 import 'package:e_service_app/screens/service_providers/service_providers_viewmodel.dart';
 import 'package:e_service_app/screens/service_providers/widgets/filter_search.dart';
 import 'package:e_service_app/screens/view.dart';
@@ -41,7 +42,8 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                             EdgeInsets.only(top: 24.0, left: 8.0, right: 8.0),
                         clipBehavior: Clip.hardEdge,
                         itemBuilder: (context, index) => SearchCardResult(
-                            "Ahmad", Color.fromRGBO(33, 39, 56, 1)),
+                            usernames[index].username,
+                            usernames[index].photoString),
                       ),
                     ),
                   ),
