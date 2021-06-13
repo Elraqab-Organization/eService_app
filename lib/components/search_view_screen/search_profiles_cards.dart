@@ -10,40 +10,30 @@ class SearchCardResult extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         child: Container(
+      margin: const EdgeInsets.only(bottom: 28),
+      padding: const EdgeInsets.all(8),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 8, bottom: 5),
-            child: CircleAvatar(
-              radius: 40,
-              backgroundImage: NetworkImage(_photoString),
-            ),
-          ),
-          Positioned(
-              top: 25,
-              left: 90,
-              right: 50,
-              child: Text(
-                _username,
-                style: TextStyle(fontSize: 17.0),
-              )),
-          Positioned(
-              top: -18,
-              left: 220,
-              child: CircleAvatar(
-                backgroundColor: Color(0xffF97068),
-                radius: 21,
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-                  icon: Icon(Icons.chat),
-                  color: Colors.white,
-                  onPressed: () {},
+          Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(_photoString),
                 ),
-              )),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  _username,
+                  style: TextStyle(fontSize: 17.0),
+                ),
+              ]),
           Positioned(
-              top: -18,
-              left: 270,
+              top: -25,
+              left: 250,
               child: CircleAvatar(
                 backgroundColor: Color(0xffF97068),
                 radius: 21,
@@ -55,8 +45,8 @@ class SearchCardResult extends StatelessWidget {
                 ),
               )),
           Positioned(
-            top: -18,
-            left: 320,
+            top: -25,
+            left: 300,
             child: CircleAvatar(
               backgroundColor: Color(0xffF97068),
               radius: 21,
