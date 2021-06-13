@@ -1,4 +1,5 @@
-import 'package:e_service_app/screens/Customer_order_screen/customer_ordder_screen.dart';
+import 'package:e_service_app/components/order_card.dart';
+import 'package:e_service_app/screens/Customer_order_screen/customer_order_screen.dart';
 import 'package:e_service_app/screens/customer_Service_screen/customer_service_screen.dart';
 import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
@@ -50,13 +51,9 @@ class RouteManager {
         builder = (BuildContext context) =>
             App(currentIndex: "/customer_service_view");
         break;
-      // case "/":
-      //   builder =
-      //       (BuildContext context) => App(currentIndex: "/customer_posts_view");
-      //   break;
-      case "/customer_order_view":
+      case "/customer_posts_view":
         builder =
-            (BuildContext context) => App(currentIndex: "/customer_order_view");
+            (BuildContext context) => App(currentIndex: "/customer_posts_view");
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);
