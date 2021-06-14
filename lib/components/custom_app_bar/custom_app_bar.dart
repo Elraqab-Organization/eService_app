@@ -73,8 +73,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
         AppHeader(widget: widget),
         AnimatedContainer(
           clipBehavior: Clip.none,
-          duration: Duration(milliseconds: 250),
-          curve: Curves.easeInOut,
+          duration: Duration(milliseconds: 150),
+          curve: Curves.easeOutSine,
           height: widget.isShown ? 350 : 0,
           decoration: BoxDecoration(
             color: Color.fromRGBO(249, 112, 104, 1),
@@ -100,6 +100,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               widget.isOpen
                   ? DelayedDisplay(
                       fadingDuration: Duration(seconds: 1),
+                      delay: Duration(seconds: 1),
                       slidingCurve: Curves.easeInQuad,
                       child: Container(
                           margin: const EdgeInsets.only(left: 30, bottom: 30),
