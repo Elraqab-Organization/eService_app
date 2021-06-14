@@ -1,66 +1,63 @@
 import 'package:flutter/material.dart';
 
 class SearchCardResult extends StatelessWidget {
-  final String _profileName;
-  final Color buttonColor;
+  //
+  final String _username;
+  final String _photoString;
 
-  SearchCardResult(this._profileName, this.buttonColor);
+  SearchCardResult(this._username, this._photoString);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 30.0),
-      padding: EdgeInsets.all(12.0),
+    return SizedBox(
+        child: Container(
+      margin: const EdgeInsets.only(bottom: 28),
+      padding: const EdgeInsets.all(8),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           Row(
-            children: [
-              CircleAvatar(
-                radius: 25,
-                backgroundImage: NetworkImage(
-                    "https://img.freepik.com/free-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?size=626&ext=jpg"),
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(_photoString),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  _username,
+                  style: TextStyle(fontSize: 17.0),
+                ),
+              ]),
+          Positioned(
+              top: -25,
+              left: 250,
+              child: CircleAvatar(
+                backgroundColor: Color(0xffF97068),
+                radius: 21,
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  icon: Icon(Icons.bookmark),
+                  color: Colors.white,
+                  onPressed: () {},
+                ),
+              )),
+          Positioned(
+            top: -25,
+            left: 300,
+            child: CircleAvatar(
+              backgroundColor: Color(0xffF97068),
+              radius: 21,
+              child: IconButton(
+                padding: EdgeInsets.zero,
+                icon: Icon(Icons.favorite),
+                color: Colors.white,
+                onPressed: () {},
               ),
-              SizedBox(
-                width: 25.0,
-              ),
-              Text(
-                _profileName,
-                style: TextStyle(fontSize: 17.0),
-              ),
-            ],
+            ),
           ),
-          Positioned(
-              top: -30,
-              left: 230,
-              child: CircleAvatar(
-                backgroundColor: buttonColor,
-                radius: 21,
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-                  icon: Icon(
-                    Icons.bookmark,
-                    size: 20,
-                  ),
-                  color: Colors.white,
-                  onPressed: () {},
-                ),
-              )),
-          Positioned(
-              top: -30,
-              left: 280,
-              child: CircleAvatar(
-                backgroundColor: buttonColor,
-                radius: 21,
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-                  icon: Icon(
-                    Icons.favorite,
-                    size: 20,
-                  ),
-                  color: Colors.white,
-                  onPressed: () {},
-                ),
-              )),
         ],
       ),
       decoration: BoxDecoration(boxShadow: [
@@ -70,6 +67,6 @@ class SearchCardResult extends StatelessWidget {
             spreadRadius: 0.5,
             blurRadius: 5),
       ], borderRadius: BorderRadius.circular(10), color: Colors.white),
-    );
+    ));
   }
 }

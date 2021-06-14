@@ -1,6 +1,3 @@
-import 'package:e_service_app/components/order_card.dart';
-import 'package:e_service_app/screens/Customer_order_screen/customer_order_screen.dart';
-import 'package:e_service_app/screens/customer_Service_screen/customer_service_screen.dart';
 import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
 import 'package:e_service_app/screens/register/register_screen.dart';
@@ -9,7 +6,6 @@ import 'package:e_service_app/screens/service_branches/service_branches.dart';
 import 'package:e_service_app/screens/service_provider_profile/service_provider_profile.dart';
 import 'package:e_service_app/screens/service_provider_reviews/service_provider_reviews.dart';
 import 'package:e_service_app/screens/service_providers/service_providers.dart';
-import 'package:e_service_app/screens/Customer_Posts_Screen/customer_posts_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -46,14 +42,6 @@ class RouteManager {
         break;
       case "/search_view":
         builder = (BuildContext context) => SearchView();
-        break;
-      case "/customer_service_view":
-        builder = (BuildContext context) =>
-            App(currentIndex: "/customer_service_view");
-        break;
-      case "/customer_posts_view":
-        builder =
-            (BuildContext context) => App(currentIndex: "/customer_posts_view");
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);
