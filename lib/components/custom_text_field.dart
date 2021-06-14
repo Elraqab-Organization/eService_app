@@ -8,15 +8,15 @@ class CustomerTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-          color: Colors.deepOrangeAccent,
+          color: Color(0xffF97068),
           border: Border(bottom: BorderSide(width: 2.0, color: Colors.white))),
       child: TextField(
         controller: controller,
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 10),
+            contentPadding: EdgeInsets.symmetric(horizontal: 1),
             labelText: labelText,
             labelStyle: TextStyle(color: Colors.white),
             border: InputBorder.none),
