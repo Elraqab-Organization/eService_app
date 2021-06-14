@@ -1,4 +1,5 @@
 import 'package:e_service_app/app/const.dart';
+import 'package:e_service_app/components/login_custom_button.dart';
 import 'package:e_service_app/components/text_component.dart';
 import 'package:e_service_app/screens/login/login_viewmodel.dart';
 import 'package:e_service_app/screens/view.dart';
@@ -85,7 +86,7 @@ class LoginScreen extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        _customeExtendedButton(
+                        CustomButtomLogin(
                             Color(0xff212738),
                             "Login",
                             Colors.white,
@@ -94,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           height: 14,
                         ),
-                        _customeExtendedButton(
+                        CustomButtomLogin(
                             Colors.white,
                             "Login with Google",
                             Colors.black,
@@ -110,48 +111,6 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ))));
-  }
-
-  Widget _customeExtendedButton(Color buttonColor, String buttonText,
-      Color buttonTextColor, imageUrl, hasImage) {
-    return GestureDetector(
-        onTap: () {},
-        child: Container(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              hasImage
-                  ? SizedBox(
-                      width: 35,
-                      height: 40,
-                      child: Image.network(imageUrl),
-                    )
-                  : SizedBox(),
-              SizedBox(
-                width: 7,
-              ),
-              Text(
-                buttonText,
-                style: GoogleFonts.openSans(
-                    color: buttonTextColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
-          decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    spreadRadius: 4,
-                    blurRadius: 7,
-                    offset: Offset(0, 3))
-              ],
-              color: buttonColor,
-              borderRadius: BorderRadius.circular(32),
-              border: Border.all(width: 0)),
-        ));
   }
 
   _buildSignUp(BuildContext context) {
