@@ -1,14 +1,17 @@
 import 'package:delayed_display/delayed_display.dart';
-import 'package:e_service_app/components/custom_app_bar.dart';
+import 'package:e_service_app/components/inner_navigation_tabs.dart';
 import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'components/custom_app_bar/custom_app_bar.dart';
+
 // ignore: must_be_immutable
 class App extends StatefulWidget {
   String currentIndex;
+  String route;
 
-  App({this.currentIndex = "0"});
+  App({this.currentIndex = "0", this.route = "/customer_posts_view"});
   @override
   _AppState createState() => _AppState();
 }
@@ -25,9 +28,8 @@ class _AppState extends State<App> {
   Widget callPage(index) {
     switch (index) {
       case "0":
-        return Container(
-          color: Colors.grey,
-          height: 100.0,
+        return InnerNavigationTabs(
+          tabIndex: 0,
         );
         break;
       case "1":
@@ -51,18 +53,22 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromRGBO(237, 242, 239, 1),
       body: Stack(
         children: [
           SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(
-                  height: 70,
+                  height: 170,
                 ),
                 MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-                  child: Container(child: callPage(widget.currentIndex)),
+                  child: Container(
+                    padding: EdgeInsets.all(16.0),
+                    height: MediaQuery.of(context).size.height - 245,
+                    child: callPage(widget.currentIndex),
+                  ),
                 ),
               ],
             ),
