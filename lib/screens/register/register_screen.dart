@@ -103,7 +103,7 @@ class RegisterScreen extends StatelessWidget {
                                   children: [
                                     CustomButtomLogin(
                                         Color(0xff212738),
-                                        "Login",
+                                        "Sign up",
                                         Colors.white,
                                         "https://pngimg.com/uploads/google/google_PNG19635.png",
                                         false),
@@ -112,7 +112,7 @@ class RegisterScreen extends StatelessWidget {
                                     ),
                                     CustomButtomLogin(
                                         Colors.white,
-                                        "Login with Google",
+                                        "Sign up with Google",
                                         Colors.black,
                                         "https://pngimg.com/uploads/google/google_PNG19635.png",
                                         true),
