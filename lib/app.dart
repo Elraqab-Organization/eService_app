@@ -1,9 +1,10 @@
 import 'package:delayed_display/delayed_display.dart';
-import 'package:e_service_app/components/custom_app_bar.dart';
 import 'package:e_service_app/components/inner_navigation_tabs.dart';
 import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'components/custom_app_bar/custom_app_bar.dart';
 
 // ignore: must_be_immutable
 class App extends StatefulWidget {
@@ -59,13 +60,13 @@ class _AppState extends State<App> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 210,
+                  height: 170,
                 ),
                 MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
                   child: Container(
                     padding: EdgeInsets.all(16.0),
-                    height: MediaQuery.of(context).size.height - 285,
+                    height: MediaQuery.of(context).size.height - 245,
                     child: callPage(widget.currentIndex),
                   ),
                 ),
