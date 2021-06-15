@@ -1,13 +1,14 @@
+import 'package:flutter/cupertino.dart';
+
 class Tag {
   String name;
+  Icon icon;
   List<String> values = [];
   String selected;
-  Tag(this.name, this.values, this.selected, );
+  Tag(
+    this.name,
+    this.values,
+    this.selected,
+    this.icon,
+  );
 }
-
-List<Tag> filterTags = [
-  Tag("Type", ["Elictrical", "Mechanical"], "Elictrical"),
-  Tag("Location", ["Johor Bahru", "Kuala lampur"], "Johor Bahru"),
-  Tag("Rate", ["5", "4", "3", "2", "2"], "5"),
-  Tag("Payment", ["Cash", "Credit Card"], "Cash")
-];
