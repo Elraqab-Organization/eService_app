@@ -1,18 +1,17 @@
+import 'package:e_service_app/components/custom_app_bar/search_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SearchInputField extends StatelessWidget {
-  final Function callback1;
-  final Function callback2;
-  final bool isOpen;
-  SearchInputField({this.callback1, this.callback2, this.isOpen});
+  final SearchViewmodel viewmodel;
+  SearchInputField({this.viewmodel});
 
   @override
   Widget build(BuildContext context) {
     return AnimatedPositioned(
       duration: Duration(milliseconds: 500),
       left: MediaQuery.of(context).size.width * 0.10,
-      top: isOpen ? 90 : 120,
+      top: viewmodel.isOpen ? 90 : 120,
       child: Container(
         height: 50.0,
         width: MediaQuery.of(context).size.width * 0.80,
@@ -29,7 +28,9 @@ class SearchInputField extends StatelessWidget {
         ),
         child: TextField(
           keyboardType: TextInputType.text,
-          onTap: callback1,
+          onTap: () => {
+            viewmodel.state = true,
+          },
           cursorHeight: 25,
           textAlign: TextAlign.start,
           decoration: InputDecoration(

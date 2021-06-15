@@ -61,9 +61,9 @@ class _SearchAreaBoxState extends State<SearchAreaBox> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
-                    _searchTagButton(filterTags[0].name),
-                    _searchTagButton(filterTags[1].name),
-                    _searchTagButton(filterTags[2].name),
+                    // _searchTagButton(filterTags[0].name),
+                    // _searchTagButton(filterTags[1].name),
+                    // _searchTagButton(filterTags[2].name),
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 2),
                       child: FloatingActionButton.extended(
@@ -81,7 +81,7 @@ class _SearchAreaBoxState extends State<SearchAreaBox> {
                             // _showModalBottomSheet(context);
                           }),
                     ),
-                    _searchTagButton(filterTags[4].name),
+                    // _searchTagButton(filterTags[4].name),
                   ],
                 )),
             decoration: BoxDecoration(
