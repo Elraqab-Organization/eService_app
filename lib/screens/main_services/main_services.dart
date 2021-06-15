@@ -14,13 +14,16 @@ class MainServices extends StatelessWidget {
           children: [
             View(
               viewmodel: MainServicesViewmodel(),
-              builder: (context, viewmodel, _) => Column(
-                children: [
-                  SizedBox(
-                    height: 100.0,
+              builder: (context, viewmodel, _) => Container(
+                height: MediaQuery.of(context).size.height,
+                child: Column(
+                    children: [
+                      SizedBox(
+                        height: 120.0,
+                      ),
+                      CategoryGrid(),
+                    ],
                   ),
-                  CategoryGrid(),
-                ],
               ),
             ),
             CustomAppBar(),

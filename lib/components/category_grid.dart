@@ -22,10 +22,10 @@ class CategoryGrid extends StatelessWidget {
                 childAspectRatio: 1.0,
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 16),
-            itemCount: 20,
+            itemCount: 10,
             itemBuilder: (BuildContext ctx, index) {
               return InkWell(
-                onTap: null,
+                onTap: () => Navigator.pushNamed(context, "/service_providers"),
                 child: Container(
                   padding: EdgeInsets.all(8.0),
                   alignment: Alignment.center,

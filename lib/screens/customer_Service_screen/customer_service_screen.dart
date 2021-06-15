@@ -1,5 +1,4 @@
 import 'package:e_service_app/components/category_grid.dart';
-import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class CustomerServiceScreen extends StatefulWidget {
@@ -26,7 +25,7 @@ class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, "/login");
+                  Navigator.pushNamed(context, "/main_services");
                 },
                 child: Text(
                   "See all",

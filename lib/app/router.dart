@@ -16,7 +16,7 @@ class RouteManager {
     WidgetBuilder builder;
 
     switch (settings.name) {
-      case "/":
+      case "/landing":
         builder = (BuildContext context) => App(currentIndex: "0");
         break;
       case "/service_providers":
@@ -34,7 +34,7 @@ class RouteManager {
       case "/main_services":
         builder = (BuildContext context) => MainServices();
         break;
-      case "/login":
+      case "/":
         builder = (BuildContext context) => LoginScreen();
         break;
       case "/register":

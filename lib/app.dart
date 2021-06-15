@@ -24,6 +24,10 @@ class _AppState extends State<App> {
     });
   }
 
+  _logout() {
+    Navigator.pushReplacementNamed(context, "/");
+  }
+
   // ignore: missing_return
   Widget callPage(index) {
     switch (index) {
@@ -45,7 +49,7 @@ class _AppState extends State<App> {
         );
         break;
       case "3":
-        return Container();
+        _logout();
         break;
     }
   }

@@ -13,7 +13,7 @@ void init() {
   // );
   // Services
   dependency.registerLazySingleton<RestService>(
-    () => RestService(baseUrl: 'http://192.168.0.174:3000'),
+    () => RestService(baseUrl: 'http://192.168.1.38:3000'),
   );
 
   // dependency.registerLazySingleton<CounterService>(() => CounterServiceRest());
