@@ -1,0 +1,38 @@
+### Use this file to test out your REST call before implementing them in the code
+
+### Change the IP address below to your PC's IP address. Remain the port number 3000 unchanged
+@baseUrl = http://192.168.0.174:3000
+
+### Request 1 : Get a user whose correct 'login' and 'password'
+### Purpose   : To simulate the authentication process. 
+GET {{baseUrl}}/users?login=alex&password=123x
+
+### Request 2 : Get the list of todos for a given user
+### Purpose   : To render the main screen
+GET {{baseUrl}}/todos?user=2
+
+### Request 3 : Create a new todo for a given user
+POST {{baseUrl}}/todos
+Content-Type: application/json
+
+{
+    "user": 2,
+    "title": "A new todo",
+    "description": "This is a new todo",
+    "done": false
+}
+
+### Request 4 : Update the information of a given todo
+PUT {{baseUrl}}/todos/6
+Content-Type: application/json
+
+{
+    "user": 2,
+    "title": "Updated title",
+    "description": "Updated description",
+    "done": false
+}
+
+
+### Request 5 : Delete a given todo
+DELETE {{baseUrl}}/todos/6
