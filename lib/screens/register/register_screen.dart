@@ -11,6 +11,8 @@ class RegisterScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController repeatedPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,24 +44,37 @@ class RegisterScreen extends StatelessWidget {
                                     Padding(
                                       padding: EdgeInsets.only(left: 5),
                                       child: CustomerTextField(
-                                          nameController, 'Name'),
+                                          onChanged: (value) =>
+                                              viewmodel.name = value,
+                                          controller: nameController,
+                                          labelText: 'Name'),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 5),
                                       child: CustomerTextField(
-                                          emailController, 'Username Or Email'),
+                                        controller: emailController,
+                                        labelText: 'Username Or Email',
+                                        onChanged: (value) =>
+                                            viewmodel.email = value,
+                                      ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 5),
-                                      child: CustomerTextField(
-                                          passwordController, 'Password'),
-                                    ),
+                                        padding: const EdgeInsets.only(left: 5),
+                                        child: CustomerTextField(
+                                          controller: passwordController,
+                                          labelText: 'Password',
+                                          onChanged: (value) =>
+                                              viewmodel.password = value,
+                                        )),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 5),
-                                      child: CustomerTextField(
-                                          passwordController,
-                                          'Repeat Password'),
-                                    ),
+                                        padding: const EdgeInsets.only(left: 5),
+                                        child: CustomerTextField(
+                                          controller:
+                                              repeatedPasswordController,
+                                          labelText: 'Repeat Password',
+                                          onChanged: (value) =>
+                                              viewmodel.name = value,
+                                        )),
                                     SizedBox(
                                       height: 10,
                                     ),

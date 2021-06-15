@@ -2,13 +2,25 @@ import 'package:e_service_app/service/auth_service/auth_service.dart';
 import 'package:e_service_app/service/rest_service.dart';
 import 'package:get_it/get_it.dart';
 
-GetIt service = GetIt.instance;
+GetIt dependency = GetIt.instance;
 
 void init() {
-  service.registerLazySingleton(
-    () => RestService(),
+  // dependency.registerLazySingleton(
+  //   () => RestService(),
+  // );
+  // dependency.registerLazySingleton(
+  //   () => AuthService(),
+  // );
+  // Services
+  dependency.registerLazySingleton<RestService>(
+    () => RestService(baseUrl: 'http://192.168.0.174:3000'),
   );
-  service.registerLazySingleton(
-    () => AuthService(),
-  );
+
+  // dependency.registerLazySingleton<CounterService>(() => CounterServiceRest());
+  // dependency.registerLazySingleton<AuthService>(() => AuthServiceRest());
+  dependency.registerLazySingleton<AuthService>(() => AuthService());
+  // dependency.registerLazySingleton<CounterService>(() => CounterServiceMock());
+
+  // Viewmodels
+  // dependency.registerLazySingleton(() => UserViewmodel());
 }

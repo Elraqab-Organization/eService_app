@@ -8,16 +8,16 @@ class CustomButtomLogin extends StatelessWidget {
   String buttonText;
   Color buttonColor;
   Color buttonTextColor;
+  final Function onTap;
 
   CustomButtomLogin(this.buttonColor, this.buttonText, this.buttonTextColor,
-      this.imageUrl, this.hasImage);
+      this.imageUrl, this.hasImage,
+      {this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {
-          print("clicked");
-        },
+        onTap: onTap,
         child: Container(
           height: 60,
           child: Row(

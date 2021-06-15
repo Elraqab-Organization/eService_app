@@ -1,6 +1,7 @@
 import 'package:e_service_app/app/const.dart';
 import 'package:e_service_app/components/login_custom_button.dart';
 import 'package:e_service_app/components/text_component.dart';
+import 'package:e_service_app/model/User.dart';
 import 'package:e_service_app/screens/login/login_viewmodel.dart';
 import 'package:e_service_app/screens/view.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,12 @@ import '../../components/custom_text_field.dart';
 class LoginScreen extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  void _onLogin(BuildContext context, LoginViewmodel viewmodel) async {
+    final User _user = await viewmodel.authenticate();
+
+    if (_user != null) Navigator.pushReplacementNamed(context, "/");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +46,25 @@ class LoginScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 5),
                           child: CustomerTextField(
-                              nameController, 'Username Or Email'),
+                              onChanged: (value) => viewmodel.username = value,
+                              controller: nameController,
+                              labelText: 'Username Or Email'),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 4),
-                          child:
-                              CustomerTextField(passwordController, 'Password'),
+                          child: CustomerTextField(
+                              onChanged: (value) => viewmodel.password = value,
+                              controller: passwordController,
+                              labelText: 'Password'),
                         ),
+                        viewmodel.showErrorMessage
+                            ? Text(
+                                'Username or password is incorrect',
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.white),
+                              )
+                            : SizedBox(),
                         SizedBox(
                           height: 22,
                         ),
@@ -91,16 +110,19 @@ class LoginScreen extends StatelessWidget {
                             "Login",
                             Colors.white,
                             "https://pngimg.com/uploads/google/google_PNG19635.png",
-                            false),
+                            false,
+                            onTap: () => _onLogin(context, viewmodel)),
                         SizedBox(
                           height: 14,
                         ),
                         CustomButtomLogin(
-                            Colors.white,
-                            "Login with Google",
-                            Colors.black,
-                            "https://pngimg.com/uploads/google/google_PNG19635.png",
-                            true),
+                          Colors.white,
+                          "Login with Google",
+                          Colors.black,
+                          "https://pngimg.com/uploads/google/google_PNG19635.png",
+                          true,
+                          onTap: () => _onLogin(context, viewmodel),
+                        ),
                       ],
                     ),
                     Align(

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class CustomerTextField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
-  CustomerTextField(this.controller, this.labelText);
+  Function onChanged;
+  CustomerTextField({this.onChanged, this.controller, this.labelText});
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,7 @@ class CustomerTextField extends StatelessWidget {
           color: Color(0xffF97068),
           border: Border(bottom: BorderSide(width: 2.0, color: Colors.white))),
       child: TextField(
+        onChanged: onChanged,
         controller: controller,
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
