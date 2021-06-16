@@ -1,7 +1,7 @@
 import 'package:e_service_app/app/const.dart';
 import 'package:e_service_app/components/login_custom_button.dart';
 import 'package:e_service_app/components/text_component.dart';
-import 'package:e_service_app/model/User.dart';
+import 'package:e_service_app/model/user.dart';
 import 'package:e_service_app/screens/login/login_viewmodel.dart';
 import 'package:e_service_app/screens/view.dart';
 import 'package:flutter/material.dart';

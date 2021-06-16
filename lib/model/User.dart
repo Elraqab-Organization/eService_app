@@ -1,56 +1,84 @@
 class User {
-  int userId;
-  String name;
+  String id;
+  String firstName;
+  String lastName;
+  String imgSrc;
   String email;
   String password;
-  String phone;
-  String type;
+  String gender;
+  String city;
+  String country;
+  String phoneNumber;
+  String postalCode;
+  String long;
+  String lat;
+  String displayLanguage;
   String token;
-  String renewalToken;
+  bool isServiceProvider;
+  bool isCashPaymentActive;
+  List<bool> notificationSettings;
 
-  User(
-      {this.userId,
-      this.name,
-      this.email,
-      this.password,
-      this.phone,
-      this.type,
-      this.token,
-      this.renewalToken});
+  User({
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.imgSrc,
+    this.email,
+    this.password,
+    this.gender,
+    this.city,
+    this.country,
+    this.phoneNumber,
+    this.postalCode,
+    this.long,
+    this.lat,
+    this.displayLanguage,
+    this.token,
+    this.isServiceProvider,
+    this.isCashPaymentActive,
+    this.notificationSettings,
+  });
 
-  factory User.fromJson(Map<String, dynamic> responseData) {
+  factory User.fromJson(Map<String, dynamic> json) {
     return User(
-        userId: responseData['id'],
-        name: responseData['name'],
-        email: responseData['email'],
-        password: responseData['password'],
-        phone: responseData['phone'],
-        type: responseData['type'],
-        token: responseData['access_token'],
-        renewalToken: responseData['renewal_token']);
+      id: json['id'],
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+      imgSrc: json['imgSrc'],
+      email: json['email'],
+      password: json['password'],
+      gender: json['gender'],
+      city: json['city'],
+      country: json['country'],
+      phoneNumber: json['phoneNumber'],
+      postalCode: json['postalCode'],
+      long: json['long'],
+      lat: json['lat'],
+      displayLanguage: json['displayLanguage'],
+      token: json['token'],
+      isServiceProvider: json['isServiceProvider'],
+      isCashPaymentActive: json['isCashPaymentActive'],
+      notificationSettings: json['notificationSettings'],
+    );
   }
 
-  // user to json
-
   Map<String, dynamic> toJson() => {
-        'id': userId,
-        'name': name,
+        'id': id,
+        'firstName': firstName,
+        'lastName': lastName,
+        'imgSrc': imgSrc,
         'email': email,
         'password': password,
-        'phone': phone,
-        'type': type,
+        'gender': gender,
+        'city': city,
+        'phoneNumber': phoneNumber,
+        'postalCode': postalCode,
+        'lag': long,
+        'lat': lat,
+        'displayLanguage': displayLanguage,
         'token': token,
-        'renewalToken': renewalToken,
+        'isServiceProvider': isServiceProvider,
+        'isCashPaymentActive': isCashPaymentActive,
+        'notificationSettings': notificationSettings,
       };
-
-  User.copy(User from)
-      : this(
-            userId: from.userId,
-            name: from.name,
-            email: from.email,
-            password: from.password,
-            phone: from.phone,
-            type: from.type,
-            token: from.token,
-            renewalToken: from.renewalToken);
 }

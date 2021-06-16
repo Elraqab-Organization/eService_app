@@ -1,5 +1,5 @@
 import 'package:e_service_app/app/dependency.dart';
-import 'package:e_service_app/model/User.dart';
+import 'package:e_service_app/model/user.dart';
 import 'package:e_service_app/screens/viewmodel.dart';
 import 'package:e_service_app/service/auth_service/auth_service.dart';
 
@@ -34,6 +34,7 @@ class LoginViewmodel extends Viewmodel {
     if (_user == null) {
       _showErrorMassage = true;
       turnIdle();
+      // notifyListeners();
     }
     return _user;
   }

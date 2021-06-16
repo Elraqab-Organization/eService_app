@@ -7,6 +7,7 @@ class RestService {
 
   // Send a GET request to retrieve data from a REST server
   Future get(String endpoint) async {
+    // final response = await http.get(Uri.parse('$_baseUrl/$endpoint'));
     final response = await http.get(Uri.parse('$_baseUrl/$endpoint'));
 
     if (response.statusCode == 200) {
