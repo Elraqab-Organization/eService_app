@@ -14,8 +14,9 @@ class CustomerPostsViewmodel extends Viewmodel {
     turnBusy();
     postsList = await _service.fetchPosts(id: "qdqAu1zFIarbsc0vU7EL");
 
-    if (postsList.length > 0) {
+    if (postsList != null) {
       turnIdle();
+      return postsList;
     }
 
     return postsList;
