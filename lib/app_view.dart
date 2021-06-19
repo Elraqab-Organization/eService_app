@@ -17,7 +17,7 @@ class _AppViewState extends State<AppView> {
         textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black)),
       ),
       onGenerateRoute: RouteManager.generateRoute,
-      initialRoute: '/notificationTile',
+      initialRoute: '/customer_notification',
       // initialRoute: kRestaurantHomePage,
     );
   }

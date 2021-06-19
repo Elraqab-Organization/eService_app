@@ -1,4 +1,5 @@
 import 'package:e_service_app/components/notification_tile.dart';
+import 'package:e_service_app/screens/customer_notification_screen/customer_notification_screen.dart';
 import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
 import 'package:e_service_app/screens/register/register_screen.dart';
@@ -46,8 +47,8 @@ class RouteManager {
         break;
 
       //components for testing
-      case "/notificationTile":
-        builder = (BuildContext context) => NotificationTile();
+      case "/customer_notification":
+        builder = (BuildContext context) => CustomerNotificationScreen();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

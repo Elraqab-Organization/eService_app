@@ -12,7 +12,7 @@ class _NotificationTileState extends State<NotificationTile> {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        itemCount: 1,
+        itemCount: 15,
         itemBuilder: (context, index) => Stack(
           clipBehavior: Clip.none,
           children: [
