@@ -1,3 +1,4 @@
+import 'package:e_service_app/components/notification_tile.dart';
 import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
 import 'package:e_service_app/screens/register/register_screen.dart';
@@ -42,6 +43,11 @@ class RouteManager {
         break;
       case "/search_view":
         builder = (BuildContext context) => SearchView();
+        break;
+
+      //components for testing
+      case "/notificationTile":
+        builder = (BuildContext context) => NotificationTile();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);
