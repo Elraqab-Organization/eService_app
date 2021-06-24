@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:e_service_app/components/text_component.dart';
 
-class NotificationTile extends StatefulWidget {
+class ChatTile extends StatefulWidget {
   @override
-  _NotificationTileState createState() => _NotificationTileState();
+  _ChatTileState createState() => _ChatTileState();
 }
 
-class _NotificationTileState extends State<NotificationTile> {
+class _ChatTileState extends State<ChatTile> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -34,12 +34,12 @@ class _NotificationTileState extends State<NotificationTile> {
                       height: 6,
                     ),
                     ListTile(
-                      trailing: CircleAvatar(
+                      leading: CircleAvatar(
                         radius: 29,
                         backgroundColor: Colors.black,
                       ),
                       title: TextComponent(
-                        title: "Service Done",
+                        title: "John Williams",
                         fontSize: 14,
                         weight: FontWeight.w700,
                         textColor: Colors.black,
