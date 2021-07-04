@@ -1,3 +1,4 @@
+import 'package:e_service_app/components/custom_return_bar.dart';
 import 'package:flutter/material.dart';
 
 class PasswordResetScreen extends StatelessWidget {
@@ -13,12 +14,9 @@ class PasswordResetScreen extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.only(top: height * 0.06),
-              height: height * 0.85,
               decoration: BoxDecoration(
-                  color: Color.fromRGBO(33, 39, 56, 1),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50))),
+                color: Color.fromRGBO(33, 39, 56, 1),
+              ),
               child: ListView(
                 children: [
                   SizedBox(height: height * 0.08),
@@ -40,12 +38,14 @@ class PasswordResetScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
                     child: TextField(
+                        obscureText: true,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
@@ -75,6 +75,7 @@ class PasswordResetScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -82,6 +83,7 @@ class PasswordResetScreen extends StatelessWidget {
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
                     child: TextField(
                         textAlign: TextAlign.left,
+                        obscureText: true,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -110,6 +112,7 @@ class PasswordResetScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -118,6 +121,7 @@ class PasswordResetScreen extends StatelessWidget {
                     child: TextField(
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.visiblePassword,
+                        obscureText: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
@@ -147,6 +151,7 @@ class PasswordResetScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: FloatingActionButton(
+                          heroTag: "btn1",
                           backgroundColor: Color.fromRGBO(249, 112, 104, 1),
                           foregroundColor: Colors.black,
                           onPressed: () {
@@ -159,6 +164,7 @@ class PasswordResetScreen extends StatelessWidget {
                         ),
                       ),
                       FloatingActionButton.extended(
+                        heroTag: "btn2",
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25.0),
                         ),
@@ -176,7 +182,8 @@ class PasswordResetScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            CustomReturnBar()
           ],
         ),
       ),

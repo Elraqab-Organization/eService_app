@@ -1,8 +1,9 @@
 import 'package:e_service_app/screens/customer_favourite_screen/customer_favourite_screen.dart';
 import 'package:e_service_app/screens/customer_notification_screen/customer_notification_screen.dart';
+import 'package:e_service_app/screens/customer_profile/account_information_screen/account_information_screen.dart';
+import 'package:e_service_app/screens/customer_profile/password_reset_screen/password_reset_screen.dart';
 import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
-import 'package:e_service_app/screens/password_reset_screen/password_reset_screen.dart';
 import 'package:e_service_app/screens/register/register_screen.dart';
 import 'package:e_service_app/screens/search_view_screen/search_view_screen.dart';
 import 'package:e_service_app/screens/customer_chat_screen/customer_chat_screen.dart';
@@ -59,6 +60,9 @@ class RouteManager {
         break;
       case "/PasswordReset":
         builder = (BuildContext context) => PasswordResetScreen();
+        break;
+      case "/AccountInfo":
+        builder = (BuildContext context) => AccountInformationScreen();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

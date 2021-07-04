@@ -28,17 +28,20 @@ class _CustomReturnBarState extends State<CustomReturnBar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 50.0,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(33, 39, 56, 1),
-                  borderRadius: BorderRadius.circular(50.0),
+              InkWell(
+                child: Container(
+                  width: 50.0,
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(33, 39, 56, 1),
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  child: Icon(
+                    FontAwesomeIcons.angleLeft,
+                    color: Colors.white,
+                  ),
                 ),
-                child: Icon(
-                  FontAwesomeIcons.angleLeft,
-                  color: Colors.white,
-                ),
+                onTap: () => Navigator.pop(context),
               ),
               Container(
                 height: 60,
