@@ -1,6 +1,7 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:e_service_app/components/inner_navigation_tabs.dart';
 import 'package:e_service_app/components/text_component.dart';
+import 'package:e_service_app/screens/customer_profile/customer_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -45,7 +46,7 @@ class _AppState extends State<App> {
         );
         break;
       case "3":
-        return Container();
+        return ProfileScreen();
         break;
     }
   }
