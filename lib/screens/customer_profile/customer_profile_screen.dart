@@ -57,18 +57,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 45,
-                        backgroundImage: NetworkImage(
-                            "https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"),
-                      ),
-                    ],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 45,
+                      backgroundImage: NetworkImage(
+                          "https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"),
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
@@ -76,22 +73,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     "Ahmed Mousa",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.fromLTRB(50, 15, 50, 30),
+                  margin: EdgeInsets.fromLTRB(50, 15, 50, 30),
                   child: Text(
-                    "dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever ",
+                    "dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.",
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                    ),
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
                 Container(
+                  padding: EdgeInsets.all(24.0),
+                  margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        spreadRadius: 1,
+                        color: Colors.grey,
+                        blurRadius: 3,
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(40),
+                  ),
                   child: Column(
                     children: [
                       ListTile(
@@ -100,6 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         trailing: Icon(
                           FontAwesomeIcons.angleRight,
                         ),
+                        onTap: () {},
                       ),
                       ListTile(
                         leading: Icon(FontAwesomeIcons.userCircle),
@@ -107,24 +118,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         trailing: Icon(
                           FontAwesomeIcons.angleRight,
                         ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/AccountInfo');
+                        },
                       ),
                     ],
                   ),
+                ),
+                Container(
                   padding: EdgeInsets.all(24.0),
-                  margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
+                  margin: EdgeInsets.fromLTRB(40, 15, 40, 30),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        spreadRadius: 2,
+                        spreadRadius: 1,
                         color: Colors.grey,
                         blurRadius: 3,
                       )
                     ],
                     borderRadius: BorderRadius.circular(40),
                   ),
-                ),
-                Container(
                   child: Column(
                     children: [
                       ListTile(
@@ -147,6 +161,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         trailing: Icon(
                           FontAwesomeIcons.angleRight,
                         ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/PasswordReset');
+                        },
                       ),
                       ListTile(
                         leading: Icon(FontAwesomeIcons.language),
@@ -177,19 +194,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ],
-                  ),
-                  padding: EdgeInsets.all(24.0),
-                  margin: EdgeInsets.fromLTRB(40, 15, 40, 30),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        spreadRadius: 2,
-                        color: Colors.grey,
-                        blurRadius: 3,
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(40),
                   ),
                 ),
               ],
