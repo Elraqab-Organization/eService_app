@@ -32,23 +32,28 @@ class _AppState extends State<App> {
         return InnerNavigationTabs(
           tabIndex: 0,
         );
+        // ignore: dead_code
         break;
       case "1":
         return Container(
           color: Colors.red,
           height: 100.0,
         );
+        // ignore: dead_code
         break;
       case "2":
         return Container(
           color: Colors.orange,
           height: 100.0,
         );
+        // ignore: dead_code
         break;
       case "3":
         return ProfileScreen();
+        // ignore: dead_code
         break;
     }
+    return Container();
   }
 
   @override
@@ -89,8 +94,8 @@ class _AppState extends State<App> {
 }
 
 class BottomNavBar extends StatefulWidget {
-  final String currentIndex;
-  final Function callBack;
+  final String? currentIndex;
+  final Function? callBack;
 
   BottomNavBar({this.currentIndex, this.callBack});
 
@@ -99,7 +104,7 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  String activeIndex = '0';
+  String? activeIndex = '0';
   final items = [
     {
       'icon': 'lib/assets/icon/outline_home_white_36dp.svg',
@@ -132,7 +137,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             return Padding(
               padding: const EdgeInsets.only(left: 16.0),
               child: InkWell(
-                onTap: () => {widget.callBack(index)},
+                onTap: () => {widget.callBack!(index)},
                 child: AnimatedContainer(
                   onEnd: () {
                     Future.delayed(Duration(milliseconds: 200), () {
@@ -153,7 +158,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                         ? MainAxisAlignment.spaceBetween
                         : MainAxisAlignment.center,
                     children: [
-                      SvgPicture.asset(items[index]['icon']),
+                      SvgPicture.asset(items[index]['icon']!),
                       SizedBox(),
                       widget.currentIndex == index.toString() &&
                               activeIndex == widget.currentIndex

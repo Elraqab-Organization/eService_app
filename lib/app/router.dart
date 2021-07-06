@@ -19,7 +19,7 @@ import '../app.dart';
 
 class RouteManager {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    WidgetBuilder builder;
+    late WidgetBuilder builder;
 
     switch (settings.name) {
       case "/":

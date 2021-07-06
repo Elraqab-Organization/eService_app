@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CategoryCard extends StatelessWidget {
-  String title;
-  IconData favorite;
-  String rating;
-  IconData star;
-  Function onpresed;
+  String? title;
+  IconData? favorite;
+  String? rating;
+  IconData? star;
+  Function? onpresed;
 
   CategoryCard(
       {this.title, this.favorite, this.rating, this.star, this.onpresed});
@@ -34,7 +35,7 @@ class CategoryCard extends StatelessWidget {
             ),
             Center(
               child: Text(
-                title,
+                title!,
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -64,7 +65,7 @@ class CategoryCard extends StatelessWidget {
                   //   width: 10,
                   // ),
                   Text(
-                    rating,
+                    rating!,
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

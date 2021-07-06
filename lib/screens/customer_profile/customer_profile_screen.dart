@@ -90,7 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Container(
                   padding: EdgeInsets.all(24.0),
-                  margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
+                  margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -127,7 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Container(
                   padding: EdgeInsets.all(24.0),
-                  margin: EdgeInsets.fromLTRB(40, 15, 40, 30),
+                  margin: EdgeInsets.fromLTRB(15, 15, 15, 30),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [

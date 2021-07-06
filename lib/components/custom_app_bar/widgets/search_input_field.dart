@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SearchInputField extends StatelessWidget {
-  final Function callback1;
-  final Function callback2;
-  final bool isOpen;
+  final Function? callback1;
+  final Function? callback2;
+  final bool? isOpen;
   SearchInputField({this.callback1, this.callback2, this.isOpen});
 
   @override
@@ -12,7 +12,7 @@ class SearchInputField extends StatelessWidget {
     return AnimatedPositioned(
       duration: Duration(milliseconds: 500),
       left: MediaQuery.of(context).size.width * 0.10,
-      top: isOpen ? 90 : 120,
+      top: isOpen! ? 90 : 120,
       child: Container(
         height: 50.0,
         width: MediaQuery.of(context).size.width * 0.80,
@@ -29,7 +29,7 @@ class SearchInputField extends StatelessWidget {
         ),
         child: TextField(
           keyboardType: TextInputType.text,
-          onTap: callback1,
+          onTap: callback1 as void Function()?,
           cursorHeight: 25,
           textAlign: TextAlign.start,
           decoration: InputDecoration(

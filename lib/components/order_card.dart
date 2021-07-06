@@ -37,11 +37,12 @@ class _OrdercardState extends State<Ordercard> {
               child: InkWell(
                 onTap: () => setState(() => {
                       _data[index]['containerHeight'] =
-                          !_data[index]['containerHeight']
+                          !(_data[index]['containerHeight'] as bool)
                     }),
                 child: AnimatedContainer(
                   duration: Duration(milliseconds: 200),
-                  height: _data[index]['containerHeight'] ? 200.0 : 82.0,
+                  height:
+                      _data[index]['containerHeight'] != null ? 200.0 : 82.0,
                   clipBehavior: Clip.none,
                   decoration: BoxDecoration(
                     color: Colors.white,

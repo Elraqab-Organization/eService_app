@@ -6,7 +6,7 @@ class RoundedRectangleButton extends StatelessWidget {
   final Color buttonColor;
   final Color textColor;
   final text;
-  final Function onClick;
+  final Function? onClick;
   RoundedRectangleButton(this.padding, this.borderRadius, this.buttonColor,
       this.textColor, this.text, this.onClick);
 
@@ -26,7 +26,7 @@ class RoundedRectangleButton extends StatelessWidget {
           minWidth: double.maxFinite,
           height: 60,
           clipBehavior: Clip.antiAliasWithSaveLayer,
-          onPressed: onClick,
+          onPressed: onClick as void Function()?,
           color: buttonColor,
           child: text,
           textColor: textColor,

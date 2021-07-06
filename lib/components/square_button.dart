@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class SquareButton extends StatelessWidget {
-  Function _route;
-  double _height;
-  double _width;
-  Icon _icon;
-  String _title;
-  Color _color;
-  int _index;
+  Function? _route;
+  double? _height;
+  double? _width;
+  Icon? _icon;
+  String? _title;
+  Color? _color;
+  int? _index;
 
   get route => _route;
   set route(value) => _route = value;
@@ -25,13 +25,13 @@ class SquareButton extends StatelessWidget {
   set color(value) => _color = value;
 
   SquareButton(
-      {Function route,
-      double height,
-      double width,
-      Icon icon,
-      String title,
-      Color color,
-      int index})
+      {Function? route,
+      double? height,
+      double? width,
+      Icon? icon,
+      String? title,
+      Color? color,
+      int? index})
       : _route = route,
         _height = height,
         _width = width,

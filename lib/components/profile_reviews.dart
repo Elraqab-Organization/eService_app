@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfileReviews extends StatelessWidget {
   const ProfileReviews({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

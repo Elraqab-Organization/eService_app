@@ -6,8 +6,8 @@ import '../custom_app_bar.dart';
 
 class AppHeader extends StatelessWidget {
   const AppHeader({
-    Key key,
-    @required this.widget,
+    Key? key,
+    required this.widget,
   }) : super(key: key);
 
   final CustomAppBar widget;

@@ -11,7 +11,7 @@ class CustomAppBar extends StatefulWidget {
   double height = 160;
   bool isOpen = false;
   bool isShown = false;
-  int tagCurrentInde;
+  int? tagCurrentInde;
 
   @override
   _CustomAppBarState createState() => _CustomAppBarState();
