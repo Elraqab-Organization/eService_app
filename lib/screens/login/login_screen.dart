@@ -118,11 +118,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                 "Login",
                                 Colors.white,
                                 "https://pngimg.com/uploads/google/google_PNG19635.png",
-                                false,
-                                onTap: () async => {
-                                      watch(loginProvider).loading = true,
-                                      await watch(loginProvider).authenticate(),
-                                    }),
+                                false, onTap: () async {
+                              watch(loginProvider).loading = true;
+                              final user =
+                                  await watch(loginProvider).authenticate();
+                              if (user != null)
+                                Navigator.pushReplacementNamed(
+                                    context, "/landing");
+                            }),
                             SizedBox(
                               height: 14,
                             ),

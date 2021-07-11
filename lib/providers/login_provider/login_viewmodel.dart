@@ -49,13 +49,13 @@ class LoginViewmodel extends ChangeNotifier {
 
     if (user == null) {
       _user = null;
-      _showErrorMassage = true;
-      isLoading = false;
+      showErrorMessage = true;
+      loading = false;
     } else {
       _user = user;
-      isLoading = false;
+      showErrorMessage = false;
+      loading = false;
     }
-    notifyListeners();
     return _user;
   }
 }
