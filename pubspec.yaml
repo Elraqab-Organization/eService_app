@@ -37,7 +37,7 @@ dependencies:
   provider: ^4.3.1
   font_awesome_flutter: ^9.0.0
   expansion_card: ^0.1.0
-  keyboard_visibility: ^0.5.6
+  # keyboard_visibility: ^0.5.6
 
   
 dev_dependencies:
