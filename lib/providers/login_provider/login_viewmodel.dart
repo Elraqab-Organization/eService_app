@@ -44,6 +44,7 @@ class LoginViewmodel extends ChangeNotifier {
   }
 
   Future authenticate() async {
+    loading = true;
     final user =
         await _service.authenticate(login: username, password: password);
 
