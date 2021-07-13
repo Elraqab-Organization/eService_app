@@ -17,64 +17,65 @@ class _PostsCardState extends State<PostsCard> {
 
   @override
   Widget build(BuildContext context) {
-    return View(
-        viewmodel: CustomerPostsViewmodel(),
-        builder: (context, viewmodel, _) {
-          viewmodel.getPosts();
-          return Container(
-            child: ListView.builder(
-              padding: EdgeInsets.only(bottom: 16.0),
-              itemCount: viewmodel.posts.length,
-              itemBuilder: (context, index) => Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
+    // return
+    // View(
+    // viewmodel: CustomerPostsViewmodel(),
+    // builder: (context, viewmodel, _) {
+    //   viewmodel.getPosts();
+    return Container(
+      child: ListView.builder(
+        padding: EdgeInsets.only(bottom: 16.0),
+        itemCount: 2,
+        itemBuilder: (context, index) => Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: new AssetImage(
+                    "lib/assets/icon/1-intro-photo-final-image.jpg",
+                  ),
                 ),
-                clipBehavior: Clip.antiAlias,
-                child: Column(
-                  // mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: new AssetImage(
-                          "lib/assets/icon/1-intro-photo-final-image.jpg",
-                        ),
-                      ),
-                      title: Text(userName),
-                      subtitle: Text(
-                        '$posted / $city / $cancellation',
-                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        '$postBody',
-                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                      ),
-                    ),
-                    ButtonBar(
-                      alignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 15,
-                        ),
-                        InkWell(
-                          splashColor: Colors.blue.withAlpha(30),
-                          onTap: () {
-                            // Perform some action
-                          },
-                          child: Text(
-                            '9 Proposals',
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                title: Text(userName),
+                subtitle: Text(
+                  '$posted / $city / $cancellation',
+                  style: TextStyle(color: Colors.black.withOpacity(0.6)),
                 ),
               ),
-            ),
-          );
-        });
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  '$postBody',
+                  style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                ),
+              ),
+              ButtonBar(
+                alignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  InkWell(
+                    splashColor: Colors.blue.withAlpha(30),
+                    onTap: () {
+                      // Perform some action
+                    },
+                    child: Text(
+                      '9 Proposals',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    // },);
   }
 }
