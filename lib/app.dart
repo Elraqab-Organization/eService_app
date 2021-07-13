@@ -49,7 +49,7 @@ class _AppState extends State<App> {
         );
         break;
       case "3":
-        _logout();
+        // _logout();
         break;
     }
   }
