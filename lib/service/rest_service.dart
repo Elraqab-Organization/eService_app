@@ -20,4 +20,13 @@ class RestService {
       return jsonDecode(response.body);
     }
   }
+
+  Future getPosts(dynamic endpoint) async {
+    final response = await http.get(Uri.parse('$_baseUrl/$endpoint'));
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      return jsonDecode(response.body);
+    }
+  }
 }

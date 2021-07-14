@@ -1,6 +1,9 @@
-import 'package:e_service_app/screens/Customer_Posts_Screen/customer_posts_viewmodel.dart';
-import 'package:e_service_app/screens/view.dart';
+import 'package:e_service_app/model/post.dart';
+import 'package:e_service_app/providers/post_provider/post_action.dart';
+// import 'package:e_service_app/screens/Customer_Posts_Screen/customer_posts_viewmodel.dart';
+// import 'package:e_service_app/screens/view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PostsCard extends StatefulWidget {
   @override
@@ -17,64 +20,67 @@ class _PostsCardState extends State<PostsCard> {
 
   @override
   Widget build(BuildContext context) {
-    return View(
-        viewmodel: CustomerPostsViewmodel(),
-        builder: (context, viewmodel, _) {
-          viewmodel.getPosts();
-          return Container(
-            child: ListView.builder(
-              padding: EdgeInsets.only(bottom: 16.0),
-              itemCount: viewmodel.posts.length,
-              itemBuilder: (context, index) => Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                clipBehavior: Clip.antiAlias,
-                child: Column(
-                  // mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: new AssetImage(
-                          "lib/assets/icon/1-intro-photo-final-image.jpg",
-                        ),
-                      ),
-                      title: Text(userName),
-                      subtitle: Text(
-                        '$posted / $city / $cancellation',
-                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                      ),
+    return Consumer(builder: (context, watch, child) {
+      final posts = watch(postsList);
+      return posts.map(
+          error: (_) => Text("Error"),
+          loading: (_) => Center(child: CircularProgressIndicator()),
+          data: (value) => Container(
+                child: ListView.builder(
+                  padding: EdgeInsets.only(bottom: 16.0),
+                  itemCount: value.value.length,
+                  itemBuilder: (context, index) => Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        '$postBody',
-                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                      ),
-                    ),
-                    ButtonBar(
-                      alignment: MainAxisAlignment.start,
+                    clipBehavior: Clip.antiAlias,
+                    child: Column(
+                      // mainAxisSize: MainAxisSize.min,
                       children: [
-                        SizedBox(
-                          width: 15,
-                        ),
-                        InkWell(
-                          splashColor: Colors.blue.withAlpha(30),
-                          onTap: () {
-                            // Perform some action
-                          },
-                          child: Text(
-                            '9 Proposals',
-                            style: TextStyle(fontSize: 12),
+                        ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: new AssetImage(
+                              "lib/assets/icon/1-intro-photo-final-image.jpg",
+                            ),
                           ),
+                          title: Text(userName),
+                          subtitle: Text(
+                            '$posted / $city / $cancellation',
+                            style:
+                                TextStyle(color: Colors.black.withOpacity(0.6)),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            '$postBody',
+                            style:
+                                TextStyle(color: Colors.black.withOpacity(0.6)),
+                          ),
+                        ),
+                        ButtonBar(
+                          alignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 15,
+                            ),
+                            InkWell(
+                              splashColor: Colors.blue.withAlpha(30),
+                              onTap: () {
+                                // Perform some action
+                              },
+                              child: Text(
+                                '9 Proposals',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          );
-        });
+              ));
+    });
   }
 }
