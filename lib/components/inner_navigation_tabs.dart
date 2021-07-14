@@ -37,60 +37,46 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
     }
   }
 
+  List<String> type = ['Services', 'Posts', 'Orders', 'Requests'];
+  List<Color> colors = [
+    Color.fromRGBO(87, 196, 229, 1),
+    Color.fromRGBO(33, 39, 56, 1),
+    Color.fromRGBO(87, 196, 229, 1),
+    Color.fromRGBO(33, 39, 56, 1)
+  ];
+  List<IconData> icons = [
+    FontAwesomeIcons.wrench,
+    FontAwesomeIcons.handPaper,
+    FontAwesomeIcons.truckLoading,
+    FontAwesomeIcons.networkWired
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CustomAppBar(),
         SizedBox(
-          height: 30.0,
+          height: 10.0,
         ),
         Padding(
           padding: const EdgeInsets.all(24.0),
           child: Row(
             children: [
-              Expanded(
-                child: SquareButton(
-                  height: 100,
-                  route: onTab,
-                  index: 0,
-                  icon: Icon(
-                    FontAwesomeIcons.wrench,
-                    size: 30,
-                    color: Colors.white,
+              for (var i = 0; i < 4; i++)
+                Expanded(
+                  child: SquareButton(
+                    height: 80,
+                    route: onTab,
+                    index: i,
+                    icon: Icon(
+                      icons[i],
+                      size: 20,
+                      color: Colors.white,
+                    ),
+                    title: type[i],
+                    color: Color.fromRGBO(249, 112, 104, 1),
                   ),
-                  title: "Services",
-                  color: Color.fromRGBO(33, 39, 56, 1),
                 ),
-              ),
-              Expanded(
-                child: SquareButton(
-                  height: 100,
-                  route: onTab,
-                  index: 1,
-                  icon: Icon(
-                    FontAwesomeIcons.podcast,
-                    size: 30,
-                    color: Colors.white,
-                  ),
-                  title: "Posts",
-                  color: Color.fromRGBO(249, 112, 104, 1),
-                ),
-              ),
-              Expanded(
-                child: SquareButton(
-                  height: 100,
-                  route: onTab,
-                  index: 2,
-                  icon: Icon(
-                    Icons.ac_unit,
-                    size: 30,
-                    color: Colors.white,
-                  ),
-                  title: "Orders",
-                  color: Color.fromRGBO(87, 196, 229, 1),
-                ),
-              ),
             ],
           ),
         ),

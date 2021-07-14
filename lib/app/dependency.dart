@@ -8,9 +8,9 @@ GetIt dependency = GetIt.instance;
 void init() {
   dependency.registerLazySingleton<RestService>(
     () => RestService(
-        // baseUrl: 'https://service-backend-web.herokuapp.com'),
+        baseUrl: 'https://service-backend-web.herokuapp.com'),
         // baseUrl: 'http://10.0.2.2:5000'),
-        baseUrl: 'http://localhost:5000'),
+        // baseUrl: 'http://localhost:5000'),
   );
 
   dependency.registerLazySingleton<PostService>(() => PostService());

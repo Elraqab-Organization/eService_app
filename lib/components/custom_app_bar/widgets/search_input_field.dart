@@ -21,8 +21,8 @@ class SearchInputField extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                   color: Colors.grey.shade400,
-                  blurRadius: 3.0,
-                  offset: Offset.fromDirection(1, 1),
+                  blurRadius: 1.0,
+                  offset: Offset.fromDirection(1, 5),
                   spreadRadius: 1.0),
             ],
           ),

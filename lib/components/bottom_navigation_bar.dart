@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:delayed_display/delayed_display.dart';
 import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,7 +29,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     },
     {
       'icon': 'lib/assets/icon/outline_question_answer_white_36dp.svg',
-      'title': 'Notification',
+      'title': 'Board',
     },
     {
       'icon': 'lib/assets/icon/outline_account_circle_white_36dp.svg',
@@ -38,59 +40,61 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 75,
-        width: MediaQuery.of(context).size.width,
-        child: ListView.builder(
-          itemCount: items.length,
-          padding: EdgeInsets.all(8.0),
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.only(left: 16.0),
-              child: InkWell(
-                onTap: () => {widget.callBack(index)},
-                child: AnimatedContainer(
-                  onEnd: () {
-                    Future.delayed(Duration(milliseconds: 200), () {
-                      setState(() => {activeIndex = widget.currentIndex});
-                    });
-                  },
-                  duration: const Duration(milliseconds: 100),
-                  width: widget.currentIndex == index.toString() ? 150.0 : 60.0,
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    borderRadius: index.toString() == widget.currentIndex
-                        ? BorderRadius.circular(30.0)
-                        : BorderRadius.circular(50.0),
-                    color: Color.fromRGBO(249, 112, 104, 1),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: widget.currentIndex == index.toString()
-                        ? MainAxisAlignment.spaceBetween
-                        : MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(items[index]['icon']),
-                      SizedBox(),
-                      widget.currentIndex == index.toString() &&
-                              activeIndex == widget.currentIndex
-                          ? DelayedDisplay(
-                              delay: Duration(milliseconds: 50),
-                              child: TextComponent(
-                                textColor: Colors.white,
-                                title: items[index]['title'],
-                                align: TextAlign.center,
-                                fontSize: 16.0,
-                                weight: FontWeight.w600,
-                              ),
-                            )
-                          : SizedBox(),
-                      SizedBox(),
-                    ],
-                  ),
+      height: 75,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            width: 5,
+          ),
+          for (var i = 0; i < items.length; i++)
+            InkWell(
+              onTap: () => {widget.callBack(i)},
+              child: AnimatedContainer(
+                onEnd: () {
+                  Future.delayed(Duration(milliseconds: 200), () {
+                    setState(() => {activeIndex = widget.currentIndex});
+                  });
+                },
+                duration: const Duration(milliseconds: 100),
+                width: widget.currentIndex == i.toString() ? 120.0 : 56,
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  borderRadius: i.toString() == widget.currentIndex
+                      ? BorderRadius.circular(30.0)
+                      : BorderRadius.circular(50.0),
+                  color: Color.fromRGBO(249, 112, 104, 1),
+                ),
+                child: Row(
+                  mainAxisAlignment: widget.currentIndex == i.toString()
+                      ? MainAxisAlignment.spaceBetween
+                      : MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(items[i]['icon']),
+                    SizedBox(),
+                    widget.currentIndex == i.toString() &&
+                            activeIndex == widget.currentIndex
+                        ? DelayedDisplay(
+                            delay: Duration(milliseconds: 50),
+                            child: TextComponent(
+                              textColor: Colors.white,
+                              title: items[i]['title'],
+                              align: TextAlign.center,
+                              fontSize: 16.0,
+                              weight: FontWeight.w600,
+                            ),
+                          )
+                        : SizedBox(),
+                    SizedBox(),
+                  ],
                 ),
               ),
-            );
-          },
-        ));
+            ),
+          SizedBox(
+            width: 5,
+          ),
+        ],
+      ),
+    );
   }
 }

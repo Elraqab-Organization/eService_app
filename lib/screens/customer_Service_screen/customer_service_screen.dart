@@ -15,9 +15,6 @@ class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
         padding: const EdgeInsets.only(left: 16.0, right: 16.0),
         child: Column(
           children: [
-            SizedBox(
-              height: 20.0,
-            ),
             Padding(
               padding: const EdgeInsets.only(left: 16.0, right: 16.0),
               child: Row(
@@ -42,8 +39,11 @@ class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
                 ],
               ),
             ),
+            SizedBox(
+              height: 10.0,
+            ),
             CategoryGrid(
-              paddingTop: 30.0,
+              paddingTop: 10.0,
             )
           ],
         ),
