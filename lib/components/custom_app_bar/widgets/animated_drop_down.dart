@@ -1,7 +1,6 @@
+import 'package:e_service_app/providers/service_providers/search_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../search_viewmodel.dart';
 
 class DropDownList extends StatelessWidget {
   final SearchViewmodel viewmodel;
@@ -11,19 +10,19 @@ class DropDownList extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButton(
-          value: viewmodel.filterTags[viewmodel.tagCurrentIndex].selected,
-          items: viewmodel.filterTags[viewmodel.tagCurrentIndex].values
-              .map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(
-                value,
-                style: TextStyle(color: Colors.black),
-              ),
-            );
-          }).toList(),
+          // value: viewmodel.filterTags[viewmodel.tagCurrentIndex].selected,
+          // items: viewmodel.filterTags[viewmodel.tagCurrentIndex].values
+          //     .map<DropdownMenuItem<String>>((String value) {
+          //   return DropdownMenuItem<String>(
+          //     value: value,
+          //     child: Text(
+          //       value,
+          //       style: TextStyle(color: Colors.black),
+          //     ),
+          //   );
+          // }).toList(),
           onChanged: (value) => {
-                viewmodel.filterTags[viewmodel.tagCurrentIndex].selected = value
+                // viewmodel.filterTags[viewmodel.tagCurrentIndex].selected = value
               }),
     );
   }
@@ -39,7 +38,7 @@ class AnimatedDropDown extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       duration: Duration(milliseconds: 500),
       curve: Curves.easeOutSine,
-      height: viewmodel.shown ? 350 : 0,
+      // height: viewmodel.shown ? 350 : 0,
       decoration: BoxDecoration(
         color: Color.fromRGBO(249, 112, 104, 1),
         borderRadius: BorderRadius.only(
@@ -54,9 +53,9 @@ class AnimatedDropDown extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              viewmodel.tagCurrentIndex != null
-                  ? viewmodel.filterTags[viewmodel.tagCurrentIndex].icon
-                  : SizedBox(),
+              // viewmodel.tagCurrentIndex != null
+              //     ? viewmodel.filterTags[viewmodel.tagCurrentIndex].icon
+              //     : SizedBox(),
               Container(
                 height: 40.0,
                 width: MediaQuery.of(context).size.width * 0.6,
@@ -65,9 +64,9 @@ class AnimatedDropDown extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                   color: Colors.white,
                 ),
-                child: viewmodel.tagCurrentIndex != null
-                    ? DropDownList(viewmodel: viewmodel)
-                    : SizedBox(),
+                // child: viewmodel.tagCurrentIndex != null
+                //     ? DropDownList(viewmodel: viewmodel)
+                //     : SizedBox(),
               ),
             ],
           ),

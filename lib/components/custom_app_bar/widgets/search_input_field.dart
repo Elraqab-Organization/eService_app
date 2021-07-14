@@ -1,4 +1,4 @@
-import 'package:e_service_app/components/custom_app_bar/search_viewmodel.dart';
+import 'package:e_service_app/providers/service_providers/search_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +29,7 @@ class SearchInputField extends StatelessWidget {
         child: TextField(
           keyboardType: TextInputType.text,
           onTap: () => {
-            viewmodel.state = true,
+            // viewmodel.state = true,
           },
           cursorHeight: 25,
           textAlign: TextAlign.start,

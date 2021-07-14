@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
-  String title;
-  IconData favorite;
-  String rating;
-  IconData star;
-  Function onpresed;
+  final String title;
+  final IconData favorite;
+  final String rating;
+  final IconData star;
+  final Function onpresed;
 
   CategoryCard(
       {this.title, this.favorite, this.rating, this.star, this.onpresed});

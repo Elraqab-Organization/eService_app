@@ -1,5 +1,3 @@
-import 'package:e_service_app/screens/Customer_Posts_Screen/customer_posts_viewmodel.dart';
-import 'package:e_service_app/screens/view.dart';
 import 'package:flutter/material.dart';
 
 class PostsCard extends StatefulWidget {
