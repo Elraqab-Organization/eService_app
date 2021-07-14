@@ -1,4 +1,5 @@
 import 'package:e_service_app/screens/account_information_screen/account_information_screen.dart';
+import 'package:e_service_app/screens/customer_address_screen/customer_address_screen.dart';
 import 'package:e_service_app/screens/customer_favourite_screen/customer_favourite_screen.dart';
 import 'package:e_service_app/screens/customer_notification_screen/customer_notification_screen.dart';
 import 'package:e_service_app/screens/customer_profile/customer_profile_screen.dart';
@@ -67,6 +68,9 @@ class RouteManager {
         break;
       case "/Profile":
         builder = (BuildContext context) => ProfileScreen();
+        break;
+      case "/MyAddress":
+        builder = (BuildContext context) => CustomerAddressScreen();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

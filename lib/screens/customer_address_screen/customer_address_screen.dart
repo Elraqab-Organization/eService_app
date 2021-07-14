@@ -17,14 +17,18 @@ class _CustomerAddressScreenState extends State<CustomerAddressScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GoogleMap(
-        initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 11.0,
+    return Stack(
+      children: [
+        Scaffold(
+          body: GoogleMap(
+            initialCameraPosition: CameraPosition(
+              target: _center,
+              zoom: 11.0,
+            ),
+            onMapCreated: _onMapCreated,
+          ),
         ),
-        onMapCreated: _onMapCreated,
-      ),
+      ],
     );
   }
 }
