@@ -11,7 +11,7 @@ class SearchInputField extends StatelessWidget {
       return AnimatedPositioned(
         duration: Duration(milliseconds: 500),
         left: MediaQuery.of(context).size.width * 0.10,
-        top: viewmodel.isOpen ? 90 : 120,
+        top: viewmodel.isOpen ? 90 : 130,
         child: Container(
           height: 50.0,
           width: MediaQuery.of(context).size.width * 0.80,
