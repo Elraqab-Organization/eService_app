@@ -38,12 +38,15 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                     child: Container(
                       clipBehavior: Clip.none,
                       child: ListView.builder(
+                        itemCount: usernames.length,
                         padding:
                             EdgeInsets.only(top: 24.0, left: 8.0, right: 8.0),
                         clipBehavior: Clip.hardEdge,
-                        itemBuilder: (context, index) => SearchCardResult(
-                            usernames[index].username,
-                            usernames[index].photoString),
+                        itemBuilder: (context, index) => InkWell(
+                          onTap: () => Navigator.pushNamed(context, "/service_provider_profile"),
+                          child: SearchCardResult(usernames[index].username,
+                              usernames[index].photoString),
+                        ),
                       ),
                     ),
                   ),

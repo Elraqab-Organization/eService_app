@@ -24,7 +24,9 @@ class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, "/main_services");
+                },
                 child: Text(
                   "See all",
                   style: TextStyle(

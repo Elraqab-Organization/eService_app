@@ -1,14 +1,20 @@
 import 'package:e_service_app/service/auth_service/auth_service.dart';
+import 'package:e_service_app/service/post_service/post_service.dart';
 import 'package:e_service_app/service/rest_service.dart';
 import 'package:get_it/get_it.dart';
 
-GetIt service = GetIt.instance;
+GetIt dependency = GetIt.instance;
 
 void init() {
-  service.registerLazySingleton(
-    () => RestService(),
+  dependency.registerLazySingleton<RestService>(
+    () => RestService(
+        // baseUrl: 'https://service-backend-web.herokuapp.com'),
+        baseUrl: 'http://10.0.2.2:5000'),
   );
-  service.registerLazySingleton(
-    () => AuthService(),
-  );
+
+  dependency.registerLazySingleton<PostService>(() => PostService());
+  dependency.registerLazySingleton<AuthService>(() => AuthService());
+
+  // Viewmodels
+  // dependency.registerLazySingleton(() => UserViewmodel());
 }
