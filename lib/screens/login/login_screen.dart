@@ -1,8 +1,7 @@
 import 'package:e_service_app/app/const.dart';
 import 'package:e_service_app/components/login_custom_button.dart';
 import 'package:e_service_app/components/text_component.dart';
-import 'package:e_service_app/model/user.dart';
-import 'package:e_service_app/providers/login_provider/login_action.dart';
+import 'package:e_service_app/providers/login/login_action.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../components/custom_text_field.dart';
@@ -122,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               watch(loginProvider).loading = true;
                               final user =
                                   await watch(loginProvider).authenticate();
-                              if (user != null)
+                              // if (user != null)
                                 Navigator.pushReplacementNamed(
                                     context, "/landing");
                             }),

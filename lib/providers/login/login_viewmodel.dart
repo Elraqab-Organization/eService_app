@@ -1,6 +1,5 @@
 import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/model/user.dart';
-import 'package:e_service_app/screens/viewmodel.dart';
 import 'package:e_service_app/service/auth_service/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -11,7 +10,7 @@ class LoginViewmodel extends ChangeNotifier {
   bool _showErrorMassage = false;
   bool isChecked = false;
   bool isLoading = false;
-  bool isLogged = null;
+  bool isLogged;
   String pass;
   String email;
 

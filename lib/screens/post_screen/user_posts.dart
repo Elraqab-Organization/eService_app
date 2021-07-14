@@ -1,0 +1,53 @@
+import 'package:e_service_app/components/custom_btn.dart';
+import 'package:e_service_app/components/custom_return_bar.dart';
+import 'package:e_service_app/components/posts_card.dart';
+import 'package:flutter/material.dart';
+
+class PostScreen extends StatefulWidget {
+  @override
+  _PostScreenState createState() => _PostScreenState();
+}
+
+class _PostScreenState extends State<PostScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        child: Scaffold(
+      body: Column(
+        children: [
+          CustomReturnBar(),
+          SizedBox(
+            height: 25,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 18.0, right: 18.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "latest News",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                OptionButton(
+                  color: Colors.black,
+                  icon: Icon(Icons.more_vert, color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          PostsCard()
+        ],
+      ),
+      floatingActionButton: GestureDetector(
+        child: OptionButton(
+          color: Colors.deepOrangeAccent,
+          icon: Icon(Icons.add, color: Colors.white),
+        ),
+        onTap: () {},
+      ),
+    ));
+  }
+}

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomerTextField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
-  Function onChanged;
+  final Function onChanged;
   CustomerTextField({this.onChanged, this.controller, this.labelText});
 
   @override
