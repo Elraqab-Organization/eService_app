@@ -3,8 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final loginProvider = ChangeNotifierProvider((ref) => LoginViewmodel());
 
-// final authenticate = FutureProvider<User>((ref) async {
-//   final repository = ref.read(loginProvider);
 
-//   return repository.authenticate();
+// final postsList = FutureProvider.autoDispose<User>((ref) async {
+//   final postsList = ref.read(loginProvider);
+
+//   return postsList.authenticate();
 // });
