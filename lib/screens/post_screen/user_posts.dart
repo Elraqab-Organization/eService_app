@@ -46,7 +46,9 @@ class _PostScreenState extends State<PostScreen> {
           color: Colors.deepOrangeAccent,
           icon: Icon(Icons.add, color: Colors.white),
         ),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, "/post_form");
+        },
       ),
     ));
   }
