@@ -20,7 +20,7 @@ class CategoryGrid extends StatelessWidget {
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 200,
                 childAspectRatio: 1.0,
-                crossAxisSpacing: 20,
+                crossAxisSpacing: 15,
                 mainAxisSpacing: 16),
             itemCount: 10,
             itemBuilder: (BuildContext ctx, index) {
@@ -49,7 +49,7 @@ class CategoryGrid extends StatelessWidget {
                       ),
                       TextComponent(
                         title: "Electrical",
-                        fontSize: 22.0,
+                        fontSize: 16.0,
                         textColor: Colors.white,
                         weight: FontWeight.w800,
                       ),

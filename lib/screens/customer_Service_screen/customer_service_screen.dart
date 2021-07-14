@@ -11,36 +11,42 @@ class _CustomerServiceScreenState extends State<CustomerServiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 20.0,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Popular Services",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Popular Services",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/main_services");
+                    },
+                    child: Text(
+                      "See all",
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.deepOrangeAccent,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, "/main_services");
-                },
-                child: Text(
-                  "See all",
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.deepOrangeAccent,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
-          ),
-          CategoryGrid(
-            paddingTop: 30.0,
-          )
-        ],
+            ),
+            CategoryGrid(
+              paddingTop: 30.0,
+            )
+          ],
+        ),
       ),
     );
   }
