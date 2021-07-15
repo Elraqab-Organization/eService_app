@@ -1,3 +1,4 @@
+import 'package:e_service_app/components/custom_btn.dart';
 import 'package:e_service_app/providers/post_provider/post_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,65 +32,76 @@ class _PostsCardState extends State<PostsCard> {
                 child: ListView.builder(
                   padding: EdgeInsets.only(bottom: 16.0),
                   itemCount: response.value.length,
-                  itemBuilder: (context, index) => Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ListTile(
-                          leading: CircleAvatar(
-                            backgroundImage: NetworkImage(
-                              response.value[index].imgSrc.toString(),
-                            ),
-                          ),
-                          title: Text(response.value[index].username),
-                          subtitle: Text(
-                            moment.from(response.value[index].timestamp) +
-                                ' / ${response.value[index].location} / cancelation fee: ${response.value[index].cancelationFee}',
-                            style:
-                                TextStyle(color: Colors.black.withOpacity(0.6)),
-                          ),
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.only(
+                        top: 2, bottom: 2, left: 12, right: 12),
+                    child: Stack(children: [
+                      Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 18, bottom: 18, left: 14),
-                          child: Text(
-                            '${response.value[index].description}',
-                            style:
-                                TextStyle(color: Colors.black.withOpacity(0.6)),
-                          ),
-                        ),
-                        ButtonBar(
-                          alignment: MainAxisAlignment.start,
+                        clipBehavior: Clip.antiAlias,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              width: 15,
-                            ),
-                            InkWell(
-                              splashColor: Colors.blue.withAlpha(30),
-                              onTap: () {
-                                // Perform some action
-                              },
-                              child: Row(
-                                children: [
-                                  if (response.value[index].proposal.length !=
-                                      0)
-                                    _stackOfAvatars(
-                                        response.value[index].proposal),
-                                  Text(
-                                    '   ${response.value[index].proposal.length} proposals',
-                                    style: TextStyle(fontSize: 12),
-                                  ),
-                                ],
+                            ListTile(
+                              leading: CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                  response.value[index].imgSrc.toString(),
+                                ),
                               ),
+                              title: Text(response.value[index].username),
+                              subtitle: Text(
+                                moment.from(response.value[index].timestamp) +
+                                    ' / ${response.value[index].location} / cancelation fee: ${response.value[index].cancelationFee}',
+                                style: TextStyle(
+                                    color: Colors.black.withOpacity(0.6)),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 18, bottom: 18, left: 14),
+                              child: Text(
+                                '${response.value[index].description}',
+                                style: TextStyle(
+                                    color: Colors.black.withOpacity(0.6)),
+                              ),
+                            ),
+                            ButtonBar(
+                              alignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                InkWell(
+                                  splashColor: Colors.blue.withAlpha(30),
+                                  onTap: () {
+                                    // Perform some action
+                                  },
+                                  child: Row(
+                                    children: [
+                                      if (response
+                                              .value[index].proposal.length !=
+                                          0)
+                                        _stackOfAvatars(
+                                            response.value[index].proposal),
+                                      Text(
+                                        '   ${response.value[index].proposal.length} proposals',
+                                        style: TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                      OptionButton(
+                        color: Colors.black,
+                        icon: Icon(Icons.plus_one),
+                      )
+                    ]),
                   ),
                 ),
               ),

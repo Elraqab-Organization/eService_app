@@ -182,16 +182,23 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
   }
 
   Future<Post> createPost() async {
-    final String baseUrl = "http://localhost:5000/posts";
-    final response = await http.post(Uri.parse(baseUrl), body: {
-      "description": "hello  o am knjsfsdf",
-      "paymentMethod": "online",
-      "cancelationFee": "120",
-      "location": "good",
-      "tags": "gggg",
-      "imgSrc": "imgSrc",
-      "customerId": "181291208238434"
-    });
+    //
+    final String baseUrl = "http://localhost:5000/posts/";
+    final response = await http.post(
+      Uri.parse('$baseUrl'),
+      body: json.encode({
+        "description": "hello  o am knjsfsdf",
+        "paymentMethod": "online",
+        "cancelationFee": "120",
+        "location": "good",
+        "tags": "gggg",
+        "imgSrc": "imgSrc",
+        "customerId": "60dae3bcdfbb690d0036d4d9"
+      }),
+      headers: {"Content-Type": "application/json"},
+    );
+
+    print(response);
 
     // return jsonDecode(response);
     // return Post.fromJson(newPost);
