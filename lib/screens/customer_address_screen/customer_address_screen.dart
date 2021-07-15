@@ -1,3 +1,4 @@
+import 'package:e_service_app/components/custom_return_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -17,18 +18,17 @@ class _CustomerAddressScreenState extends State<CustomerAddressScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Scaffold(
-          body: GoogleMap(
-            initialCameraPosition: CameraPosition(
-              target: _center,
-              zoom: 11.0,
-            ),
-            onMapCreated: _onMapCreated,
+    return Scaffold(
+      body: Stack(children: [
+        GoogleMap(
+          initialCameraPosition: CameraPosition(
+            target: _center,
+            zoom: 11.0,
           ),
+          onMapCreated: _onMapCreated,
         ),
-      ],
+        CustomReturnBar()
+      ]),
     );
   }
 }
