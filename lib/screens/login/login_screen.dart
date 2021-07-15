@@ -121,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               watch(loginProvider).loading = true;
                               final user =
                                   await watch(loginProvider).authenticate();
-                              // if (user != null)
+                              if (user != null)
                                 Navigator.pushReplacementNamed(
                                     context, "/landing");
                             }),

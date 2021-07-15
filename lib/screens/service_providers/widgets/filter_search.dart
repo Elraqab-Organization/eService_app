@@ -7,7 +7,7 @@ import 'dropdown_list.dart';
 class FilterSearch extends StatelessWidget {
   final dynamic viewmodel;
   const FilterSearch({
-    Key? key,
+    Key key,
     this.viewmodel,
   }) : super(key: key);
 

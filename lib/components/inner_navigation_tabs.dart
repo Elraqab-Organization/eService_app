@@ -11,7 +11,7 @@ class InnerNavigationTabs extends StatefulWidget {
   int tabIndex;
   InnerNavigationTabs({
     this.tabIndex = 0,
-    Key? key,
+    Key key,
   }) : super(key: key);
 
   @override

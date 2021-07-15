@@ -21,7 +21,7 @@ import '../app.dart';
 
 class RouteManager {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    late WidgetBuilder builder;
+    WidgetBuilder builder;
 
     switch (settings.name) {
       case "/landing":

@@ -304,14 +304,14 @@ packages:
   json_annotation:
     dependency: transitive
     description:
-      name: intl
+      name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.17.0"
-  json_annotation:
-    dependency: transitive
+    version: "4.0.1"
+  keyboard_visibility:
+    dependency: "direct main"
     description:
-      name: json_annotation
+      name: keyboard_visibility
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.6"
@@ -525,6 +525,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  simple_moment:
+    dependency: "direct main"
+    description:
+      name: simple_moment
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   sky_engine:
     dependency: transitive
     description: flutter

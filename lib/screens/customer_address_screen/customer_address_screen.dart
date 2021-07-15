@@ -8,7 +8,7 @@ class CustomerAddressScreen extends StatefulWidget {
 }
 
 class _CustomerAddressScreenState extends State<CustomerAddressScreen> {
-  late GoogleMapController mapController;
+  GoogleMapController mapController;
 
   final LatLng _center = const LatLng(45.521563, -122.677433);
 

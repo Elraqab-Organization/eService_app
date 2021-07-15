@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class SquareButton extends StatelessWidget {
-  final Function? route;
-  final double? height;
-  final double? width;
-  final Icon? icon;
-  final String? title;
-  final Color? color;
-  final int? index;
+  final Function route;
+  final double height;
+  final double width;
+  final Icon icon;
+  final String title;
+  final Color color;
+  final int index;
 
   SquareButton(
       {this.route,
@@ -27,7 +27,7 @@ class SquareButton extends StatelessWidget {
           // onTap: () {
           // Navigator.pushReplacementNamed(context, route);
           // },
-          onTap: () => route!(index),
+          onTap: () => route(index),
           child: Container(
             width: width,
             height: height,
@@ -41,14 +41,14 @@ class SquareButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  icon!,
+                  icon,
                 ],
               ),
             ),
           ),
         ),
         Text(
-          title!,
+          title,
           textAlign: TextAlign.center,
           style: TextStyle(fontWeight: FontWeight.bold),
         )

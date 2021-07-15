@@ -27,7 +27,7 @@ class RoundedRectangleButton extends StatelessWidget {
           minWidth: double.maxFinite,
           height: 60,
           clipBehavior: Clip.antiAliasWithSaveLayer,
-          onPressed: onClick as void Function()?,
+          onPressed: onClick,
           color: buttonColor,
           child: text,
           textColor: textColor,
