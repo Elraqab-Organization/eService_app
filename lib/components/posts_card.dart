@@ -1,7 +1,9 @@
 import 'package:e_service_app/components/custom_btn.dart';
+import 'package:e_service_app/components/search_view_screen/modal_search_view.dart';
 import 'package:e_service_app/providers/post_provider/post_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:simple_moment/simple_moment.dart';
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 
@@ -11,13 +13,8 @@ class PostsCard extends StatefulWidget {
 }
 
 class _PostsCardState extends State<PostsCard> {
-  final String userName = 'Ahmed Mousa';
-  final String posted = '27 min ago';
-  final String city = ' Johor Bahru';
-  final String cancellation = ' Free cancellation';
-  final String postBody =
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s';
   var moment = new Moment.now();
+  bool isShown = false;
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, child) {
@@ -26,7 +23,6 @@ class _PostsCardState extends State<PostsCard> {
           error: (_) => Text("Error"),
           loading: (_) => Center(child: CircularProgressIndicator()),
           data: (response) {
-            // print(response.value[0].imgSrc);
             return Expanded(
               child: Container(
                 child: ListView.builder(
@@ -34,9 +30,11 @@ class _PostsCardState extends State<PostsCard> {
                   itemCount: response.value.length,
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.only(
-                        top: 2, bottom: 2, left: 12, right: 12),
-                    child: Stack(children: [
+                        top: 2, bottom: 5, left: 16, right: 25),
+                    child: Stack(clipBehavior: Clip.none, children: [
                       Card(
+                        elevation: 12,
+                        shadowColor: Colors.black54,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -55,16 +53,20 @@ class _PostsCardState extends State<PostsCard> {
                                 moment.from(response.value[index].timestamp) +
                                     ' / ${response.value[index].location} / cancelation fee: ${response.value[index].cancelationFee}',
                                 style: TextStyle(
+                                    fontSize: 12,
                                     color: Colors.black.withOpacity(0.6)),
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
                                   top: 18, bottom: 18, left: 14),
-                              child: Text(
-                                '${response.value[index].description}',
-                                style: TextStyle(
-                                    color: Colors.black.withOpacity(0.6)),
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: Text(
+                                  '${response.value[index].description}',
+                                  style: TextStyle(
+                                      color: Colors.black.withOpacity(0.6)),
+                                ),
                               ),
                             ),
                             ButtonBar(
@@ -97,10 +99,10 @@ class _PostsCardState extends State<PostsCard> {
                           ],
                         ),
                       ),
-                      OptionButton(
-                        color: Colors.black,
-                        icon: Icon(Icons.plus_one),
-                      )
+                      postOption(25, 340, "more_vert", _moreOptionsModalSheet),
+                      isShown
+                          ? postOption(67, 340, "share", _moreOptionsModalSheet)
+                          : Text("")
                     ]),
                   ),
                 ),
@@ -110,6 +112,75 @@ class _PostsCardState extends State<PostsCard> {
     });
   }
 
+  _moreOptionsModalSheet() {
+    return showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) {
+          return Container(
+            padding: EdgeInsets.all(24.0),
+            height: MediaQuery.of(context).size.height * 0.21,
+            decoration: new BoxDecoration(
+              borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(25.0),
+                topRight: const Radius.circular(25.0),
+              ),
+              color: Color(0xff212738),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Column(
+              children: [
+                optionValues("Remove post"),
+                Divider(
+                  color: Colors.white,
+                ),
+                optionValues("Edit post"),
+                Divider(color: Colors.white),
+                optionValues("share post on"),
+              ],
+            ),
+          );
+        });
+  }
+
+  Center optionValues(String option) {
+    return Center(
+        child: Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: Text(
+        option,
+        style: TextStyle(color: Colors.white, fontFamily: "Segoe UI"),
+      ),
+    ));
+  }
+
+  Positioned postOption(
+      double top, double left, String icon, Function _moreOptionsModalSheet) {
+    return Positioned(
+      top: top,
+      left: left,
+      child: GestureDetector(
+        onTap: _moreOptionsModalSheet,
+        child: OptionButton(
+          color: Colors.black,
+          icon: Icon(
+            icon == "share" ? Icons.reply : Icons.more_vert,
+            color: Colors.white70,
+          ),
+          width: 40.0,
+          height: 40.0,
+        ),
+      ),
+    );
+  }
+
   _stackOfAvatars(proposals) {
     return RowSuper(
       children: [
@@ -117,7 +188,7 @@ class _PostsCardState extends State<PostsCard> {
           CircleAvatar(
               radius: 15.0, backgroundImage: NetworkImage(proposals[i])),
       ],
-      innerDistance: -14.0,
+      innerDistance: -17.0,
     );
   }
 }

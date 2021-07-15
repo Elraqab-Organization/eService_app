@@ -117,7 +117,6 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
               visible: false,
               child: TextFormField(
                 controller: imgSrcController,
-                // initialValue: "https://randomuser.me/api/portraits/men/14.jpg",
               )),
           Padding(
             padding: const EdgeInsets.only(bottom: 16),
