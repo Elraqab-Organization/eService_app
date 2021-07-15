@@ -3,11 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CustomButtomLogin extends StatelessWidget {
   //
-  final String imageUrl;
-  final bool hasImage;
-  final String buttonText;
-  final Color buttonColor;
-  final Color buttonTextColor;
+  String imageUrl;
+  bool hasImage;
+  String buttonText;
+  Color buttonColor;
+  Color buttonTextColor;
   final Function onTap;
 
   CustomButtomLogin(this.buttonColor, this.buttonText, this.buttonTextColor,

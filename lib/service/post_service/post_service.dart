@@ -6,11 +6,11 @@ class PostService {
   RestService get rest => dependency();
 
   Future<List<Post>> fetchPosts({String id}) async {
-    final List jsonPosts = await rest.getPosts('posts/');
-    if (jsonPosts == null || jsonPosts.length == 0) return null;
+    // final List json = await rest.get('posts/$id');
+    // if (json == null || json.length == 0) return null;
 
-    final postsList = jsonPosts.map((doc) => Post.fromJson(doc)).toList();
+    // final postsList = json.map((doc) => Post.fromJson(doc)).toList();
 
-    return postsList;
+    // return postsList;
   }
 }

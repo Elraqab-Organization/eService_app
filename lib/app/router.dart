@@ -5,8 +5,6 @@ import 'package:e_service_app/screens/customer_notification_screen/customer_noti
 import 'package:e_service_app/screens/customer_profile/customer_profile_screen.dart';
 import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
-import 'package:e_service_app/screens/password_reset_screen/password_reset_screen.dart';
-import 'package:e_service_app/screens/post_screen/user_posts.dart';
 import 'package:e_service_app/screens/register/register_screen.dart';
 import 'package:e_service_app/screens/search_view_screen/search_view_screen.dart';
 import 'package:e_service_app/screens/customer_chat_screen/customer_chat_screen.dart';
@@ -21,7 +19,7 @@ import '../app.dart';
 
 class RouteManager {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    late WidgetBuilder builder;
+    WidgetBuilder builder;
 
     switch (settings.name) {
       case "/landing":
@@ -50,31 +48,6 @@ class RouteManager {
         break;
       case "/search_view":
         builder = (BuildContext context) => SearchView();
-        break;
-      case "/customer_notification":
-        builder = (BuildContext context) => CustomerNotificationScreen();
-        break;
-      case "/customer_favourite":
-        builder = (BuildContext context) => CustomerFavouriteScreen();
-        break;
-
-      case "/customer_chat":
-        builder = (BuildContext context) => CustomerChatScreen();
-        break;
-      case "/PasswordReset":
-        builder = (BuildContext context) => PasswordResetScreen();
-        break;
-      case "/AccountInfo":
-        builder = (BuildContext context) => AccountInformationScreen();
-        break;
-      case "/Profile":
-        builder = (BuildContext context) => ProfileScreen();
-        break;
-      case "/MyAddress":
-        builder = (BuildContext context) => CustomerAddressScreen();
-        break;
-      case "/posts":
-        builder = (BuildContext context) => PostScreen();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

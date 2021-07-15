@@ -1,8 +1,9 @@
+import 'package:e_service_app/screens/viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ServiceProvidersViewmodel extends ChangeNotifier {
+class ServiceProvidersViewmodel extends Viewmodel {
   int index = 0;
   set active(value) {
     this.index = value;

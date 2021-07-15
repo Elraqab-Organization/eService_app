@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CategoryCard extends StatelessWidget {
+<<<<<<< HEAD
   final String? title;
   final IconData? favorite;
   final String? rating;
   final IconData? star;
   final Function? onpresed;
+=======
+  String title;
+  IconData favorite;
+  String rating;
+  IconData star;
+  Function onpresed;
+>>>>>>> parent of 809a89f (Merge branch 'ahmad_branch')
 
   CategoryCard(
       {this.title, this.favorite, this.rating, this.star, this.onpresed});

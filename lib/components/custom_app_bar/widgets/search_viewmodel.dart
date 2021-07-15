@@ -1,9 +1,10 @@
 import 'package:e_service_app/model/filter_tags.dart';
+import 'package:e_service_app/screens/viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class SearchViewmodel extends ChangeNotifier {
+class SearchViewmodel extends Viewmodel {
   int index;
   bool isOpen = false;
   bool isShown = false;

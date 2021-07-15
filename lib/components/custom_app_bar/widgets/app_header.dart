@@ -9,7 +9,7 @@ class AppHeader extends StatelessWidget {
       padding: EdgeInsets.all(24.0),
       height: 160,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(249, 112, 104, 1),
+        color: Color.fromRGBO(249, 112, 102, 1),
         borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(40.0),
             bottomLeft: Radius.circular(40.0)),
