@@ -1,33 +1,63 @@
-class Post {
-  String id;
-  String customerId;
-  String description;
-  // two attributes to be changed later.
-  String timestamp;
-  List<dynamic> tag;
+import 'dart:convert';
 
+Post welcomeFromJson(String str) => Post.fromJson(json.decode(str));
+
+String welcomeToJson(Post data) => json.encode(data.toJson());
+
+class Post {
   Post({
     this.id,
+    this.imgSrc,
+    this.tags,
     this.customerId,
-    this.timestamp,
+    this.proposal,
+    this.location,
+    this.paymentMethod,
+    this.cancelationFee,
     this.description,
-    this.tag,
+    this.username,
+    this.timestamp,
   });
 
-  factory Post.fromJson(Map<String, dynamic> json) {
-    return Post(
-      id: json['id'],
-      customerId: json['customerId'],
-      timestamp: json['timestamp'],
-      description: json['description'],
-      tag: json['tag'],
-    );
-  }
+  String id;
+  String imgSrc;
+  List<String> tags;
+  String customerId;
+  List<String> proposal;
+  String location;
+  String paymentMethod;
+  String cancelationFee;
+  String description;
+  String username;
+  DateTime timestamp;
+
+  factory Post.fromJson(Map<String, dynamic> json) => Post(
+        id: json["_id"],
+        imgSrc: json["imgSrc"] == null
+            ? "https://randomuser.me/api/portraits/men/52.jpg"
+            : json["imgSrc"],
+        tags: List<String>.from(json["tags"].map((x) => x)),
+        customerId: json["customerId"],
+        proposal: List<String>.from(json["proposal"].map((x) => x)),
+        location: json["location"],
+        paymentMethod: json["paymentMethod"],
+        cancelationFee: json["cancelationFee"],
+        description: json["description"],
+        username: json["username"],
+        timestamp: DateTime.parse(json["timestamp"]),
+      );
+
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'customerId': customerId,
-        'timestamp': timestamp,
-        'description': description,
-        'tag': tag,
+        "_id": id,
+        "imgSrc": imgSrc,
+        "tags": List<dynamic>.from(tags.map((x) => x)),
+        "customerId": customerId,
+        "proposal": List<dynamic>.from(proposal.map((x) => x)),
+        "location": location,
+        "paymentMethod": paymentMethod,
+        "cancelationFee": cancelationFee,
+        "description": description,
+        "username": username,
+        "timestamp": timestamp.toIso8601String(),
       };
 }

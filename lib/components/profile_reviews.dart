@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfileReviews extends StatelessWidget {
-  const ProfileReviews(); 
+  const ProfileReviews();
 
   @override
   Widget build(BuildContext context) {
