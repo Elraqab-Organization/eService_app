@@ -1,24 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SquareButton extends StatelessWidget {
-<<<<<<< HEAD
-  final Function? route;
-  final double? height;
-  final double? width;
-  final Icon? icon;
-  final String? title;
-  final Color? color;
-  final int? index;
-
-  SquareButton(
-      {this.route,
-      this.height,
-      this.width,
-      this.icon,
-      this.title,
-      this.color,
-      this.index});
-=======
   Function _route;
   double _height;
   double _width;
@@ -57,7 +39,6 @@ class SquareButton extends StatelessWidget {
         _color = color,
         _index = index,
         _title = title;
->>>>>>> parent of 809a89f (Merge branch 'ahmad_branch')
 
   @override
   Widget build(BuildContext context) {
@@ -68,11 +49,7 @@ class SquareButton extends StatelessWidget {
           // onTap: () {
           // Navigator.pushReplacementNamed(context, route);
           // },
-<<<<<<< HEAD
-          onTap: () => route!(index),
-=======
           onTap: () => route(_index),
->>>>>>> parent of 809a89f (Merge branch 'ahmad_branch')
           child: Container(
             width: width,
             height: height,
