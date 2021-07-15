@@ -29,7 +29,6 @@ class _CustomReturnBarState extends State<CustomReturnBar> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
-                onTap: () => Navigator.pop(context),
                 child: Container(
                   width: 50.0,
                   height: 50.0,
@@ -42,6 +41,7 @@ class _CustomReturnBarState extends State<CustomReturnBar> {
                     color: Colors.white,
                   ),
                 ),
+                onTap: () => Navigator.pop(context),
               ),
               Container(
                 height: 60,

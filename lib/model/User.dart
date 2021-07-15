@@ -1,22 +1,22 @@
 class User {
-  String id;
-  String firstName;
-  String lastName;
-  String imgSrc;
-  String email;
-  String password;
-  String gender;
-  String city;
-  String country;
-  String phoneNumber;
-  String postalCode;
-  String long;
-  String lat;
-  String displayLanguage;
-  String token;
-  bool isServiceProvider;
-  bool isCashPaymentActive;
-  List<bool> notificationSettings;
+  String? id;
+  String? firstName;
+  String? lastName;
+  String? imgSrc;
+  String? email;
+  String? password;
+  String? gender;
+  String? city;
+  String? country;
+  String? phoneNumber;
+  String? postalCode;
+  String? long;
+  String? lat;
+  String? displayLanguage;
+  String? token;
+  bool? isServiceProvider;
+  bool? isCashPaymentActive;
+  List<bool>? notificationSettings;
 
   User({
     this.id,

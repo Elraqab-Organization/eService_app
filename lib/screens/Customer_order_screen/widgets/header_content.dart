@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 class HeaderContent extends StatelessWidget {
   const HeaderContent({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

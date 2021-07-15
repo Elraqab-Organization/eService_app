@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextComponent extends StatelessWidget {
-  final String title;
-  final double fontSize;
-  final Color textColor;
+  final String? title;
+  final double? fontSize;
+  final Color? textColor;
   final TextAlign align;
   final FontWeight weight;
   final line;
@@ -21,7 +21,7 @@ class TextComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      title,
+      title!,
       maxLines: line,
       textAlign: align,
       style: GoogleFonts.openSans(

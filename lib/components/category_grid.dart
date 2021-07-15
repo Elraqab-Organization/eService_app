@@ -7,7 +7,7 @@ class CategoryGrid extends StatelessWidget {
   final paddingTop;
   const CategoryGrid({
     this.paddingTop = 10.0,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
