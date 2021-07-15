@@ -25,7 +25,9 @@ class _CustomerPostsServiceScreenState
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, "/posts");
+                },
                 child: Text(
                   "See all",
                   style: TextStyle(

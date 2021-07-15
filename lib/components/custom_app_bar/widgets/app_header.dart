@@ -2,23 +2,14 @@ import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../custom_app_bar.dart';
-
 class AppHeader extends StatelessWidget {
-  const AppHeader({
-    Key? key,
-    required this.widget,
-  }) : super(key: key);
-
-  final CustomAppBar widget;
-
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(24.0),
-      height: widget.height,
+      height: 160,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(249, 112, 102, 1),
+        color: Color.fromRGBO(249, 112, 104, 1),
         borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(40.0),
             bottomLeft: Radius.circular(40.0)),

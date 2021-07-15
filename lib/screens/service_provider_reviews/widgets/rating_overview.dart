@@ -22,7 +22,6 @@ class RatingOverview extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(),
           TextComponent(
             title: "Overview",
             fontSize: 16,

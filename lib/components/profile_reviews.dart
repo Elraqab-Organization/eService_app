@@ -5,9 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfileReviews extends StatelessWidget {
-  const ProfileReviews({
-    Key? key,
-  }) : super(key: key);
+  const ProfileReviews();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,8 @@ class ProfileReviews extends StatelessWidget {
                 weight: FontWeight.w600,
               ),
               InkWell(
-                onTap: null,
+                onTap: () =>
+                    Navigator.pushNamed(context, "/service_provider_reviews"),
                 child: TextComponent(
                   title: "See all",
                   fontSize: 16,

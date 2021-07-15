@@ -1,44 +1,22 @@
 import 'package:flutter/material.dart';
 
 class SquareButton extends StatelessWidget {
-  Function? _route;
-  double? _height;
-  double? _width;
-  Icon? _icon;
-  String? _title;
-  Color? _color;
-  int? _index;
-
-  get route => _route;
-  set route(value) => _route = value;
-  get index => _index;
-  set index(value) => _index = value;
-  get height => _height;
-  set height(value) => _height = value;
-  get width => _width;
-  set width(value) => _width = value;
-  get icon => _icon;
-  set icon(value) => _icon = value;
-  get title => _title;
-  set title(value) => _title = value;
-  get color => _color;
-  set color(value) => _color = value;
+  final Function? route;
+  final double? height;
+  final double? width;
+  final Icon? icon;
+  final String? title;
+  final Color? color;
+  final int? index;
 
   SquareButton(
-      {Function? route,
-      double? height,
-      double? width,
-      Icon? icon,
-      String? title,
-      Color? color,
-      int? index})
-      : _route = route,
-        _height = height,
-        _width = width,
-        _icon = icon,
-        _color = color,
-        _index = index,
-        _title = title;
+      {this.route,
+      this.height,
+      this.width,
+      this.icon,
+      this.title,
+      this.color,
+      this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +27,7 @@ class SquareButton extends StatelessWidget {
           // onTap: () {
           // Navigator.pushReplacementNamed(context, route);
           // },
-          onTap: () => route(_index),
+          onTap: () => route!(index),
           child: Container(
             width: width,
             height: height,
@@ -63,14 +41,14 @@ class SquareButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  icon,
+                  icon!,
                 ],
               ),
             ),
           ),
         ),
         Text(
-          title,
+          title!,
           textAlign: TextAlign.center,
           style: TextStyle(fontWeight: FontWeight.bold),
         )

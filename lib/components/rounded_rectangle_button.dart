@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
 class RoundedRectangleButton extends StatelessWidget {
-  final padding;
+  // final padding;
   final borderRadius;
   final Color buttonColor;
   final Color textColor;
   final text;
-  final Function? onClick;
-  RoundedRectangleButton(this.padding, this.borderRadius, this.buttonColor,
-      this.textColor, this.text, this.onClick);
+  final Function onClick;
+  RoundedRectangleButton(this.borderRadius, this.buttonColor, this.textColor,
+      this.text, this.onClick);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: padding,
+      padding: EdgeInsets.all(0),
+      // padding: padding,
       child: Material(
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius,

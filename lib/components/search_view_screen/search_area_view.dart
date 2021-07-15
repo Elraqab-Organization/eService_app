@@ -1,8 +1,4 @@
-import 'package:delayed_display/delayed_display.dart';
-import 'package:e_service_app/model/filter_tags.dart';
-import 'package:e_service_app/screens/service_providers/widgets/dropdown_list.dart';
 import 'package:flutter/material.dart';
-import 'modal_search_view.dart';
 
 class SearchAreaBox extends StatefulWidget {
   @override
@@ -10,25 +6,20 @@ class SearchAreaBox extends StatefulWidget {
 }
 
 class _SearchAreaBoxState extends State<SearchAreaBox> {
-  //
   bool isShown = false;
   bool isPressed = false;
-
-  //
   double _width = 405;
   double _height = 0;
-
-  //
   String dropdownValue = 'Location';
 
-  _showModalBottomSheet(context) {
-    showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (BuildContext context) {
-          return ShowModalBottom();
-        });
-  }
+  // _showModalBottomSheet(context) {
+  //   showModalBottomSheet(
+  //       backgroundColor: Colors.transparent,
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return ShowModalBottom();
+  //       });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +52,9 @@ class _SearchAreaBoxState extends State<SearchAreaBox> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
-                    _searchTagButton(filterTags[0].name),
-                    _searchTagButton(filterTags[1].name),
-                    _searchTagButton(filterTags[2].name),
+                    // _searchTagButton(filterTags[0].name),
+                    // _searchTagButton(filterTags[1].name),
+                    // _searchTagButton(filterTags[2].name),
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 2),
                       child: FloatingActionButton.extended(
@@ -81,7 +72,7 @@ class _SearchAreaBoxState extends State<SearchAreaBox> {
                             // _showModalBottomSheet(context);
                           }),
                     ),
-                    _searchTagButton(filterTags[4].name),
+                    // _searchTagButton(filterTags[4].name),
                   ],
                 )),
             decoration: BoxDecoration(
@@ -105,13 +96,13 @@ class _SearchAreaBoxState extends State<SearchAreaBox> {
     );
   }
 
-  Widget _searchTagButton(String tag) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 2),
-      child: FloatingActionButton.extended(
-          backgroundColor: Color(0xff0ffF97068),
-          label: Text(tag),
-          onPressed: () => _showModalBottomSheet(context)),
-    );
-  }
+  // Widget _searchTagButton(String tag) {
+  //   return Container(
+  //     margin: const EdgeInsets.symmetric(horizontal: 2),
+  //     child: FloatingActionButton.extended(
+  //         backgroundColor: Color(0xff0ffF97068),
+  //         label: Text(tag),
+  //         onPressed: () => _showModalBottomSheet(context)),
+  //   );
+  // }
 }
