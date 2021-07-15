@@ -38,15 +38,13 @@ dependencies:
   keyboard_visibility: ^0.5.6
   fluttertoast: ^8.0.7
   shared_preferences: ^2.0.6
-  image_picker: ^0.8.1+1
+  image_picker: any
   cached_network_image: ^3.0.0
   intl: ^0.17.0
   dio: ^4.0.0
   flutter_polyline_points: ^1.0.0
-  google_maps_flutter: ^2.0.2 
+  google_maps_flutter: ^0.5.25+3
   location: ^4.2.0
-  geolocator: ^7.2.0+1
-  geocoder: ^0.2.1
   flutter_localizations:
     sdk: flutter
   simple_moment: ^1.1.1

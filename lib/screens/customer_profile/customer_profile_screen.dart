@@ -110,7 +110,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         trailing: Icon(
                           FontAwesomeIcons.angleRight,
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, '/MyAddress');
+                        },
                       ),
                       ListTile(
                         leading: Icon(FontAwesomeIcons.userCircle),
