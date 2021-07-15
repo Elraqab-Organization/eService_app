@@ -6,13 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CategoryGrid extends StatelessWidget {
   final paddingTop;
   const CategoryGrid({
-<<<<<<< HEAD
-    this.paddingTop = 10.0,
-    Key? key,
-=======
     this.paddingTop = 70.0,
     Key key,
->>>>>>> parent of 809a89f (Merge branch 'ahmad_branch')
   }) : super(key: key);
 
   @override
