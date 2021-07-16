@@ -114,6 +114,10 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
           ],
         ),
       ),
+      floatingActionButton: Container(
+        width: MediaQuery.of(context).size.width,
+        color: Colors.deepOrangeAccent,
+      ),
     );
   }
 
