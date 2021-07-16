@@ -161,11 +161,11 @@ class _PostsCardState extends State<PostsCard> {
     ));
   }
 
-  Positioned postOption(
+  Widget postOption(
       double top, double left, String icon, Function _moreOptionsModalSheet) {
     return Positioned(
       top: top,
-      left: left,
+      right: -10,
       child: GestureDetector(
         onTap: _moreOptionsModalSheet,
         child: OptionButton(

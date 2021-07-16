@@ -47,8 +47,8 @@ class _PostScreenState extends State<PostScreen> {
         child: OptionButton(
           color: Colors.deepOrangeAccent,
           icon: Icon(Icons.add, color: Colors.white),
-          width: 50.0,
-          height: 50.0,
+          width: 55.0,
+          height: 55.0,
         ),
         onTap: () {
           Navigator.pushNamed(context, "/post_form");
