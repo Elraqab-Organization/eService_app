@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-// ignore: must_be_immutable
 class CustomReturnBar extends StatefulWidget {
-  double height = 150;
+  final double height = 120;
   @override
   _CustomReturnBarState createState() => _CustomReturnBarState();
 }
