@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:e_service_app/app/const.dart';
+import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/components/login_custom_button.dart';
 import 'package:e_service_app/components/text_component.dart';
 import 'package:e_service_app/providers/login/login_action.dart';
+import 'package:e_service_app/providers/login/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../components/custom_text_field.dart';
@@ -13,9 +17,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController nameController = TextEditingController();
+  List<TextEditingController> _controller =
+      List.generate(2, (i) => TextEditingController());
 
-  final TextEditingController passwordController = TextEditingController();
+  final labels = ['Username Or Email', 'Password'];
+  final validators = [false, false];
+  LoginViewmodel get _userSession => dependency();
 
   @override
   Widget build(BuildContext context) {
@@ -39,21 +46,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   )),
               Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: CustomerTextField(
-                        onChanged: (value) =>
-                            context.read(loginProvider).username = value,
-                        controller: nameController,
-                        labelText: 'Username Or Email'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 4),
-                    child: CustomerTextField(
-                        onChanged: (value) =>
-                            context.read(loginProvider).password = value,
-                        controller: passwordController,
-                        labelText: 'Password'),
+                  for (var i = 0; i < labels.length; i++)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: CustomerTextField(
+                          validate: validators[i],
+                          controller: _controller[i],
+                          labelText: labels[i]),
+                    ),
+                  SizedBox(
+                    height: 20.0,
                   ),
                   Consumer(builder: (context, watch, child) {
                     final data = watch(loginProvider).showErrorMessage;
@@ -115,11 +117,26 @@ class _LoginScreenState extends State<LoginScreen> {
                               Colors.white,
                               "https://pngimg.com/uploads/google/google_PNG19635.png",
                               false, onTap: () async {
-                            watch(loginProvider).loading = true;
-                            final user =
+                            for (var i = 0; i < _controller.length; i++) {
+                              if (_controller[i].text == '') {
+                                validators[i] = true;
+                              } else
+                                validators[i] = false;
+                            }
+                            setState(() {});
+                            Timer(Duration(milliseconds: 500), () async {
+                              if (validators.every((e) => e == false)) {
+                                context.read(loginProvider).username =
+                                    _controller[0].text;
+                                context.read(loginProvider).password =
+                                    _controller[1].text;
+                                watch(loginProvider).loading = true;
                                 await watch(loginProvider).authenticate();
-                            // if (user != null)
-                            Navigator.pushReplacementNamed(context, "/landing");
+                                if (_userSession.user != null)
+                                  Navigator.pushReplacementNamed(
+                                      context, "/landing");
+                              }
+                            });
                           }),
                           SizedBox(
                             height: 14,
@@ -162,12 +179,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.white,
                       fontSize: 16,
                     )),
-                Text("Sign up",
-                    textAlign: TextAlign.start,
-                    style: GoogleFonts.openSans(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
+                InkWell(
+                  onTap: () =>
+                      Navigator.of(context).pushReplacementNamed('/register'),
+                  child: Text("Sign up",
+                      textAlign: TextAlign.start,
+                      style: GoogleFonts.openSans(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold)),
+                ),
               ],
             ),
           ),

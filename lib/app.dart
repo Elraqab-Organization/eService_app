@@ -1,5 +1,6 @@
 import 'package:e_service_app/components/bottom_navigation_bar.dart';
 import 'package:e_service_app/components/inner_navigation_tabs.dart';
+import 'package:e_service_app/screens/customer_profile/customer_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -41,7 +42,7 @@ class _AppState extends State<App> {
         );
         break;
       case "3":
-        // _logout();
+        return ProfileScreen();
         break;
     }
   }

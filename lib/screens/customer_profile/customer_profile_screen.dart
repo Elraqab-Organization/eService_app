@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfileScreen extends StatefulWidget {
-  double height = 350;
+  final double height = 350;
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
@@ -86,6 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: Colors.white,
                         fontSize: 12,
                         fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.center,
                   ),
                 ),
                 Container(
@@ -95,9 +96,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        spreadRadius: 1,
-                        color: Colors.grey,
-                        blurRadius: 3,
+                        spreadRadius: 2,
+                        color: Colors.grey[300],
+                        offset: Offset(0, 5),
+                        blurRadius: 4,
                       )
                     ],
                     borderRadius: BorderRadius.circular(40),
@@ -134,9 +136,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        spreadRadius: 1,
-                        color: Colors.grey,
-                        blurRadius: 3,
+                        spreadRadius: 2,
+                        color: Colors.grey[300],
+                        offset: Offset(0, 5),
+                        blurRadius: 4,
                       )
                     ],
                     borderRadius: BorderRadius.circular(40),

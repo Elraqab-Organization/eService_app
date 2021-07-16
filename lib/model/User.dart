@@ -16,7 +16,7 @@ class User {
   String token;
   bool isServiceProvider;
   bool isCashPaymentActive;
-  List<bool> notificationSettings;
+  // List<bool> notificationSettings;
 
   User({
     this.id,
@@ -36,31 +36,30 @@ class User {
     this.token,
     this.isServiceProvider,
     this.isCashPaymentActive,
-    this.notificationSettings,
+    // this.notificationSettings,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      id: json['id'],
-      firstName: json['firstName'],
-      lastName: json['lastName'],
-      imgSrc: json['imgSrc'],
-      email: json['email'],
-      password: json['password'],
-      gender: json['gender'],
-      city: json['city'],
-      country: json['country'],
-      phoneNumber: json['phoneNumber'],
-      postalCode: json['postalCode'],
-      long: json['long'],
-      lat: json['lat'],
-      displayLanguage: json['displayLanguage'],
-      token: json['token'],
-      isServiceProvider: json['isServiceProvider'],
-      isCashPaymentActive: json['isCashPaymentActive'],
-      notificationSettings: json['notificationSettings'],
-    );
-  }
+  User.fromJson(Map<String, dynamic> json)
+      : this(
+          id: json['id'],
+          firstName: json['firstName'],
+          lastName: json['lastName'],
+          imgSrc: json['imgSrc'],
+          email: json['email'],
+          password: json['password'],
+          gender: json['gender'],
+          city: json['city'],
+          country: json['country'],
+          phoneNumber: json['phoneNumber'],
+          postalCode: json['postalCode'],
+          long: json['long'],
+          lat: json['lat'],
+          displayLanguage: json['displayLanguage'],
+          token: json['token'],
+          isServiceProvider: json['isServiceProvider'],
+          isCashPaymentActive: json['isCashPaymentActive'],
+          // notificationSettings: json['notificationSettings'],
+        );
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -79,6 +78,6 @@ class User {
         'token': token,
         'isServiceProvider': isServiceProvider,
         'isCashPaymentActive': isCashPaymentActive,
-        'notificationSettings': notificationSettings,
+        // 'notificationSettings': notificationSettings,
       };
 }

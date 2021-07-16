@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 
 class LoginViewmodel extends ChangeNotifier {
   AuthService get _service => dependency();
+  LoginViewmodel get _userSession => dependency();
 
   User _user = User();
   bool _showErrorMassage = false;
@@ -44,18 +45,16 @@ class LoginViewmodel extends ChangeNotifier {
 
   Future authenticate() async {
     loading = true;
-    final user =
+
+    _userSession.user =
         await _service.authenticate(login: username, password: password);
 
-    if (user == null) {
-      _user = null;
+    if (_userSession.user == null) {
       showErrorMessage = true;
       loading = false;
     } else {
-      _user = user;
       showErrorMessage = false;
       loading = false;
     }
-    return _user;
   }
 }
