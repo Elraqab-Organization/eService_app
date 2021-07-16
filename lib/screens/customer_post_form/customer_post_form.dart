@@ -1,8 +1,4 @@
-// import 'package:e_service_app/components/custom_btn.dart';
-// import 'dart:html';
-
 import 'dart:convert';
-
 import 'package:e_service_app/components/custom_return_bar.dart';
 import 'package:e_service_app/model/post.dart';
 import 'package:flutter/material.dart';
