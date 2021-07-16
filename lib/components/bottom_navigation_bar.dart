@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:delayed_display/delayed_display.dart';
 import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/cupertino.dart';

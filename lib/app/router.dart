@@ -1,3 +1,4 @@
+import 'package:e_service_app/screens/customer_post_form/customer_post_form.dart';
 import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
 import 'package:e_service_app/screens/post_screen/user_posts.dart';
@@ -46,6 +47,9 @@ class RouteManager {
         break;
       case "/posts":
         builder = (BuildContext context) => PostScreen();
+        break;
+      case "/post_form":
+        builder = (BuildContext context) => CustomerPostForm();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

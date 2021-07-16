@@ -20,7 +20,7 @@ class _PostScreenState extends State<PostScreen> {
             height: 25,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 18.0, right: 18.0),
+            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -31,6 +31,8 @@ class _PostScreenState extends State<PostScreen> {
                 OptionButton(
                   color: Colors.black,
                   icon: Icon(Icons.more_vert, color: Colors.white),
+                  width: 50.0,
+                  height: 50.0,
                 ),
               ],
             ),
@@ -45,8 +47,12 @@ class _PostScreenState extends State<PostScreen> {
         child: OptionButton(
           color: Colors.deepOrangeAccent,
           icon: Icon(Icons.add, color: Colors.white),
+          width: 55.0,
+          height: 55.0,
         ),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, "/post_form");
+        },
       ),
     ));
   }
