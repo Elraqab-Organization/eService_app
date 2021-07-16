@@ -111,6 +111,39 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_blurhash:
+    dependency: transitive
+    description:
+      name: flutter_blurhash
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.0"
+  flutter_cache_manager:
+    dependency: transitive
+    description:
+      name: flutter_cache_manager
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.2"
+  flutter_localizations:
+    dependency: "direct main"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  flutter_plugin_android_lifecycle:
+    dependency: transitive
+    description:
+      name: flutter_plugin_android_lifecycle
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.11"
+  flutter_polyline_points:
+    dependency: "direct main"
+    description:
+      name: flutter_polyline_points
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   flutter_riverpod:
     dependency: "direct main"
     description:
@@ -165,6 +198,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  google_maps_flutter:
+    dependency: "direct main"
+    description:
+      name: google_maps_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.26+4"
   http:
     dependency: transitive
     description:
@@ -179,17 +219,24 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  image_picker:
+    dependency: "direct main"
+    description:
+      name: image_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.5+3"
   intl:
     dependency: transitive
     description:
-      name: intl
+      name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.17.0"
-  json_annotation:
-    dependency: transitive
+    version: "4.0.1"
+  keyboard_visibility:
+    dependency: "direct main"
     description:
-      name: json_annotation
+      name: keyboard_visibility
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
@@ -332,6 +379,34 @@ packages:
       name: simple_moment
       url: "https://pub.dartlang.org"
     source: hosted
+    version: "2.0.0"
+  shared_preferences_platform_interface:
+    dependency: transitive
+    description:
+      name: shared_preferences_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+  shared_preferences_web:
+    dependency: transitive
+    description:
+      name: shared_preferences_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+  shared_preferences_windows:
+    dependency: transitive
+    description:
+      name: shared_preferences_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+  simple_moment:
+    dependency: "direct main"
+    description:
+      name: simple_moment
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "1.1.1"
   sky_engine:
     dependency: transitive
@@ -424,4 +499,4 @@ packages:
     version: "5.1.1"
 sdks:
   dart: ">=2.12.0 <3.0.0"
-  flutter: ">=1.24.0-7.0"
+  flutter: ">=1.24.0-10.2.pre"

@@ -61,8 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ? Text(
                             'Username or password is incorrect',
                             textAlign: TextAlign.start,
-                            style:
-                                TextStyle(fontSize: 18, color: Colors.white),
+                            style: TextStyle(fontSize: 18, color: Colors.white),
                           )
                         : SizedBox();
                   }),
@@ -89,9 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           checkColor: Colors.black,
                           value: context.read(loginProvider).isChecked,
-                          onChanged: (bool value) => context
-                              .read(loginProvider)
-                              .setCheckedBox(value),
+                          onChanged: (bool value) =>
+                              context.read(loginProvider).setCheckedBox(value),
                         ),
                       ),
                       TextComponent(
@@ -121,8 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             final user =
                                 await watch(loginProvider).authenticate();
                             // if (user != null)
-                            Navigator.pushReplacementNamed(
-                                context, "/landing");
+                            Navigator.pushReplacementNamed(context, "/landing");
                           }),
                           SizedBox(
                             height: 14,

@@ -1,11 +1,9 @@
 import 'package:e_service_app/components/custom_btn.dart';
-import 'package:e_service_app/components/search_view_screen/modal_search_view.dart';
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:e_service_app/providers/post_provider/post_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:simple_moment/simple_moment.dart';
-import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 
 class PostsCard extends StatefulWidget {
   @override
