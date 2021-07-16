@@ -20,9 +20,8 @@ class _AppViewState extends State<AppView> {
           textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black)),
         ),
         onGenerateRoute: RouteManager.generateRoute,
-        initialRoute: '/posts',
-        // initialRoute: '/register',
-        // initialRoute: kRestaurantHomePage,
+        // initialRoute: '/posts',
+        initialRoute: '/',
       ),
     );
   }
