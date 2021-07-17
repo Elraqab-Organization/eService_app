@@ -9,7 +9,7 @@ class LoginViewmodel extends ChangeNotifier {
 
   User _user = User();
   bool _showErrorMassage = false;
-  bool isChecked = false;
+  bool _isChecked = false;
   bool isLoading = false;
   bool isLogged;
   String pass;
@@ -38,10 +38,16 @@ class LoginViewmodel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setCheckedBox(bool isCheckedValue) {
-    isChecked = isCheckedValue;
+  get isChecked => _isChecked;
+  set isChecked(value) {
+    _isChecked = value;
     notifyListeners();
   }
+
+  // void setCheckedBox(isCheckedValue) => {
+  //       isChecked = isCheckedValue,
+  //       notifyListeners(),
+  //     };
 
   Future authenticate() async {
     loading = true;

@@ -1,3 +1,5 @@
+import 'package:e_service_app/model/address.dart';
+
 class User {
   String id;
   String firstName;
@@ -14,6 +16,7 @@ class User {
   String jobName;
   String lat;
   String displayLanguage;
+  List<Address> address;
   String token;
   int diagnosingFees;
   bool isServiceProvider;
@@ -34,6 +37,7 @@ class User {
     this.postalCode,
     this.long,
     this.lat,
+    this.address,
     this.diagnosingFees,
     this.displayLanguage,
     this.token,
@@ -45,33 +49,39 @@ class User {
 
   User.fromJson(Map<String, dynamic> json)
       : this(
-          id: json['id'] == null ? "" : json['id'],
-          firstName: json['firstName'] == null ? "" : json['firstName'],
-          lastName: json['lastName'] == null ? "" : json['lastName'],
-          imgSrc: json['imgSrc'] == null ? "" : json['imgSrc'],
-          email: json['email'] == null ? "" : json['email'],
-          diagnosingFees:
-              json['diagnosingFees'] == null ? 0 : json['diagnosingFees'],
-          password: json['password'] == null ? "" : json['password'],
-          gender: json['gender'] == null ? "" : json['gender'],
-          city: json['city'] == null ? "" : json['city'],
-          country: json['country'] == null ? "" : json['country'],
-          phoneNumber: json['phoneNumber'] == null ? "" : json['phoneNumber'],
-          postalCode: json['postalCode'] == null ? "" : json['postalCode'],
-          long: json['long'] == null ? "" : json['long'],
-          lat: json['lat'] == null ? "" : json['lat'],
-          jobName: json['jobName'] == null ? "" : json['jobName'],
-          displayLanguage:
-              json['displayLanguage'] == null ? "" : json['displayLanguage'],
-          token: json['token'] == null ? "" : json['token'],
-          isServiceProvider: json['isServiceProvider'] == null
-              ? false
-              : json['isServiceProvider'],
-          isCashPaymentActive: json['isCashPaymentActive'] == null
-              ? false
-              : json['isCashPaymentActive'],
-          // notificationSettings: json['notificationSettings'],
-        );
+            id: json['id'] == null ? "" : json['id'],
+            firstName: json['firstName'] == null ? "" : json['firstName'],
+            lastName: json['lastName'] == null ? "" : json['lastName'],
+            imgSrc: json['imgSrc'] == null ? "" : json['imgSrc'],
+            email: json['email'] == null ? "" : json['email'],
+            diagnosingFees:
+                json['diagnosingFees'] == null ? 0 : json['diagnosingFees'],
+            password: json['password'] == null ? "" : json['password'],
+            gender: json['gender'] == null ? "" : json['gender'],
+            city: json['city'] == null ? "" : json['city'],
+            country: json['country'] == null ? "" : json['country'],
+            phoneNumber: json['phoneNumber'] == null ? "" : json['phoneNumber'],
+            postalCode: json['postalCode'] == null ? "" : json['postalCode'],
+            long: json['long'] == null ? "" : json['long'],
+            lat: json['lat'] == null ? "" : json['lat'],
+            jobName: json['jobName'] == null ? "" : json['jobName'],
+            displayLanguage:
+                json['displayLanguage'] == null ? "" : json['displayLanguage'],
+            token: json['token'] == null ? "" : json['token'],
+            isServiceProvider: json['isServiceProvider'] == null
+                ? false
+                : json['isServiceProvider'],
+            isCashPaymentActive: json['isCashPaymentActive'] == null
+                ? false
+                : json['isCashPaymentActive'],
+            address: json['address'] == null
+                ? null
+                // : List<Address>.from(json["address"].map((x) => x)),
+                : (json['address'] as List)
+                    .map((e) => Address.fromJson(e))
+                    .toList()
+            // notificationSettings: json['notificationSettings'],
+            );
 
   Map<String, dynamic> toJson() => {
         'id': id,

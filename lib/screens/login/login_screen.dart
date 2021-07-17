@@ -90,8 +90,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           checkColor: Colors.black,
                           value: context.read(loginProvider).isChecked,
-                          onChanged: (bool value) =>
-                              context.read(loginProvider).setCheckedBox(value),
+                          onChanged: (bool value) => setState(() =>
+                              {context.read(loginProvider).isChecked = value}),
                         ),
                       ),
                       TextComponent(

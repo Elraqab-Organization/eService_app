@@ -3,6 +3,7 @@ import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
 import 'package:e_service_app/screens/post_screen/user_posts.dart';
 import 'package:e_service_app/screens/register/register_screen.dart';
+import 'package:e_service_app/screens/request_form_screen/request_form.dart';
 import 'package:e_service_app/screens/search_view_screen/search_view_screen.dart';
 import 'package:e_service_app/screens/service_branches/service_branches.dart';
 import 'package:e_service_app/screens/service_provider_profile/service_provider_profile.dart';
@@ -52,6 +53,9 @@ class RouteManager {
         break;
       case "/post_form":
         builder = (BuildContext context) => CustomerPostForm();
+        break;
+      case "/request_form":
+        builder = (BuildContext context) => RequestForm();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

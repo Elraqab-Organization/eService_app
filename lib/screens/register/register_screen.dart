@@ -37,7 +37,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       backgroundColor: Color(0xffF97068),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20.0),
           child: RegistrationBody(
               labels: labels,
               onchanged: onchanged,
