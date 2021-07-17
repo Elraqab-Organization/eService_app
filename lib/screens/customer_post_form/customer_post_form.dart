@@ -33,7 +33,8 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
         child: Container(
           height: MediaQuery.of(context).size.height,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CustomReturnBar(),
               Form(
