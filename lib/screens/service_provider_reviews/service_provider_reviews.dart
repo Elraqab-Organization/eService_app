@@ -13,7 +13,7 @@ class ServiceProviderReviews extends StatelessWidget {
           Column(
             children: [
               SizedBox(
-                height: 120,
+                height: 80,
               ),
               Expanded(
                 flex: 2,

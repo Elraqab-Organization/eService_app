@@ -20,10 +20,10 @@ class ShowModalBottom extends StatelessWidget {
           color: Color(0xff212738),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              spreadRadius: 2,
+              color: Colors.grey[300],
+              offset: Offset(0, 5),
+              blurRadius: 4,
             ),
           ],
           borderRadius: BorderRadius.only(
@@ -38,7 +38,7 @@ class ShowModalBottom extends StatelessWidget {
       children: [
         Icon(
           Icons.notification_important_outlined,
-          size: 60,
+          size: 14.0,
           color: Colors.white,
         ),
         SizedBox(

@@ -70,7 +70,7 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
                     index: i,
                     icon: Icon(
                       icons[i],
-                      size: 20,
+                      size: 20.0,
                       color: Colors.white,
                     ),
                     title: type[i],

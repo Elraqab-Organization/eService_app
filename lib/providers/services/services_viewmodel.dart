@@ -1,5 +1,8 @@
+import 'dart:collection';
+
 import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/model/user.dart';
+import 'package:e_service_app/providers/services/services_action.dart';
 import 'package:e_service_app/service/service_providers/service_providers.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -8,7 +11,7 @@ class ServicesViewmodel extends ChangeNotifier {
 
   List<User> serviceProviders;
 
-  Map services = {
+  final services = {
     'Home Improvment': [],
     'Home Maintenance': [],
     'Cleaning & Disinfection': [],
@@ -21,13 +24,12 @@ class ServicesViewmodel extends ChangeNotifier {
     'Legal': [],
     'Design & Web': [],
   };
-
   Future<Map> getServices() async {
     serviceProviders = await _service.getServices();
 
-    serviceProviders.map(
-      (e) => services[e.jobName].put(e),
-    );
+    serviceProviders.forEach((e) {
+      services["${e.jobName}"].add(e);
+    });
 
     return services;
   }

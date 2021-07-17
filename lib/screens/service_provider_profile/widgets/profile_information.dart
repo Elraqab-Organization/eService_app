@@ -1,13 +1,12 @@
 import 'package:e_service_app/components/text_component.dart';
+import 'package:e_service_app/model/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfileInformation extends StatelessWidget {
-  const ProfileInformation({
-    Key key,
-  }) : super(key: key);
+  final User data;
+  const ProfileInformation({this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class ProfileInformation extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 170.0,
+            height: 120.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,10 +32,8 @@ class ProfileInformation extends StatelessWidget {
                 height: 50.0,
                 width: 50.0,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                child:
-                    SvgPicture.asset('lib/assets/icon/avatar-svgrepo-com.svg'),
+                    borderRadius: BorderRadius.circular(25.0),
+                    image: DecorationImage(image: NetworkImage(data.imgSrc))),
               ),
               Row(
                 children: [
@@ -51,6 +48,7 @@ class ProfileInformation extends StatelessWidget {
                       ),
                       child: Icon(
                         FontAwesomeIcons.solidHeart,
+                        size: 20.0,
                         color: Colors.white,
                       ),
                     ),
@@ -69,6 +67,7 @@ class ProfileInformation extends StatelessWidget {
                       ),
                       child: Icon(
                         FontAwesomeIcons.server,
+                        size: 20.0,
                         color: Colors.white,
                       ),
                     ),
@@ -81,7 +80,7 @@ class ProfileInformation extends StatelessWidget {
             height: 20,
           ),
           TextComponent(
-            title: "Ahmad Mousa",
+            title: data.firstName + ' ' + data.lastName,
             fontSize: 16,
             textColor: Colors.white,
             weight: FontWeight.w800,
@@ -92,9 +91,9 @@ class ProfileInformation extends StatelessWidget {
           ),
           buildRow(FontAwesomeIcons.solidStar, "4.5 / 549 reviews"),
           SizedBox(height: 5.0),
-          buildRow(FontAwesomeIcons.moneyBill, "20.0\$"),
+          buildRow(FontAwesomeIcons.moneyBill, "${data.diagnosingFees}\$"),
           SizedBox(height: 5.0),
-          buildRow(FontAwesomeIcons.locationArrow, "Johor Bahru"),
+          buildRow(FontAwesomeIcons.locationArrow, data.city),
           SizedBox(height: 5.0),
           buildRow(FontAwesomeIcons.moneyBillAlt, "Cash"),
           SizedBox(height: 20.0),

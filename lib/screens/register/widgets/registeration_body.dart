@@ -22,7 +22,7 @@ class RegistrationBody extends StatelessWidget {
   final Function onchanged;
   final Function onclick;
   final Function onselected;
-  String selected;
+  final String selected;
   @override
   Widget build(BuildContext context) {
     return Column(

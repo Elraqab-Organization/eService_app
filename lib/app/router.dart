@@ -22,13 +22,15 @@ class RouteManager {
         builder = (BuildContext context) => App(currentIndex: "0");
         break;
       case "/service_providers":
-        builder = (BuildContext context) => ServiceProviders();
+        builder = (BuildContext context) =>
+            ServiceProviders(data: settings.arguments);
         break;
       case "/service_branches":
         builder = (BuildContext context) => ServiceBranches();
         break;
       case "/service_provider_profile":
-        builder = (BuildContext context) => ServiceProviderProfile();
+        builder = (BuildContext context) =>
+            ServiceProviderProfile(data: settings.arguments);
         break;
       case "/service_provider_reviews":
         builder = (BuildContext context) => ServiceProviderReviews();

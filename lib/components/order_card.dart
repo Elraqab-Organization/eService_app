@@ -80,7 +80,7 @@ class _OrdercardState extends State<Ordercard> {
                 angle: containerHeight ? math.pi / 1 : math.pi / 180,
                 child: Icon(
                   Icons.keyboard_arrow_down_outlined,
-                  size: 16,
+                  size: 14.0,
                 ),
               ),
             )

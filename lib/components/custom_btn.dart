@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class OptionButton extends StatelessWidget {
-  Icon icon;
-  Color color;
-  double width;
-  double height;
+  final Icon icon;
+  final Color color;
+  final double width;
+  final double height;
 
   OptionButton({this.color, this.icon, this.width, this.height});
   @override

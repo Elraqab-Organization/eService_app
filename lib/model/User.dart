@@ -15,6 +15,7 @@ class User {
   String lat;
   String displayLanguage;
   String token;
+  int diagnosingFees;
   bool isServiceProvider;
   bool isCashPaymentActive;
   // List<bool> notificationSettings;
@@ -33,6 +34,7 @@ class User {
     this.postalCode,
     this.long,
     this.lat,
+    this.diagnosingFees,
     this.displayLanguage,
     this.token,
     this.isServiceProvider,
@@ -43,24 +45,31 @@ class User {
 
   User.fromJson(Map<String, dynamic> json)
       : this(
-          id: json['id'],
-          firstName: json['firstName'],
-          lastName: json['lastName'],
-          imgSrc: json['imgSrc'],
-          email: json['email'],
-          password: json['password'],
-          gender: json['gender'],
-          city: json['city'],
-          country: json['country'],
-          phoneNumber: json['phoneNumber'],
-          postalCode: json['postalCode'],
-          long: json['long'],
-          lat: json['lat'],
-          jobName: json['jobName'],
-          displayLanguage: json['displayLanguage'],
-          token: json['token'],
-          isServiceProvider: json['isServiceProvider'],
-          isCashPaymentActive: json['isCashPaymentActive'],
+          id: json['id'] == null ? "" : json['id'],
+          firstName: json['firstName'] == null ? "" : json['firstName'],
+          lastName: json['lastName'] == null ? "" : json['lastName'],
+          imgSrc: json['imgSrc'] == null ? "" : json['imgSrc'],
+          email: json['email'] == null ? "" : json['email'],
+          diagnosingFees:
+              json['diagnosingFees'] == null ? 0 : json['diagnosingFees'],
+          password: json['password'] == null ? "" : json['password'],
+          gender: json['gender'] == null ? "" : json['gender'],
+          city: json['city'] == null ? "" : json['city'],
+          country: json['country'] == null ? "" : json['country'],
+          phoneNumber: json['phoneNumber'] == null ? "" : json['phoneNumber'],
+          postalCode: json['postalCode'] == null ? "" : json['postalCode'],
+          long: json['long'] == null ? "" : json['long'],
+          lat: json['lat'] == null ? "" : json['lat'],
+          jobName: json['jobName'] == null ? "" : json['jobName'],
+          displayLanguage:
+              json['displayLanguage'] == null ? "" : json['displayLanguage'],
+          token: json['token'] == null ? "" : json['token'],
+          isServiceProvider: json['isServiceProvider'] == null
+              ? false
+              : json['isServiceProvider'],
+          isCashPaymentActive: json['isCashPaymentActive'] == null
+              ? false
+              : json['isCashPaymentActive'],
           // notificationSettings: json['notificationSettings'],
         );
 
@@ -78,6 +87,7 @@ class User {
         'lag': long,
         'lat': lat,
         'jobName': jobName,
+        'diagnosingFees': diagnosingFees,
         'displayLanguage': displayLanguage,
         'token': token,
         'isServiceProvider': isServiceProvider,
