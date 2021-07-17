@@ -23,7 +23,7 @@ class _AppViewState extends State<AppView> {
           textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black)),
         ),
         onGenerateRoute: RouteManager.generateRoute,
-        initialRoute: '/changeLanguage',
+        initialRoute: '/ProfileNotification',
         // initialRoute: '/register',
         // initialRoute: kRestaurantHomePage,
         supportedLocales: L10n.all,
