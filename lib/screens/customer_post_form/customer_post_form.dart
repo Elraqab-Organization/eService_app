@@ -14,109 +14,137 @@ class CustomerPostForm extends StatefulWidget {
 }
 
 class _CustomerPostFormState extends State<CustomerPostForm> {
-  //
-  String description;
-  String cancelationFee;
-  String location;
-
+  String paymentMethod = "cash";
+  String location = "Johor";
   List tags = [];
   final GlobalKey<TagsState> _globalKey = GlobalKey<TagsState>();
 
   TextEditingController _tagsController = new TextEditingController();
+  TextEditingController description = new TextEditingController();
+  TextEditingController cancelationFee = new TextEditingController();
+  TextEditingController imgSrc = new TextEditingController();
+  TextEditingController customerId = new TextEditingController();
 
   //
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomReturnBar(),
-            SizedBox(
-              height: 25,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 18.0),
-              child: Text(
-                "Make a post now",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                textAlign: TextAlign.start,
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Form(
-                key: _globalKey,
-                child: Column(
-                  children: [_buildDescription()],
-                )),
-            if (tags.length != 4)
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Container(
-                      width: 200,
-                      child: TextFormField(
-                        controller: _tagsController,
-                        style: TextStyle(fontSize: 16, color: Colors.black),
-                        decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(10),
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CustomReturnBar(),
+              Form(
+                  key: _globalKey,
+                  child: Column(
+                    children: [
+                      _buildDescription(),
+                      _buildpaymentMethod(),
+                      _buildCancelationFee()
+                    ],
+                  )),
+              if (tags.length != 4)
+                Padding(
+                  padding: const EdgeInsets.only(left: 16, right: 10, top: 30),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 200,
+                        child: TextFormField(
+                          controller: _tagsController,
+                          style: TextStyle(fontSize: 16, color: Colors.black),
+                          decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: new BorderSide(color: Colors.white),
+                                borderRadius: new BorderRadius.circular(10),
+                              ),
+                              hintText: "Enter tags",
+                              filled: true,
+                              fillColor: Colors.white,
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderSide: BorderSide(color: Colors.white))),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: InkWell(
+                          onTap: () {
+                            if (!tags.contains(_tagsController.text))
+                              setState(() {
+                                tags.add(_tagsController.text);
+                              });
+                          },
+                          child: OptionButton(
+                            color: Colors.deepOrangeAccent,
+                            icon: Icon(
+                              Icons.add,
+                              color: Colors.white,
                             ),
-                            hintText: "Enter tags",
-                            filled: true,
-                            fillColor: Colors.white,
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                borderSide: BorderSide(color: Colors.white))),
-                      ),
-                    ),
+                            width: 40,
+                            height: 40,
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                  InkWell(
-                    onTap: () {
-                      if (!tags.contains(_tagsController.text))
-                        setState(() {
-                          tags.add(_tagsController.text);
-                        });
-                    },
-                    child: OptionButton(
-                      color: Colors.deepOrangeAccent,
-                      icon: Icon(
-                        Icons.add,
-                        color: Colors.white,
+                ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: Container(
+                  height: 50,
+                  child: tags.length != 0
+                      ? ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: tags.length,
+                          itemBuilder: (context, index) {
+                            return tagChip(
+                                tagTitle: tags[index],
+                                onTap: () => _removeTag(tags[index]));
+                          })
+                      : Text(""),
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 100,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {},
+                        child: OptionButton(
+                          color: Colors.black,
+                          icon: Icon(
+                            Icons.close,
+                            color: Colors.white,
+                          ),
+                          width: 45,
+                          height: 45,
+                        ),
                       ),
-                      width: 40,
-                      height: 40,
-                    ),
-                  )
-                ],
+                      postBtn()
+                    ],
+                  ),
+                ),
+                decoration: BoxDecoration(
+                    color: Color(0xffF97068),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20))),
               ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: Container(
-                height: 50,
-                child: tags.length != 0
-                    ? ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: tags.length,
-                        itemBuilder: (context, index) {
-                          return tagChip(
-                              tagTitle: tags[index],
-                              onTap: () => _removeTag(tags[index]));
-                        })
-                    : Text("No Tags found"),
-              ),
-            )
-          ],
+            ],
+          ),
+          decoration: BoxDecoration(
+              color: Color(0xffEDF2EF),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30))),
         ),
-      ),
-      floatingActionButton: Container(
-        width: MediaQuery.of(context).size.width,
-        color: Colors.deepOrangeAccent,
       ),
     );
   }
@@ -133,16 +161,14 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: TextFormField(
+        controller: description,
         validator: (String value) {
           if (value.isEmpty) {
             return 'Description is required';
           }
           return null;
         },
-        onSaved: (String value) {
-          value = description;
-        },
-        maxLines: 9,
+        maxLines: 6,
         autofocus: false,
         style: TextStyle(fontSize: 16, color: Colors.black),
         decoration: InputDecoration(
@@ -160,19 +186,92 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
     );
   }
 
+  Widget _buildpaymentMethod() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 14),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            width: 150,
+            child: DropdownButtonFormField<String>(
+              decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: new BorderSide(color: Colors.white),
+                    borderRadius: new BorderRadius.circular(10),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(color: Colors.white))),
+              value: paymentMethod,
+              icon: const Icon(Icons.arrow_drop_down_rounded),
+              iconSize: 24,
+              elevation: 5,
+              style: const TextStyle(color: Colors.black),
+              onChanged: (String newValue) {
+                setState(() {
+                  paymentMethod = newValue;
+                });
+              },
+              items: <String>['cash', 'online payment']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+          ),
+          Container(
+            width: 150,
+            child: DropdownButtonFormField<String>(
+              decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: new BorderSide(color: Colors.white),
+                    borderRadius: new BorderRadius.circular(10),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(color: Colors.white))),
+              value: location,
+              icon: const Icon(Icons.arrow_drop_down_rounded),
+              iconSize: 24,
+              elevation: 16,
+              style: const TextStyle(color: Colors.black),
+              onChanged: (String newValue) {
+                setState(() {
+                  location = newValue;
+                });
+              },
+              items: <String>['Johor', 'online payment']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildCancelationFee() {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.only(left: 16, bottom: 10, right: 16),
       child: TextFormField(
+        controller: cancelationFee,
         validator: (String value) {
           if (value.isEmpty) {
             return 'cancelation fee is required';
           }
           return null;
         },
-        onSaved: (String value) {
-          value = cancelationFee;
-        },
         autofocus: false,
         style: TextStyle(fontSize: 16, color: Colors.black),
         decoration: InputDecoration(
@@ -180,37 +279,7 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
               borderSide: new BorderSide(color: Colors.white),
               borderRadius: new BorderRadius.circular(10),
             ),
-            hintText: "cancelation fee",
-            filled: true,
-            fillColor: Colors.white,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                borderSide: BorderSide(color: Colors.white))),
-      ),
-    );
-  }
-
-  Widget _buildLocation() {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: TextFormField(
-        validator: (String value) {
-          if (value.isEmpty) {
-            return 'location is required';
-          }
-          return null;
-        },
-        onSaved: (String value) {
-          value = location;
-        },
-        autofocus: false,
-        style: TextStyle(fontSize: 16, color: Colors.black),
-        decoration: InputDecoration(
-            focusedBorder: OutlineInputBorder(
-              borderSide: new BorderSide(color: Colors.white),
-              borderRadius: new BorderRadius.circular(10),
-            ),
-            hintText: "location",
+            hintText: "write cancelation fee",
             filled: true,
             fillColor: Colors.white,
             enabledBorder: OutlineInputBorder(
@@ -264,23 +333,25 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
         ));
   }
 
-  // Future<Post> createPost() async {
-  //   //
-  //   final String baseUrl = "http://localhost:5000/posts/";
-  //   final response = await http.post(
-  //     Uri.parse('$baseUrl'),
-  //     body: json.encode({
-  //       "description": "hello  o am knjsfsdf",
-  //       "paymentMethod": "online",
-  //       "cancelationFee": "120",
-  //       "location": "good",
-  //       "tags": "gggg",
-  //       "imgSrc": "imgSrc",
-  //       "customerId": "60dae3bcdfbb690d0036d4d9"
-  //     }),
-  //     headers: {"Content-Type": "application/json"},
-  //   );
-
-  //   print(response);
-  // }
+  Widget postBtn() {
+    return InkWell(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Container(
+          width: 110,
+          height: 50,
+          child: Center(
+              child: Text(
+            "Post",
+            style: TextStyle(color: Colors.white),
+          )),
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(40),
+          ),
+        ),
+      ),
+    );
+  }
 }

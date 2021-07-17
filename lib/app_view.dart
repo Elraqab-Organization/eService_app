@@ -21,7 +21,7 @@ class _AppViewState extends State<AppView> {
         ),
         onGenerateRoute: RouteManager.generateRoute,
         // initialRoute: '/posts',
-        initialRoute: '/',
+        initialRoute: '/post_form',
       ),
     );
   }
