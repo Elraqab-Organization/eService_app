@@ -12,6 +12,7 @@ class RegisterationViewmodel extends ChangeNotifier {
   String _lastName;
   String _email;
   String _password;
+  String _selected;
   String _repeatedPassword;
   bool _loading = false;
   bool _error = false;
@@ -19,6 +20,9 @@ class RegisterationViewmodel extends ChangeNotifier {
 
   get user => _user;
   set user(value) => _user = value;
+
+  get selected => _selected;
+  set selected(value) => _selected = value;
 
   get error => _error;
   set error(value) {
@@ -58,7 +62,8 @@ class RegisterationViewmodel extends ChangeNotifier {
       "lastName": lastName,
       "password": password,
       "email": email,
-      "isServiceProvider": isServiceProvider
+      "isServiceProvider": isServiceProvider,
+      "jobName": selected,
     };
 
     _userSession.user = await _service.registerUser(data: data);

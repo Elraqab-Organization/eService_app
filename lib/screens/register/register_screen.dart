@@ -25,9 +25,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   ];
   List<TextEditingController> _controller =
       List.generate(5, (i) => TextEditingController());
+  String selected;
 
   onchanged(value) => setState(() => checkBoxController = value);
   onclick() => setState(() => {});
+  onselected(value) => setState(() => {selected = value});
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +38,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          height: MediaQuery.of(context).size.height,
           child: RegistrationBody(
               labels: labels,
               onchanged: onchanged,
               onclick: onclick,
               controller: _controller,
               validators: validators,
+              onselected: onselected,
+              selected: selected,
               checkBoxController: checkBoxController),
         ),
       ),

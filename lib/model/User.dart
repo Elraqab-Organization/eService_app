@@ -11,6 +11,7 @@ class User {
   String phoneNumber;
   String postalCode;
   String long;
+  String jobName;
   String lat;
   String displayLanguage;
   String token;
@@ -36,6 +37,7 @@ class User {
     this.token,
     this.isServiceProvider,
     this.isCashPaymentActive,
+    this.jobName,
     // this.notificationSettings,
   });
 
@@ -54,6 +56,7 @@ class User {
           postalCode: json['postalCode'],
           long: json['long'],
           lat: json['lat'],
+          jobName: json['jobName'],
           displayLanguage: json['displayLanguage'],
           token: json['token'],
           isServiceProvider: json['isServiceProvider'],
@@ -74,6 +77,7 @@ class User {
         'postalCode': postalCode,
         'lag': long,
         'lat': lat,
+        'jobName': jobName,
         'displayLanguage': displayLanguage,
         'token': token,
         'isServiceProvider': isServiceProvider,

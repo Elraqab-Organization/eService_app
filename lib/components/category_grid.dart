@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,13 +7,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CategoryGrid extends StatelessWidget {
   final paddingTop;
+  final data;
   const CategoryGrid({
     this.paddingTop = 10.0,
+    this.data,
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print(data);
     return Expanded(
       child: Container(
         padding: EdgeInsets.only(left: 16.0, right: 16.0),
