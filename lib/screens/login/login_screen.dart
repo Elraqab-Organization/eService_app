@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:e_service_app/app/const.dart';
 import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/components/login_custom_button.dart';
@@ -47,8 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
               Column(
                 children: [
                   for (var i = 0; i < labels.length; i++)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 20.0),
                       child: CustomerTextField(
                           validate: validators[i],
                           controller: _controller[i],

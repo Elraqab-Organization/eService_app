@@ -32,8 +32,8 @@ class RegisterationForm extends StatelessWidget {
     return Column(
       children: [
         for (var i = 0; i < labels.length; i++)
-          Padding(
-            padding: const EdgeInsets.only(left: 5),
+          Container(
+            margin: EdgeInsets.only(bottom: 10.0),
             child: CustomerTextField(
               controller: controller[i],
               labelText: labels[i],
@@ -78,8 +78,8 @@ class RegisterationForm extends StatelessWidget {
             ? Consumer(builder: (context, watch, child) {
                 final data = watch(serviceProvider).services;
                 print(data.keys);
-                // return DropDownList(
-                //     selected: selected, data: data, onselected: onselected);
+                return DropDownList(
+                    selected: selected, data: data.keys.toList(), onselected: onselected);
               })
             : SizedBox(),
         SizedBox(
