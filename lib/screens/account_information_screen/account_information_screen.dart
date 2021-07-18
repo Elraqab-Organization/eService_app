@@ -1,7 +1,10 @@
+import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/components/custom_return_bar.dart';
+import 'package:e_service_app/providers/login/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class AccountInformationScreen extends StatelessWidget {
+  LoginViewmodel get _userSession => dependency();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -62,7 +65,8 @@ class AccountInformationScreen extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
-                    child: TextField(
+                    child: TextFormField(
+                        initialValue: _userSession.user.firstName,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
@@ -98,7 +102,8 @@ class AccountInformationScreen extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
-                    child: TextField(
+                    child: TextFormField(
+                        initialValue: _userSession.user.lastName,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
@@ -134,7 +139,9 @@ class AccountInformationScreen extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
-                    child: TextField(
+                    child: TextFormField(
+                        initialValue: _userSession.user.firstName +
+                            _userSession.user.lastName,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
@@ -170,7 +177,8 @@ class AccountInformationScreen extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
-                    child: TextField(
+                    child: TextFormField(
+                        initialValue: _userSession.user.gender,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
@@ -206,7 +214,8 @@ class AccountInformationScreen extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
-                    child: TextField(
+                    child: TextFormField(
+                        initialValue: _userSession.user.phoneNumber,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
@@ -242,7 +251,8 @@ class AccountInformationScreen extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
-                    child: TextField(
+                    child: TextFormField(
+                        initialValue: _userSession.user.email,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(

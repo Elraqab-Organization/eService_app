@@ -9,13 +9,16 @@ class CustomerOrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 20.0,
-          ),
-          Ordercard()
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20.0,
+            ),
+            Ordercard()
+          ],
+        ),
       ),
     );
   }

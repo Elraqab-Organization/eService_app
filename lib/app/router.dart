@@ -95,9 +95,6 @@ class RouteManager {
       case "/MyAddress":
         builder = (BuildContext context) => CustomerAddressScreen();
         break;
-      case "/posts":
-        builder = (BuildContext context) => PostScreen();
-        break;
       case "/changeLanguage":
         builder = (BuildContext context) => ChangeLanguageScreen();
         break;

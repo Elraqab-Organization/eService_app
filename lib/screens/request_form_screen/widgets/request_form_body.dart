@@ -52,7 +52,7 @@ class RequestFormBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: 130,
+            height: 150,
           ),
           for (var i = 0; i < labels.length; i++)
             Container(
@@ -80,7 +80,9 @@ class RequestFormBody extends StatelessWidget {
               child: Consumer(
                 builder: (context, watch, child) {
                   final data = watch(requestProvider).loading;
-                  return data ? CircularProgressIndicator() : SizedBox();
+                  return data
+                      ? Center(child: CircularProgressIndicator())
+                      : SizedBox();
                 },
               ),
             ),

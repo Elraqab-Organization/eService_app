@@ -20,7 +20,8 @@ class _DropDownDemoState extends State<DropDownDemo> {
           border: Border.all()),
       child: DropdownButtonHideUnderline(
         child: DropdownButton(
-            value: widget.viewmodel.category[widget.viewmodel.index]['selected'],
+            value: widget.viewmodel.category[widget.viewmodel.index]
+                ['selected'],
             items: widget.viewmodel.category[widget.viewmodel.index]['items']
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
@@ -31,9 +32,10 @@ class _DropDownDemoState extends State<DropDownDemo> {
                 ),
               );
             }).toList(),
-            onChanged: (dynamic value) => {
+            onChanged: (value) => {
                   setState(() {
-                    widget.viewmodel.category[widget.viewmodel.index]['selected'] = value;
+                    widget.viewmodel.category[widget.viewmodel.index]
+                        ['selected'] = value;
                   })
                 }),
       ),
