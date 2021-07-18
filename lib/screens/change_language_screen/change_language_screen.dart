@@ -1,7 +1,7 @@
 import 'package:e_service_app/components/custom_return_bar.dart';
 import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ChangeLanguageScreen extends StatefulWidget {
@@ -51,7 +51,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                                 color: Colors.green,
                               ),
                               title: TextComponent(
-                                title: AppLocalizations.of(context).language,
+                                title: "AppLocalizations.of(context).language",
                                 fontSize: 14,
                                 weight: FontWeight.w700,
                                 textColor: Colors.black,
