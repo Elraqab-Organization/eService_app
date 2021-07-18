@@ -52,7 +52,9 @@ class User {
             id: json['_id'] == null ? "" : json['_id'],
             firstName: json['firstName'] == null ? "" : json['firstName'],
             lastName: json['lastName'] == null ? "" : json['lastName'],
-            imgSrc: json['imgSrc'] == null ? "" : json['imgSrc'],
+            imgSrc: json['imgSrc'] == null
+                ? "https://generated.photos/vue-static/home/hero/8.png"
+                : json['imgSrc'],
             email: json['email'] == null ? "" : json['email'],
             diagnosingFees:
                 json['diagnosingFees'] == null ? 0 : json['diagnosingFees'],
