@@ -2,7 +2,6 @@ import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/components/custom_return_bar.dart';
 import 'package:e_service_app/providers/login/login_viewmodel.dart';
 import 'package:e_service_app/screens/request_form_screen/widgets/request_form_body.dart';
-import 'package:e_service_app/screens/request_form_screen/widgets/request_form_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,18 +15,17 @@ class RequestForm extends StatefulWidget {
 
 class _RequestFormState extends State<RequestForm> {
   final labels = ['Problem Description', 'Fees'];
-
   final validators = [false, false, false];
+  final methodsList = ["cash", "credit card"];
+  var selectedRegion;
+  var data;
+  var selectedMethod;
+
+  LoginViewmodel get _userSession => dependency();
 
   final List<TextEditingController> _controller =
       List.generate(2, (i) => TextEditingController());
 
-  LoginViewmodel get _userSession => dependency();
-
-  var selectedRegion;
-  var data;
-  final methodsList = ["cash", "credit card"];
-  var selectedMethod;
   onselected(value) => {
         setState(() => {selectedRegion = value})
       };
@@ -54,19 +52,16 @@ class _RequestFormState extends State<RequestForm> {
           child: Stack(
             children: [
               RequestFormBody(
-                  onChangedMethod: onChangedMethod,
-                  methodsList: methodsList,
-                  selectedMethod: selectedMethod,
-                  onselected: onselected,
-                  data: data,
-                  selected: selectedRegion,
-                  labels: labels,
-                  controller: _controller,
-                  validators: validators),
-              Positioned(
-                bottom: 50,
-                right: 0,
-                child: RequestFormButtons(),
+                onChangedMethod: onChangedMethod,
+                methodsList: methodsList,
+                selectedMethod: selectedMethod,
+                onselected: onselected,
+                data: data,
+                serviceProvider: widget.data,
+                selected: selectedRegion,
+                labels: labels,
+                controller: _controller,
+                validators: validators,
               ),
               CustomReturnBar(),
             ],

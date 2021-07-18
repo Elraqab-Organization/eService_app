@@ -49,7 +49,7 @@ class User {
 
   User.fromJson(Map<String, dynamic> json)
       : this(
-            id: json['id'] == null ? "" : json['id'],
+            id: json['_id'] == null ? "" : json['_id'],
             firstName: json['firstName'] == null ? "" : json['firstName'],
             lastName: json['lastName'] == null ? "" : json['lastName'],
             imgSrc: json['imgSrc'] == null ? "" : json['imgSrc'],

@@ -12,9 +12,17 @@ final requestListProvider =
   return data;
 });
 
-final makeRequestProvider = FutureProvider.autoDispose<bool>((ref) async {
+final updateRequestProvider = FutureProvider.autoDispose<bool>((ref) async {
   final status = ref.read(requestProvider);
 
   final data = status.updateRequest();
   return data;
+});
+
+final makeRequestProvider =
+    FutureProvider.family.autoDispose((ref, data) async {
+  final status = ref.read(requestProvider);
+
+  final result = status.makeRequest(data);
+  return result;
 });
