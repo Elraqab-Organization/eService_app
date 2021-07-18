@@ -14,7 +14,31 @@ class CustomerOrderScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 20.0,
+              height: 10.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Last Orders",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/orders");
+                    },
+                    child: Text(
+                      "See all",
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.deepOrangeAccent,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Ordercard()
           ],
