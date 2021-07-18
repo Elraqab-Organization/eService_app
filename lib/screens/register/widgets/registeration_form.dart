@@ -1,4 +1,5 @@
 import 'package:e_service_app/components/custom_text_field.dart';
+import 'package:e_service_app/components/drop_down_list.dart';
 import 'package:e_service_app/components/text_component.dart';
 import 'package:e_service_app/providers/register/registeration_action.dart';
 import 'package:e_service_app/providers/services/services_action.dart';
@@ -77,29 +78,8 @@ class RegisterationForm extends StatelessWidget {
             ? Consumer(builder: (context, watch, child) {
                 final data = watch(serviceProvider).services;
                 print(data.keys);
-                return DropdownButtonHideUnderline(
-                  child: Container(
-                    padding: EdgeInsets.only(left: 12.0, right: 12.0),
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: Colors.white,
-                    ),
-                    child: DropdownButton(
-                        value: selected,
-                        items: data.keys
-                            .map<DropdownMenuItem<String>>((dynamic value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(
-                              value,
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          );
-                        }).toList(),
-                        onChanged: (value) => onselected(value)),
-                  ),
-                );
+                // return DropDownList(
+                //     selected: selected, data: data, onselected: onselected);
               })
             : SizedBox(),
         SizedBox(

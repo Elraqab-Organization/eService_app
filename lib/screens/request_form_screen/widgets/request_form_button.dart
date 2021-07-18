@@ -13,7 +13,7 @@ class RequestFormButtons extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           ElevatedButton(
-            onPressed: null,
+            onPressed: () => Navigator.of(context).pop(),
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(
                 Color.fromRGBO(33, 39, 56, 1),

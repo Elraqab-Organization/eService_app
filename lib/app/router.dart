@@ -55,7 +55,8 @@ class RouteManager {
         builder = (BuildContext context) => CustomerPostForm();
         break;
       case "/request_form":
-        builder = (BuildContext context) => RequestForm();
+        builder =
+            (BuildContext context) => RequestForm(data: settings.arguments);
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

@@ -15,7 +15,8 @@ class ShowModalBottom extends StatelessWidget {
               itemCount: usernames.length,
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) => SearchCardResult(
-                  usernames[index].username, usernames[index].photoString)),
+                    usernames[index],
+                  )),
       decoration: BoxDecoration(
           color: Color(0xff212738),
           boxShadow: [

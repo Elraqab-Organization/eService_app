@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 class SearchCardResult extends StatelessWidget {
   //
-  final String _username;
-  final String _photoString;
+  final data;
 
-  SearchCardResult(this._username, this._photoString);
+  SearchCardResult(this.data);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,13 +20,13 @@ class SearchCardResult extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 25,
-                  backgroundImage: NetworkImage(_photoString),
+                  backgroundImage: NetworkImage(data.imgSrc),
                 ),
                 SizedBox(
                   width: 10,
                 ),
                 Text(
-                  _username,
+                  data.firstName + ' ' + data.lastName,
                   style: TextStyle(fontSize: 17.0),
                 ),
               ]),
@@ -44,7 +43,8 @@ class SearchCardResult extends StatelessWidget {
                   size: 20.0,
                 ),
                 color: Colors.white,
-                onPressed: () {},
+                onPressed: () => Navigator.pushNamed(context, '/request_form',
+                    arguments: data),
               ),
             ),
           ),

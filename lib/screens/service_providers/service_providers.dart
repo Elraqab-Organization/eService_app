@@ -50,10 +50,8 @@ class ServiceProviders extends StatelessWidget {
                                 arguments: data[index],
                               ),
                               child: SearchCardResult(
-                                  data[index].firstName +
-                                      ' ' +
-                                      data[index].lastName,
-                                  data[index].imgSrc),
+                                data[index],
+                              ),
                             ),
                           ),
                         ),

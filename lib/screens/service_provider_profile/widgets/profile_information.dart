@@ -57,7 +57,8 @@ class ProfileInformation extends StatelessWidget {
                     width: 16.0,
                   ),
                   InkWell(
-                    onTap: null,
+                    onTap: () => Navigator.pushNamed(context, '/request_form',
+                        arguments: data),
                     child: Container(
                       width: 50.0,
                       height: 50.0,
