@@ -1,4 +1,6 @@
 import 'package:e_service_app/screens/customer_post_form/customer_post_form.dart';
+import 'package:e_service_app/screens/customer_proposal_form/customer_proposal_form.dart';
+import 'package:e_service_app/screens/customer_view_proposals/customer_view_proposal.dart';
 import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
 import 'package:e_service_app/screens/post_screen/user_posts.dart';
@@ -57,6 +59,12 @@ class RouteManager {
       case "/request_form":
         builder =
             (BuildContext context) => RequestForm(data: settings.arguments);
+        break;
+      case "/proposal_form":
+        builder = (BuildContext context) => CustomerProposalForm();
+        break;
+      case "/proposals_view":
+        builder = (BuildContext context) => CustomerViewProposal();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

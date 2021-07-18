@@ -30,74 +30,80 @@ class _PostsCardState extends State<PostsCard> {
                     padding: const EdgeInsets.only(
                         top: 2, bottom: 5, left: 16, right: 25),
                     child: Stack(clipBehavior: Clip.none, children: [
-                      Card(
-                        elevation: 12,
-                        shadowColor: Colors.black54,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ListTile(
-                              leading: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                  response.value[index].imgSrc.toString(),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, "/proposals_view");
+                        },
+                        child: Card(
+                          elevation: 12,
+                          shadowColor: Colors.black54,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ListTile(
+                                leading: CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                    response.value[index].imgSrc.toString(),
+                                  ),
                                 ),
-                              ),
-                              title: Text(response.value[index].username),
-                              subtitle: Text(
-                                moment.from(response.value[index].timestamp) +
-                                    ' / ${response.value[index].location} / cancelation fee: ${response.value[index].cancelationFee}',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black.withOpacity(0.6)),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 18, bottom: 18, left: 14),
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Text(
-                                  '${response.value[index].description}',
+                                title: Text(response.value[index].username),
+                                subtitle: Text(
+                                  moment.from(response.value[index].timestamp) +
+                                      ' / ${response.value[index].location} / cancelation fee: ${response.value[index].cancelationFee}',
                                   style: TextStyle(
+                                      fontSize: 12,
                                       color: Colors.black.withOpacity(0.6)),
                                 ),
                               ),
-                            ),
-                            ButtonBar(
-                              alignment: MainAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                InkWell(
-                                  splashColor: Colors.blue.withAlpha(30),
-                                  onTap: () {
-                                    // Perform some action
-                                  },
-                                  child: Row(
-                                    children: [
-                                      if (response
-                                              .value[index].proposal.length !=
-                                          0)
-                                        _stackOfAvatars(
-                                            response.value[index].proposal),
-                                      Text(
-                                        '   ${response.value[index].proposal.length} proposals',
-                                        style: TextStyle(fontSize: 12),
-                                      ),
-                                    ],
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 18, bottom: 18, left: 14),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 20),
+                                  child: Text(
+                                    '${response.value[index].description}',
+                                    style: TextStyle(
+                                        color: Colors.black.withOpacity(0.6)),
                                   ),
                                 ),
-                              ],
-                            ),
-                          ],
+                              ),
+                              ButtonBar(
+                                alignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  InkWell(
+                                    splashColor: Colors.blue.withAlpha(30),
+                                    onTap: () {
+                                      // Perform some action
+                                    },
+                                    child: Row(
+                                      children: [
+                                        if (response
+                                                .value[index].proposal.length !=
+                                            0)
+                                          _stackOfAvatars(
+                                              response.value[index].proposal),
+                                        Text(
+                                          '   ${response.value[index].proposal.length} proposals',
+                                          style: TextStyle(fontSize: 12),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      postOption(25, 340, "more_vert", _moreOptionsModalSheet),
+                      postOption(25, 340, "more_vert",
+                          _moreOptionsServiceProviderModalSheet),
                       isShown
                           ? postOption(67, 340, "share", _moreOptionsModalSheet)
                           : Text("")
@@ -142,6 +148,47 @@ class _PostsCardState extends State<PostsCard> {
                 optionValues("Edit post"),
                 Divider(color: Colors.white),
                 optionValues("share post on"),
+              ],
+            ),
+          );
+        });
+  }
+
+  _moreOptionsServiceProviderModalSheet() {
+    return showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) {
+          return Container(
+            padding: EdgeInsets.all(24.0),
+            height: MediaQuery.of(context).size.height * 0.21,
+            decoration: new BoxDecoration(
+              borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(25.0),
+                topRight: const Radius.circular(25.0),
+              ),
+              color: Color(0xff212738),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Column(
+              children: [
+                InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/proposal_form");
+                    },
+                    child: optionValues("Send Proposal")),
+                Divider(
+                  color: Colors.white,
+                ),
+                optionValues("Send regular proposal"),
+                Divider(color: Colors.white),
               ],
             ),
           );
