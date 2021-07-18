@@ -25,7 +25,7 @@ class ServicesViewmodel extends ChangeNotifier {
     serviceProviders = await _service.getServices();
 
     serviceProviders.forEach((e) {
-      services["${e.jobName}"].add(e);
+      // services["${e.jobName}"].add(e);
     });
 
     return services;

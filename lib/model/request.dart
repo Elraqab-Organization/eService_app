@@ -3,7 +3,7 @@ class Request {
   String customerId;
   String serviceProviderId;
   String description;
-  double fees;
+  int fees;
 
   Request({
     this.description,

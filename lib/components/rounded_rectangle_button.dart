@@ -7,8 +7,12 @@ class RoundedRectangleButton extends StatelessWidget {
   final Color textColor;
   final text;
   final Function onClick;
-  RoundedRectangleButton(this.borderRadius, this.buttonColor, this.textColor,
-      this.text, this.onClick);
+  RoundedRectangleButton(
+      {this.borderRadius,
+      this.buttonColor,
+      this.textColor,
+      this.text,
+      this.onClick});
 
   @override
   Widget build(BuildContext context) {

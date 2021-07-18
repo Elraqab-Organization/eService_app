@@ -1,7 +1,7 @@
 import 'package:e_service_app/components/custom_app_bar/custom_app_bar.dart';
 import 'package:e_service_app/components/square_button.dart';
-import 'package:e_service_app/screens/customer_Posts_Screen/customer_posts_service.dart';
-import 'package:e_service_app/screens/customer_order_screen/customer_order_screen.dart';
+import 'package:e_service_app/screens/Customer_Posts_Screen/customer_posts_service.dart';
+import 'package:e_service_app/screens/Customer_order_screen/customer_ordder_screen.dart';
 import 'package:e_service_app/screens/customer_Service_screen/customer_service_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -46,7 +46,7 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
   ];
   List<IconData> icons = [
     FontAwesomeIcons.wrench,
-    FontAwesomeIcons.handPaper,
+    FontAwesomeIcons.database,
     FontAwesomeIcons.truckLoading,
     FontAwesomeIcons.networkWired
   ];
@@ -70,7 +70,7 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
                     index: i,
                     icon: Icon(
                       icons[i],
-                      size: 20,
+                      size: 20.0,
                       color: Colors.white,
                     ),
                     title: type[i],

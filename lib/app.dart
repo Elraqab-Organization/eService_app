@@ -1,6 +1,5 @@
 import 'package:e_service_app/components/bottom_navigation_bar.dart';
 import 'package:e_service_app/components/inner_navigation_tabs.dart';
-import 'package:e_service_app/components/text_component.dart';
 import 'package:e_service_app/screens/customer_profile/customer_profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -29,28 +28,23 @@ class _AppState extends State<App> {
         return InnerNavigationTabs(
           tabIndex: 0,
         );
-        // ignore: dead_code
         break;
       case "1":
         return Container(
           color: Colors.red,
           height: 100.0,
         );
-        // ignore: dead_code
         break;
       case "2":
         return Container(
           color: Colors.orange,
           height: 100.0,
         );
-        // ignore: dead_code
         break;
       case "3":
         return ProfileScreen();
-        // ignore: dead_code
         break;
     }
-    return Container();
   }
 
   @override

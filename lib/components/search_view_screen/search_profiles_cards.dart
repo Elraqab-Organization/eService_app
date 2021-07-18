@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 
 class SearchCardResult extends StatelessWidget {
   //
-  final String _username;
-  final String _photoString;
+  final data;
 
-  SearchCardResult(this._username, this._photoString);
+  SearchCardResult(this.data);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
         child: Container(
       margin: const EdgeInsets.only(bottom: 28),
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(16),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -20,39 +19,47 @@ class SearchCardResult extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  radius: 30,
-                  backgroundImage: NetworkImage(_photoString),
+                  radius: 25,
+                  backgroundImage: NetworkImage(data.imgSrc),
                 ),
                 SizedBox(
                   width: 10,
                 ),
                 Text(
-                  _username,
+                  data.firstName + ' ' + data.lastName,
                   style: TextStyle(fontSize: 17.0),
                 ),
               ]),
           Positioned(
-              top: -25,
-              left: 250,
-              child: CircleAvatar(
-                backgroundColor: Color(0xffF97068),
-                radius: 21,
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-                  icon: Icon(Icons.bookmark),
-                  color: Colors.white,
-                  onPressed: () {},
-                ),
-              )),
-          Positioned(
-            top: -25,
-            left: 300,
+            top: -30,
+            right: 0,
             child: CircleAvatar(
               backgroundColor: Color(0xffF97068),
               radius: 21,
               child: IconButton(
                 padding: EdgeInsets.zero,
-                icon: Icon(Icons.favorite),
+                icon: Icon(
+                  Icons.bookmark,
+                  size: 20.0,
+                ),
+                color: Colors.white,
+                onPressed: () => Navigator.pushNamed(context, '/request_form',
+                    arguments: data),
+              ),
+            ),
+          ),
+          Positioned(
+            top: -30,
+            right: 50,
+            child: CircleAvatar(
+              backgroundColor: Color(0xffF97068),
+              radius: 21,
+              child: IconButton(
+                padding: EdgeInsets.zero,
+                icon: Icon(
+                  Icons.favorite,
+                  size: 20.0,
+                ),
                 color: Colors.white,
                 onPressed: () {},
               ),
@@ -60,13 +67,18 @@ class SearchCardResult extends StatelessWidget {
           ),
         ],
       ),
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-            color: Colors.grey,
-            offset: Offset(0, 3),
-            spreadRadius: 0.5,
-            blurRadius: 5),
-      ], borderRadius: BorderRadius.circular(10), color: Colors.white),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: 2,
+            color: Colors.grey[300],
+            offset: Offset(0, 5),
+            blurRadius: 4,
+          ),
+        ],
+        borderRadius: BorderRadius.circular(30),
+        color: Colors.white,
+      ),
     ));
   }
 }

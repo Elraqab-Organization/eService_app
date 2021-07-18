@@ -36,7 +36,7 @@ class _DropDownModalState extends State<DropDownModal> {
               Icon(
                 Icons.local_activity,
                 color: Colors.white,
-                size: 30,
+                size: 14.0,
               ),
               Container(
                 height: 40.0,

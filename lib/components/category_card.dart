@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class CategoryCard extends StatelessWidget {
   final String title;
   final IconData favorite;
@@ -28,7 +27,7 @@ class CategoryCard extends StatelessWidget {
             Icon(
               favorite,
               color: Colors.white,
-              size: 30,
+              size: 14.0,
             ),
             SizedBox(
               height: 20,
@@ -59,7 +58,7 @@ class CategoryCard extends StatelessWidget {
                   Icon(
                     star,
                     color: Colors.amber,
-                    size: 20,
+                    size: 14.0,
                   ),
                   // SizedBox(
                   //   width: 10,

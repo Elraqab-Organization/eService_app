@@ -37,12 +37,11 @@ class _OrdercardState extends State<Ordercard> {
               child: InkWell(
                 onTap: () => setState(() => {
                       _data[index]['containerHeight'] =
-                          !(_data[index]['containerHeight'] as bool)
+                          !_data[index]['containerHeight']
                     }),
                 child: AnimatedContainer(
                   duration: Duration(milliseconds: 200),
-                  height:
-                      _data[index]['containerHeight'] != null ? 200.0 : 82.0,
+                  height: _data[index]['containerHeight'] ? 200.0 : 82.0,
                   clipBehavior: Clip.none,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -81,7 +80,7 @@ class _OrdercardState extends State<Ordercard> {
                 angle: containerHeight ? math.pi / 1 : math.pi / 180,
                 child: Icon(
                   Icons.keyboard_arrow_down_outlined,
-                  size: 16,
+                  size: 14.0,
                 ),
               ),
             )
