@@ -39,7 +39,8 @@ class _PostsCardState extends State<PostsCard> {
                         onTap: () {
                           if (response.value[index].customerId ==
                               _service.user.id) {
-                            Navigator.pushNamed(context, "/proposals_view");
+                            Navigator.pushNamed(context, "/proposals_view",
+                                arguments: response.value[index]);
                           } else {
                             Navigator.pushNamed(context, "/proposal_form",
                                 arguments: response.value[index]);
