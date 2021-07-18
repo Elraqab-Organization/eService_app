@@ -46,7 +46,7 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
   ];
   List<IconData> icons = [
     FontAwesomeIcons.wrench,
-    FontAwesomeIcons.handPaper,
+    FontAwesomeIcons.database,
     FontAwesomeIcons.truckLoading,
     FontAwesomeIcons.networkWired
   ];

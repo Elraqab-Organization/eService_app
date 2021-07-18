@@ -73,7 +73,7 @@ class _RequestFormState extends State<RequestForm> {
                   left: watch(requestProvider).message
                       ? 0
                       : -MediaQuery.of(context).size.width * 0.7,
-                  bottom: 100.0,
+                  bottom: 50.0,
                   duration: Duration(milliseconds: 200),
                   onEnd: () {
                     Timer(Duration(seconds: 1),
