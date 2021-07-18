@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/components/custom_return_bar.dart';
 import 'package:e_service_app/providers/login/login_viewmodel.dart';
+import 'package:e_service_app/providers/requests/requests_action.dart';
 import 'package:e_service_app/screens/request_form_screen/widgets/request_form_body.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RequestForm extends StatefulWidget {
   final data;
@@ -64,6 +68,40 @@ class _RequestFormState extends State<RequestForm> {
                 validators: validators,
               ),
               CustomReturnBar(),
+              Consumer(
+                builder: (context, watch, child) => AnimatedPositioned(
+                  left: watch(requestProvider).message
+                      ? 0
+                      : -MediaQuery.of(context).size.width * 0.7,
+                  bottom: 100.0,
+                  duration: Duration(milliseconds: 200),
+                  onEnd: () {
+                    Timer(Duration(seconds: 1),
+                        () => watch(requestProvider).message = false);
+                  },
+                  child: Container(
+                    height: 50.0,
+                    padding: EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(33, 39, 56, 1).withOpacity(1.0),
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(25.0),
+                        bottomRight: Radius.circular(25.0),
+                      ),
+                    ),
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    child: Center(
+                      child: Text(
+                        watch(requestProvider).message
+                            ? watch(requestProvider).res
+                            : "",
+                        style: TextStyle(color: Colors.white, fontSize: 16.0),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
