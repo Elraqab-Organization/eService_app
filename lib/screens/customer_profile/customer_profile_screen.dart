@@ -149,6 +149,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         trailing: Icon(
                           FontAwesomeIcons.angleRight,
                         ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/ProfileNotification');
+                        },
                       ),
                       ListTile(
                         leading: Icon(FontAwesomeIcons.userLock),
@@ -173,6 +176,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         trailing: Icon(
                           FontAwesomeIcons.angleRight,
                         ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/changeLanguage');
+                        },
                       ),
                       ListTile(
                         leading: Icon(FontAwesomeIcons.creditCard),
