@@ -1,8 +1,11 @@
 import 'package:e_service_app/components/text_component.dart';
+import 'package:e_service_app/providers/requests/requests_action.dart';
 import 'package:e_service_app/screens/Customer_order_screen/widgets/header_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CardRequest extends StatefulWidget {
   final data;
@@ -59,113 +62,10 @@ class _CardComponentState extends State<CardRequest> {
                       ),
                     ),
                     activeIndex == index
-                        ? Positioned(
-                            bottom: 20,
-                            left: 30,
-                            child: Container(
-                              height: 150,
-                              width: MediaQuery.of(context).size.width * 0.7,
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  TextComponent(
-                                    align: TextAlign.start,
-                                    textColor: Colors.black,
-                                    line: 4,
-                                    fontSize: 12,
-                                    weight: FontWeight.w500,
-                                    title:
-                                        "Problem: ${widget.data[index].description}",
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      TextComponent(
-                                        align: TextAlign.start,
-                                        textColor: Colors.black,
-                                        line: 4,
-                                        fontSize: 12,
-                                        weight: FontWeight.w500,
-                                        title:
-                                            "Problem: ${widget.data[index].location}",
-                                      ),
-                                      TextComponent(
-                                        align: TextAlign.start,
-                                        textColor: Colors.black,
-                                        line: 4,
-                                        fontSize: 12,
-                                        weight: FontWeight.w500,
-                                        title:
-                                            "Payment: ${widget.data[index].payment}",
-                                      ),
-                                      TextComponent(
-                                        align: TextAlign.start,
-                                        textColor: Colors.black,
-                                        line: 4,
-                                        fontSize: 12,
-                                        weight: FontWeight.w500,
-                                        title:
-                                            "Date: ${widget.data[index].provisionDate}",
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
+                        ? requestBody(context, index)
                         : SizedBox(),
                     widget.data[index].status.toLowerCase() == "pending"
-                        ? Positioned(
-                            bottom: 10,
-                            right: 10,
-                            child: AnimatedOpacity(
-                              duration: Duration(milliseconds: 100),
-                              opacity: activeIndex == index ? 1 : 0,
-                              child: widget.isCustomer
-                                  ? InkWell(
-                                      onTap: () => null,
-                                      child: Container(
-                                        child: Text(
-                                          "cancel",
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                        padding: EdgeInsets.all(10.0),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(18.0),
-                                          color: Color.fromRGBO(33, 39, 56, 1),
-                                        ),
-                                      ),
-                                    )
-                                  : Row(
-                                      children: [
-                                        for (var i = 0;
-                                            i < labels.length;
-                                            i++)
-                                          InkWell(
-                                            onTap: () => null,
-                                            child: Container(
-                                              child: Text(
-                                                labels[i],
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                              padding: EdgeInsets.all(10.0),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(18.0),
-                                                color: Color.fromRGBO(
-                                                    33, 39, 56, 1),
-                                              ),
-                                            ),
-                                          ),
-                                      ],
-                                    ),
-                            ),
-                          )
+                        ? submissionButtons(index)
                         : SizedBox(),
                     Positioned(
                       bottom: 5,
@@ -186,6 +86,128 @@ class _CardComponentState extends State<CardRequest> {
             )
           : Expanded(
               child: Center(child: Text("No orders was found!")),
+            ),
+    );
+  }
+
+  Positioned requestBody(BuildContext context, int index) {
+    return Positioned(
+      bottom: 20,
+      left: 30,
+      child: Container(
+        height: 150,
+        width: MediaQuery.of(context).size.width * 0.7,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextComponent(
+              align: TextAlign.start,
+              textColor: Colors.black,
+              line: 4,
+              fontSize: 12,
+              weight: FontWeight.w500,
+              title: "Problem: ${widget.data[index].description}",
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextComponent(
+                  align: TextAlign.start,
+                  textColor: Colors.black,
+                  line: 4,
+                  fontSize: 12,
+                  weight: FontWeight.w500,
+                  title: "Problem: ${widget.data[index].location}",
+                ),
+                TextComponent(
+                  align: TextAlign.start,
+                  textColor: Colors.black,
+                  line: 4,
+                  fontSize: 12,
+                  weight: FontWeight.w500,
+                  title: "Payment: ${widget.data[index].payment}",
+                ),
+                TextComponent(
+                  align: TextAlign.start,
+                  textColor: Colors.black,
+                  line: 4,
+                  fontSize: 12,
+                  weight: FontWeight.w500,
+                  title: "Date: ${widget.data[index].provisionDate}",
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  dynamic submissionButtons(int index) {
+    return Consumer(
+      builder: (context, watch, child) => watch(requestProvider).loading
+          ? CircularProgressIndicator()
+          : Positioned(
+              bottom: 10,
+              right: 10,
+              child: AnimatedOpacity(
+                duration: Duration(milliseconds: 100),
+                opacity: activeIndex == index ? 1 : 0,
+                child: widget.isCustomer
+                    ? InkWell(
+                        onTap: () => watch(requestProvider)
+                            .cancelRequest(widget.data[index].id),
+                        child: Container(
+                          child: Text(
+                            "cancel",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          padding: EdgeInsets.all(10.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18.0),
+                            color: Color.fromRGBO(33, 39, 56, 1),
+                          ),
+                        ),
+                      )
+                    : Row(
+                        children: [
+                          InkWell(
+                            onTap: () => watch(requestProvider)
+                                .acceptRequest(widget.data[index].id),
+                            child: Container(
+                              child: Text(
+                                labels[1],
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              padding: EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18.0),
+                                color: Color.fromRGBO(33, 39, 56, 1),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          InkWell(
+                            onTap: () => watch(requestProvider)
+                                .rejectRequest(widget.data[index].id),
+                            child: Container(
+                              child: Text(
+                                labels[0],
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              padding: EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18.0),
+                                color: Color.fromRGBO(33, 39, 56, 1),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+              ),
             ),
     );
   }
