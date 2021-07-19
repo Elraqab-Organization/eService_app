@@ -17,16 +17,21 @@ class PostService {
 
   Future<Post> createPost(final data) async {
     final jsonPost = await rest.post("posts/", data);
-    print(jsonPost);
     if (jsonPost == null || jsonPost.length == 0) return null;
 
     final post = Post.fromJson(jsonPost);
     return post;
   }
 
+  Future<Post> deletePost(final id) async {
+    final jsonPost = await rest.delete("posts/$id");
+    if (jsonPost == null) return null;
+    final post = Post.fromJson(jsonPost);
+    return post;
+  }
+
   Future<Proposal> createProposal(final id, final data) async {
     final jsonProposal = await rest.post("posts/$id", data);
-    print(jsonProposal);
     if (jsonProposal == null || jsonProposal.length == 0) return null;
 
     final proposal = Proposal.fromJson(jsonProposal);

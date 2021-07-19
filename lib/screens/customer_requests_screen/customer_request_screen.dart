@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomerRequestScreen extends StatelessWidget {
-  CustomerRequestScreen();
-
   @override
   Widget build(BuildContext context) {
     return Expanded(

@@ -12,13 +12,12 @@ class CustomerViewProposal extends StatefulWidget {
 
 class _CustomerViewProposalState extends State<CustomerViewProposal> {
   String status = "Pending";
-  // String status = "Accepted";
-  // String status = "Rejected";
 
   var moment = new Moment.now();
 
   @override
   Widget build(BuildContext context) {
+    //
     final postObj = ModalRoute.of(context).settings.arguments as Post;
     return Scaffold(
       body: Container(
@@ -47,7 +46,7 @@ class _CustomerViewProposalState extends State<CustomerViewProposal> {
             ),
             //
             Container(
-              width: MediaQuery.of(context).size.width - 60,
+              width: MediaQuery.of(context).size.width - 50,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -93,7 +92,7 @@ class _CustomerViewProposalState extends State<CustomerViewProposal> {
                       )
                     ],
                   ),
-                  ProposalCard(),
+                  ProposalCard(postObj.id),
                 ],
               ),
             )

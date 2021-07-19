@@ -250,10 +250,10 @@ class _CustomerProposalFormState extends State<CustomerProposalForm> {
 
                 if (proposal != null) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('post has been saved')));
+                      SnackBar(content: Text('proposal has been sent')));
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('failed to save post')));
+                      SnackBar(content: Text('failed to send proposal')));
                 }
               }
             },
