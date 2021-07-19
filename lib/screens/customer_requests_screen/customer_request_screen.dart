@@ -1,12 +1,9 @@
 import 'package:e_service_app/components/card.dart';
-import 'package:e_service_app/model/request.dart';
 import 'package:e_service_app/providers/requests/requests_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomerRequestScreen extends StatelessWidget {
-  CustomerRequestScreen();
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -76,7 +73,7 @@ class CustomerRequestScreen extends StatelessWidget {
                 ),
                 error: (_) => Expanded(
                   child: Center(
-                    child: Text("Network error"),
+                    child: Text(_.error.toString()),
                   ),
                 ),
               );
