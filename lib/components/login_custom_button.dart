@@ -43,16 +43,16 @@ class CustomButtomLogin extends StatelessWidget {
             ],
           ),
           decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    spreadRadius: 4,
-                    blurRadius: 7,
-                    offset: Offset(0, 3))
-              ],
-              color: buttonColor,
-              borderRadius: BorderRadius.circular(32),
-              border: Border.all(width: 0)),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.white.withOpacity(0.1),
+                  spreadRadius: 4,
+                  blurRadius: 7,
+                  offset: Offset(0, 3))
+            ],
+            color: buttonColor,
+            borderRadius: BorderRadius.circular(32),
+          ),
         ));
   }
 }

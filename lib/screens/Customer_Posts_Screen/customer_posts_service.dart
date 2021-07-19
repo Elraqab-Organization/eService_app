@@ -17,31 +17,34 @@ class _CustomerPostsServiceScreenState
           SizedBox(
             height: 20.0,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Last news",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, "/posts");
-                },
-                child: Text(
-                  "See all",
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.deepOrangeAccent,
-                      fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Last news",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
-              ),
-            ],
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, "/posts");
+                  },
+                  child: Text(
+                    "See all",
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.deepOrangeAccent,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
           ),
           SizedBox(
             height: 20.0,
           ),
-          Expanded(child: PostsCard()),
+          PostsCard(),
         ],
       ),
     );

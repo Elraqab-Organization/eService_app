@@ -20,10 +20,11 @@ class SearchInputField extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
             boxShadow: [
               BoxShadow(
-                  color: Colors.grey.shade400,
-                  blurRadius: 1.0,
-                  offset: Offset.fromDirection(1, 5),
-                  spreadRadius: 1.0),
+                spreadRadius: 1,
+                color: Colors.grey[300],
+                offset: Offset(0, 3),
+                blurRadius: 2,
+              ),
             ],
           ),
           child: TextField(

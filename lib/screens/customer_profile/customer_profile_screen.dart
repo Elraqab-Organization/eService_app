@@ -1,15 +1,20 @@
+import 'package:e_service_app/app/dependency.dart';
+import 'package:e_service_app/providers/login/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfileScreen extends StatefulWidget {
-  double height = 350;
+  final double height = 350;
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  LoginViewmodel get _userSession => dependency();
+
   @override
   Widget build(BuildContext context) {
+    print(_userSession.user);
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
@@ -62,8 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     CircleAvatar(
                       radius: 45,
-                      backgroundImage: NetworkImage(
-                          "https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"),
+                      backgroundImage: NetworkImage(_userSession.user.imgSrc),
                     ),
                   ],
                 ),
@@ -86,6 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: Colors.white,
                         fontSize: 12,
                         fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 Container(
@@ -95,9 +100,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        spreadRadius: 1,
-                        color: Colors.grey,
-                        blurRadius: 3,
+                        spreadRadius: 2,
+                        color: Colors.grey[300],
+                        offset: Offset(0, 5),
+                        blurRadius: 4,
                       )
                     ],
                     borderRadius: BorderRadius.circular(40),
@@ -134,9 +140,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        spreadRadius: 1,
-                        color: Colors.grey,
-                        blurRadius: 3,
+                        spreadRadius: 2,
+                        color: Colors.grey[300],
+                        offset: Offset(0, 5),
+                        blurRadius: 4,
                       )
                     ],
                     borderRadius: BorderRadius.circular(40),

@@ -5,13 +5,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CategoryGrid extends StatelessWidget {
   final paddingTop;
+  final data;
   const CategoryGrid({
     this.paddingTop = 10.0,
+    this.data,
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final keys = data.keys.toList();
     return Expanded(
       child: Container(
         padding: EdgeInsets.only(left: 16.0, right: 16.0),
@@ -22,10 +25,16 @@ class CategoryGrid extends StatelessWidget {
               childAspectRatio: 1.0,
               crossAxisSpacing: 15,
               mainAxisSpacing: 16),
-          itemCount: 10,
+          itemCount: data.keys.length,
           itemBuilder: (BuildContext ctx, index) {
             return InkWell(
-              onTap: () => Navigator.pushNamed(context, "/service_providers"),
+              onTap: () => {
+                Navigator.pushNamed(
+                  context,
+                  "/service_providers",
+                  arguments: data.values.toList()[index],
+                ),
+              },
               child: Container(
                 padding: EdgeInsets.all(8.0),
                 alignment: Alignment.center,
@@ -42,14 +51,16 @@ class CategoryGrid extends StatelessWidget {
                           onTap: null,
                           child: Icon(
                             FontAwesomeIcons.solidHeart,
+                            size: 20.0,
                             color: Colors.white,
                           ),
                         ),
                       ],
                     ),
                     TextComponent(
-                      title: "Electrical",
-                      fontSize: 16.0,
+                      title: keys[index].toString(),
+                      fontSize: 14.0,
+                      line: 3,
                       textColor: Colors.white,
                       weight: FontWeight.w800,
                     ),

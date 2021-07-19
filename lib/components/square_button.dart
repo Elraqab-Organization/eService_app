@@ -10,13 +10,20 @@ class SquareButton extends StatelessWidget {
   final int index;
 
   SquareButton(
-      {this.route,
-      this.height,
-      this.width,
-      this.icon,
-      this.title,
-      this.color,
-      this.index});
+      {Function route,
+      double height,
+      double width,
+      Icon icon,
+      String title,
+      Color color,
+      int index})
+      : route = route,
+        height = height,
+        width = width,
+        icon = icon,
+        color = color,
+        index = index,
+        title = title;
 
   @override
   Widget build(BuildContext context) {

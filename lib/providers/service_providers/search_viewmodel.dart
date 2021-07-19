@@ -21,7 +21,7 @@ class SearchViewmodel extends ChangeNotifier {
       "",
       Icon(
         FontAwesomeIcons.list,
-        size: 30,
+        size: 14.0,
         color: Colors.white,
       ),
     ),
@@ -31,7 +31,7 @@ class SearchViewmodel extends ChangeNotifier {
       "",
       Icon(
         FontAwesomeIcons.locationArrow,
-        size: 30,
+        size: 14.0,
         color: Colors.white,
       ),
     ),
@@ -41,7 +41,7 @@ class SearchViewmodel extends ChangeNotifier {
       "5",
       Icon(
         FontAwesomeIcons.star,
-        size: 30,
+        size: 14.0,
         color: Colors.white,
       ),
     ),
@@ -51,7 +51,7 @@ class SearchViewmodel extends ChangeNotifier {
       "",
       Icon(
         FontAwesomeIcons.moneyCheck,
-        size: 30,
+        size: 14.0,
         color: Colors.white,
       ),
     )

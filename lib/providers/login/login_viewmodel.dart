@@ -5,10 +5,11 @@ import 'package:flutter/cupertino.dart';
 
 class LoginViewmodel extends ChangeNotifier {
   AuthService get _service => dependency();
+  LoginViewmodel get _userSession => dependency();
 
   User _user = User();
   bool _showErrorMassage = false;
-  bool isChecked = false;
+  bool _isChecked = false;
   bool isLoading = false;
   bool isLogged;
   String pass;
@@ -37,25 +38,29 @@ class LoginViewmodel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setCheckedBox(bool isCheckedValue) {
-    isChecked = isCheckedValue;
+  get isChecked => _isChecked;
+  set isChecked(value) {
+    _isChecked = value;
     notifyListeners();
   }
 
+  // void setCheckedBox(isCheckedValue) => {
+  //       isChecked = isCheckedValue,
+  //       notifyListeners(),
+  //     };
+
   Future authenticate() async {
     loading = true;
-    final user =
+
+    _userSession.user =
         await _service.authenticate(login: username, password: password);
 
-    if (user == null) {
-      _user = null;
+    if (_userSession.user == null) {
       showErrorMessage = true;
       loading = false;
     } else {
-      _user = user;
       showErrorMessage = false;
       loading = false;
     }
-    return _user;
   }
 }

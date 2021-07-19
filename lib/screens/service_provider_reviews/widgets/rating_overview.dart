@@ -54,7 +54,7 @@ class RatingOverview extends StatelessWidget {
                           child: Icon(
                             FontAwesomeIcons.solidStar,
                             color: Colors.yellow,
-                            size: 20.0,
+                            size: 14.0,
                           ),
                         ),
                     ],
@@ -116,7 +116,7 @@ class RatingOverview extends StatelessWidget {
         Icon(
           FontAwesomeIcons.solidStar,
           color: Colors.yellow,
-          size: 12,
+          size: 14.0,
         ),
         SizedBox(
           width: 10.0,

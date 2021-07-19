@@ -31,7 +31,7 @@ class _DropDownDemoState extends State<DropDownDemo> {
                 ),
               );
             }).toList(),
-            onChanged: (dynamic value) => {
+            onChanged: (value) => {
                   setState(() {
                     widget.viewmodel.category[widget.viewmodel.index]['selected'] = value;
                   })
