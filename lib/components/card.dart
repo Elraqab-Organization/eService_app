@@ -53,25 +53,6 @@ class _CardComponentState extends State<CardComponent> {
                         ),
                       ),
                     ),
-                    Positioned(
-                      bottom: 10,
-                      left: 10,
-                      child: AnimatedOpacity(
-                        duration: Duration(milliseconds: 100),
-                        opacity: activeIndex == index ? 1 : 0,
-                        child: Container(
-                          child: Text(
-                            widget.data[index].status,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          padding: EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18.0),
-                            color: Color.fromRGBO(249, 112, 104, 1),
-                          ),
-                        ),
-                      ),
-                    ),
                     widget.data[index].status.toLowerCase() == "pending"
                         ? Positioned(
                             bottom: 10,
