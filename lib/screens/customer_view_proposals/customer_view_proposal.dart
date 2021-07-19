@@ -19,6 +19,7 @@ class _CustomerViewProposalState extends State<CustomerViewProposal> {
 
   @override
   Widget build(BuildContext context) {
+    //
     final postObj = ModalRoute.of(context).settings.arguments as Post;
     return Scaffold(
       body: Container(
@@ -93,7 +94,7 @@ class _CustomerViewProposalState extends State<CustomerViewProposal> {
                       )
                     ],
                   ),
-                  ProposalCard(),
+                  ProposalCard(postObj.id),
                 ],
               ),
             )

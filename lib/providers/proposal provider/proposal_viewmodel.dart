@@ -10,8 +10,8 @@ class ProposalViewmodel extends ChangeNotifier {
   get proposals => proposalList;
   set proposals(proposals) => proposalList = proposals;
 
-  Future<List<Proposal>> getProposals() async {
-    proposalList = await _service.fetchProposals();
+  Future<List<Proposal>> getProposals(final id) async {
+    proposalList = await _service.fetchProposals(id);
     return proposalList;
   }
 }

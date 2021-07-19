@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProposalCard extends StatefulWidget {
+  final String postId;
+  ProposalCard(this.postId);
   @override
   _ProposalCardState createState() => _ProposalCardState();
 }
@@ -12,7 +14,7 @@ class _ProposalCardState extends State<ProposalCard> {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, child) {
-      final proposals = watch(proposalList);
+      final proposals = watch(proposalList(widget.postId));
       return proposals.map(
           error: (_) => Text("Error"),
           loading: (_) => Center(child: CircularProgressIndicator()),
