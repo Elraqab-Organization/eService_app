@@ -15,7 +15,7 @@ class CardComponent extends StatefulWidget {
 
 class _CardComponentState extends State<CardComponent> {
   // add one more functionality button. -- optional.
-  final labels = ['accept', 'reject'];
+  final labels = ['cancel', 'accept'];
   var activeIndex;
   bool containerHeight = false;
   @override
@@ -24,16 +24,16 @@ class _CardComponentState extends State<CardComponent> {
       child: widget.data != null
           ? ListView.builder(
               itemCount: widget.data.length,
-              itemBuilder: (context, index) => Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Card(
-                    elevation: 5.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    child: InkWell(
-                      onTap: () => setState(() => {activeIndex = index}),
+              itemBuilder: (context, index) => InkWell(
+                onTap: () => setState(() => {activeIndex = index}),
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Card(
+                      elevation: 5.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 200),
                         height: activeIndex == index ? 200.0 : 82.0,
@@ -53,72 +53,70 @@ class _CardComponentState extends State<CardComponent> {
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: 5,
-                    left: (MediaQuery.of(context).size.width / 2) - 20,
-                    child: Transform.rotate(
-                      angle:
-                          activeIndex == index ? (math.pi / 4) : (math.pi / 16),
-                      child: Icon(
-                        Icons.keyboard_arrow_down_outlined,
-                        size: 14.0,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    left: 10,
-                    child: Column(
-                      children: [
-                        ElevatedButton(
-                          onPressed: () => null,
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                              Color.fromRGBO(249, 112, 104, 1),
-                            ),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                side: BorderSide(color: Colors.transparent),
-                              ),
-                            ),
-                          ),
+                    Positioned(
+                      bottom: 10,
+                      left: 10,
+                      child: AnimatedOpacity(
+                        duration: Duration(milliseconds: 100),
+                        opacity: activeIndex == index ? 1 : 0,
+                        child: Container(
                           child: Text(
                             widget.data[index].status,
                             style: TextStyle(color: Colors.white),
                           ),
+                          padding: EdgeInsets.all(10.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18.0),
+                            color: Color.fromRGBO(249, 112, 104, 1),
+                          ),
                         ),
-                        Row(
-                          children: [
-                            for (var i = 0; i < widget.functionCount; i++)
-                              ElevatedButton(
-                                onPressed: () => widget.functions[i],
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                    Color.fromRGBO(249, 112, 104, 1),
-                                  ),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      side:
-                                          BorderSide(color: Colors.transparent),
-                                    ),
-                                  ),
-                                ),
-                                child: Text(
-                                  labels[i],
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                          ],
-                        )
-                      ],
+                      ),
                     ),
-                  ),
-                ],
+                    widget.data[index].status.toLowerCase() == "pending"
+                        ? Positioned(
+                            bottom: 10,
+                            right: 10,
+                            child: AnimatedOpacity(
+                              duration: Duration(milliseconds: 100),
+                              opacity: activeIndex == index ? 1 : 0,
+                              child: Row(
+                                children: [
+                                  for (var i = 0; i < widget.functionCount; i++)
+                                    InkWell(
+                                      onTap: widget.functions[i],
+                                      child: Container(
+                                        child: Text(
+                                          labels[i],
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        padding: EdgeInsets.all(10.0),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                          color: Color.fromRGBO(33, 39, 56, 1),
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          )
+                        : SizedBox(),
+                    Positioned(
+                      bottom: 5,
+                      left: MediaQuery.of(context).size.width / 2 - 30,
+                      child: Transform.rotate(
+                        angle: activeIndex == index
+                            ? (math.pi / 1)
+                            : (math.pi * 2),
+                        child: Icon(
+                          Icons.keyboard_arrow_down_outlined,
+                          size: 14.0,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           : Expanded(
