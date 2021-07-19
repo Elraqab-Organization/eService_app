@@ -21,6 +21,11 @@ class CustomerPostsViewmodel extends ChangeNotifier {
     return post;
   }
 
+  Future<Post> deleteAPost(final id) async {
+    final post = await _service.deletePost(id);
+    return post;
+  }
+
   Future<Proposal> createAProposal(final id, final data) async {
     final proposal = await _service.createProposal(id, data);
     return proposal;

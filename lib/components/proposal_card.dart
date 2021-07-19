@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:e_service_app/providers/proposal%20provider/proposal_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,7 +14,6 @@ class ProposalCard extends StatefulWidget {
 
 class _ProposalCardState extends State<ProposalCard> {
   var moment = new Moment.now();
-  String status = "Pending";
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, child) {
@@ -59,7 +60,7 @@ class _ProposalCardState extends State<ProposalCard> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               if (response.value[index].status == "Pending")
-                                postBtn()
+                                postBtn(response.value[index])
                               else if (response.value[index].status ==
                                   "Accepted")
                                 acceptedBtn()
@@ -78,49 +79,57 @@ class _ProposalCardState extends State<ProposalCard> {
     });
   }
 
-  Widget postBtn() {
-    return Row(
-      children: [
-        InkWell(
-          onTap: () {},
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Container(
-              width: 80,
-              height: 32,
-              child: Center(
-                  child: Text(
-                "Accept",
-                style: TextStyle(color: Colors.white),
-              )),
-              decoration: BoxDecoration(
-                color: Color(0xff57C4E5),
-                borderRadius: BorderRadius.circular(40),
+  Widget postBtn(proposalObj) {
+    return Consumer(builder: (context, watch, child) {
+      return Row(
+        children: [
+          InkWell(
+            onTap: () async {
+              await watch(propsProvider).acceptProposal(proposalObj.id);
+              Navigator.pop(context);
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Container(
+                width: 80,
+                height: 32,
+                child: Center(
+                    child: Text(
+                  "Accept",
+                  style: TextStyle(color: Colors.white),
+                )),
+                decoration: BoxDecoration(
+                  color: Color(0xff57C4E5),
+                  borderRadius: BorderRadius.circular(40),
+                ),
               ),
             ),
           ),
-        ),
-        InkWell(
-          onTap: () {},
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Container(
-              width: 80,
-              height: 32,
-              child: Center(
-                  child: Text(
-                "Reject",
-                style: TextStyle(color: Colors.white),
-              )),
-              decoration: BoxDecoration(
-                color: Color(0xff57C4E5),
-                borderRadius: BorderRadius.circular(40),
+          InkWell(
+            onTap: () async {
+              await watch(propsProvider).rejectProposal(proposalObj.id);
+              Navigator.pop(context);
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Container(
+                width: 80,
+                height: 32,
+                child: Center(
+                    child: Text(
+                  "Reject",
+                  style: TextStyle(color: Colors.white),
+                )),
+                decoration: BoxDecoration(
+                  color: Color(0xff57C4E5),
+                  borderRadius: BorderRadius.circular(40),
+                ),
               ),
             ),
-          ),
-        )
-      ],
-    );
+          )
+        ],
+      );
+    });
   }
 
   Widget rejectBtn() {
