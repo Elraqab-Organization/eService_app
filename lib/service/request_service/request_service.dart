@@ -1,16 +1,27 @@
 import 'package:e_service_app/app/dependency.dart';
-import 'package:e_service_app/model/post.dart';
+import 'package:e_service_app/model/request.dart';
 import '../rest_service.dart';
 
-class RequestService {
+class RequestsService {
   RestService get rest => dependency();
 
-  Future<List<Post>> fetchPosts({String id}) async {
-    final List jsonPosts = await rest.getPosts('posts/');
-    if (jsonPosts == null || jsonPosts.length == 0) return null;
+  Future<List<RequestModel>> getRequestsList(id, isServiceProvider) async {
+    print(id);
+    print(isServiceProvider);
+    final json = await rest.get('requests/?type=$isServiceProvider&id=$id');
+    if (json == null || json.length == 0) return null;
 
-    final postsList = jsonPosts.map((doc) => Post.fromJson(doc)).toList();
+    final order = json.map((doc) => RequestModel.fromJson(doc)).toList();
 
-    return postsList;
+    return order;
+  }
+
+  Future<RequestModel> makeRequest(data) async {
+    final json = await rest.post('requests/create', data);
+    if (json == null || json.length == 0) return null;
+
+    final request = RequestModel.fromJson(json);
+
+    return request;
   }
 }

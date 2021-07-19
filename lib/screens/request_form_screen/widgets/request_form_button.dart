@@ -37,7 +37,7 @@ class RequestFormButtons extends StatelessWidget {
           ),
           Consumer(
             builder: (context, watch, child) => ElevatedButton(
-              onPressed: () => watch(makeRequestProvider(data)),
+              onPressed: () => {watch(requestProvider).makeRequest(data)},
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
                   Color.fromRGBO(249, 112, 104, 1),

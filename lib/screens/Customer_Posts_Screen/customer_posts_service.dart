@@ -44,7 +44,7 @@ class _CustomerPostsServiceScreenState
           SizedBox(
             height: 20.0,
           ),
-          Expanded(child: PostsCard()),
+          PostsCard(),
         ],
       ),
     );

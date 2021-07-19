@@ -1,5 +1,6 @@
 import 'package:e_service_app/providers/login/login_viewmodel.dart';
 import 'package:e_service_app/service/auth_service/auth_service.dart';
+import 'package:e_service_app/service/order_service/order_service.dart';
 import 'package:e_service_app/service/post_service/post_service.dart';
 import 'package:e_service_app/service/proposal_service/proposal_service.dart';
 import 'package:e_service_app/service/request_service/request_service.dart';
@@ -18,8 +19,9 @@ void init() {
 
   dependency.registerLazySingleton<PostService>(() => PostService());
   dependency.registerLazySingleton<ProposalService>(() => ProposalService());
+  dependency.registerLazySingleton<OrderService>(() => OrderService());
   dependency.registerLazySingleton<AuthService>(() => AuthService());
-  dependency.registerLazySingleton<RequestService>(() => RequestService());
+  dependency.registerLazySingleton<RequestsService>(() => RequestsService());
   dependency.registerLazySingleton<ServiceProviderService>(
       () => ServiceProviderService());
   dependency.registerLazySingleton(() => LoginViewmodel());
