@@ -19,7 +19,8 @@ class _PostsCardState extends State<PostsCard> {
       final posts = watch(postsList);
       return posts.map(
           error: (_) => Text("Error"),
-          loading: (_) => Center(child: CircularProgressIndicator()),
+          loading: (_) =>
+              Expanded(child: Center(child: CircularProgressIndicator())),
           data: (response) {
             return Expanded(
               child: Container(
