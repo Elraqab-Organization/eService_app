@@ -3,8 +3,16 @@ import 'package:e_service_app/components/custom_return_bar.dart';
 import 'package:e_service_app/providers/login/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 
-class AccountInformationScreen extends StatelessWidget {
+class AccountInformationScreen extends StatefulWidget {
   LoginViewmodel get _userSession => dependency();
+
+  bool isEditing = false;
+  @override
+  _AccountInformationScreenState createState() =>
+      _AccountInformationScreenState();
+}
+
+class _AccountInformationScreenState extends State<AccountInformationScreen> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -42,7 +50,9 @@ class AccountInformationScreen extends StatelessWidget {
                           backgroundColor: Color.fromRGBO(249, 112, 104, 1),
                           foregroundColor: Colors.black,
                           onPressed: () {
-                            // Respond to button press
+                            setState(() {
+                              widget.isEditing = true;
+                            });
                           },
                           child: Icon(
                             Icons.edit,
@@ -66,7 +76,8 @@ class AccountInformationScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
                     child: TextFormField(
-                        initialValue: _userSession.user.firstName,
+                        enabled: widget.isEditing == false ? false : true,
+                        initialValue: widget._userSession.user.firstName,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
@@ -103,7 +114,8 @@ class AccountInformationScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
                     child: TextFormField(
-                        initialValue: _userSession.user.lastName,
+                        enabled: widget.isEditing == false ? false : true,
+                        initialValue: widget._userSession.user.lastName,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
@@ -140,8 +152,9 @@ class AccountInformationScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
                     child: TextFormField(
-                        initialValue: _userSession.user.firstName +
-                            _userSession.user.lastName,
+                        enabled: widget.isEditing == false ? false : true,
+                        initialValue: widget._userSession.user.firstName +
+                            widget._userSession.user.lastName,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
@@ -178,7 +191,8 @@ class AccountInformationScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
                     child: TextFormField(
-                        initialValue: _userSession.user.gender,
+                        enabled: widget.isEditing == false ? false : true,
+                        initialValue: widget._userSession.user.gender,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
@@ -215,7 +229,8 @@ class AccountInformationScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
                     child: TextFormField(
-                        initialValue: _userSession.user.phoneNumber,
+                        enabled: widget.isEditing == false ? false : true,
+                        initialValue: widget._userSession.user.phoneNumber,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
@@ -252,7 +267,8 @@ class AccountInformationScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.07),
                     child: TextFormField(
-                        initialValue: _userSession.user.email,
+                        enabled: widget.isEditing == false ? false : true,
+                        initialValue: widget._userSession.user.email,
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -278,41 +294,44 @@ class AccountInformationScreen extends StatelessWidget {
                   SizedBox(
                     height: height * 0.08,
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.end,
-                  //   children: [
-                  //     Padding(
-                  //       padding: const EdgeInsets.all(8.0),
-                  //       child: FloatingActionButton(
-                  //         heroTag: "btn1",
-                  //         backgroundColor: Color.fromRGBO(249, 112, 104, 1),
-                  //         foregroundColor: Colors.black,
-                  //         onPressed: () {
-                  //           // Respond to button press
-                  //         },
-                  //         child: Icon(
-                  //           Icons.cancel,
-                  //           color: Colors.white,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     FloatingActionButton.extended(
-                  //       heroTag: "btn2",
-                  //       shape: RoundedRectangleBorder(
-                  //         borderRadius: BorderRadius.circular(25.0),
-                  //       ),
-                  //       backgroundColor: Color.fromRGBO(249, 112, 104, 1),
-                  //       foregroundColor: Colors.black,
-                  //       onPressed: () {
-                  //         // Respond to button press
-                  //       },
-                  //       label: Text(
-                  //         "Reset",
-                  //         style: TextStyle(color: Colors.white),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
+                  widget.isEditing == true
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: FloatingActionButton(
+                                heroTag: "btn1",
+                                backgroundColor:
+                                    Color.fromRGBO(249, 112, 104, 1),
+                                foregroundColor: Colors.black,
+                                onPressed: () {
+                                  setState(() {
+                                    widget.isEditing = false;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.cancel,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            FloatingActionButton.extended(
+                              heroTag: "btn2",
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                              ),
+                              backgroundColor: Color.fromRGBO(249, 112, 104, 1),
+                              foregroundColor: Colors.black,
+                              onPressed: () {},
+                              label: Text(
+                                "Save",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        )
+                      : SizedBox(),
                 ],
               ),
             ),

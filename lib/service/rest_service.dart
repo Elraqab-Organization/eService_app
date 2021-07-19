@@ -42,4 +42,24 @@ class RestService {
       return jsonDecode(response.body);
     }
   }
+
+  Future patch(dynamic endpoint, Map<String, dynamic> data) async {
+    final response = await http.patch(Uri.parse('$_baseUrl/$endpoint'),
+        headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      return jsonDecode(response.body);
+    }
+  }
+
+  Future delete(dynamic endpoint) async {
+    final response = await http.delete(Uri.parse('$_baseUrl/$endpoint'));
+
+    if (response.statusCode == 200) {
+      return;
+    }
+    throw response;
+  }
 }

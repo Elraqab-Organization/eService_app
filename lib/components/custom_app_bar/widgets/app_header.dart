@@ -1,8 +1,11 @@
+import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/components/text_component.dart';
+import 'package:e_service_app/providers/login/login_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppHeader extends StatelessWidget {
+  LoginViewmodel get _userSession => dependency();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +28,7 @@ class AppHeader extends StatelessWidget {
               TextComponent(
                 fontSize: 25,
                 textColor: Colors.white,
-                title: 'Hi Ahmad',
+                title: 'Hi' + " " + _userSession.user.firstName,
                 weight: FontWeight.w600,
                 align: TextAlign.start,
               ),
