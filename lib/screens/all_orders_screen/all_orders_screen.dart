@@ -1,19 +1,18 @@
 import 'package:e_service_app/components/card_request.dart';
 import 'package:e_service_app/components/custom_return_bar.dart';
-import 'package:e_service_app/components/text_component.dart';
 import 'package:e_service_app/providers/requests/requests_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RequestList extends StatefulWidget {
-  const RequestList();
+class OrderList extends StatefulWidget {
+  const OrderList();
 
   @override
   _RequestListState createState() => _RequestListState();
 }
 
-class _RequestListState extends State<RequestList>
+class _RequestListState extends State<OrderList>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
 
@@ -63,10 +62,10 @@ class _RequestListState extends State<RequestList>
                       unselectedLabelColor: Colors.black,
                       tabs: [
                         Tab(
-                          text: 'Pending',
+                          text: 'In Progress',
                         ),
                         Tab(
-                          text: 'Served',
+                          text: 'History',
                         ),
                       ],
                     ),
@@ -76,28 +75,8 @@ class _RequestListState extends State<RequestList>
                     child: TabBarView(
                       controller: _tabController,
                       children: [
-                        Expanded(
-                          child: Consumer(
-                            builder: (context, watch, child) {
-                              final data = watch(requestProvider).pendingList();
-                              return CardRequest(
-                                isCustomer: true,
-                                data: data,
-                              );
-                            },
-                          ),
-                        ),
-                        Expanded(
-                          child: Consumer(
-                            builder: (context, watch, child) {
-                              final data = watch(requestProvider).servedList();
-                              return CardRequest(
-                                isCustomer: true,
-                                data: data,
-                              );
-                            },
-                          ),
-                        ),
+                        Text("none"),
+                        Text("none"),
                       ],
                     ),
                   ),
