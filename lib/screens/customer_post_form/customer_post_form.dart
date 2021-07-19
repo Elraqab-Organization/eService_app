@@ -1,12 +1,13 @@
-// import 'package:e_service_app/components/custom_btn.dart';
-// import 'dart:html';
-
+import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/components/custom_btn.dart';
 import 'package:e_service_app/components/custom_return_bar.dart';
-// import 'package:e_service_app/model/post.dart';
+import 'package:e_service_app/providers/login/login_viewmodel.dart';
+import 'package:e_service_app/providers/post_provider/post_action.dart';
+// import 'package:e_service_app/providers/post_provider/post_viewmodel.dart';
+// import 'package:e_service_app/service/post_service/post_service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tags/flutter_tags.dart';
-// import 'package:http/http.dart' as http;
+// import 'package:flutter_tags/flutter_tags.dart';
 
 class CustomerPostForm extends StatefulWidget {
   @override
@@ -14,16 +15,19 @@ class CustomerPostForm extends StatefulWidget {
 }
 
 class _CustomerPostFormState extends State<CustomerPostForm> {
-  String paymentMethod = "cash";
-  String location = "Johor";
-  List tags = [];
-  final GlobalKey<TagsState> _globalKey = GlobalKey<TagsState>();
+  //
+  String paymentMethod = "Cash";
+  String location = "Johor Bahru";
+  List tags = []; // optional
 
+  final formKey = GlobalKey<FormState>();
   TextEditingController _tagsController = new TextEditingController();
   TextEditingController description = new TextEditingController();
   TextEditingController cancelationFee = new TextEditingController();
-  TextEditingController imgSrc = new TextEditingController();
-  TextEditingController customerId = new TextEditingController();
+
+  // user object to get data in the post information
+  // userId and imgSrc for the post POST request.
+  LoginViewmodel get _service => dependency();
 
   //
   @override
@@ -38,7 +42,7 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
             children: [
               CustomReturnBar(),
               Form(
-                  key: _globalKey,
+                  key: formKey,
                   child: Column(
                     children: [
                       _buildDescription(),
@@ -216,7 +220,7 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
                   paymentMethod = newValue;
                 });
               },
-              items: <String>['cash', 'online payment']
+              items: <String>['Cash', 'online payment']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -248,8 +252,13 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
                   location = newValue;
                 });
               },
-              items: <String>['Johor', 'online payment']
-                  .map<DropdownMenuItem<String>>((String value) {
+              items: <String>[
+                'Johor Bahru',
+                'Kuala lumper',
+                'Penang',
+                'Kelenatan',
+                'Selangor'
+              ].map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -336,7 +345,28 @@ class _CustomerPostFormState extends State<CustomerPostForm> {
 
   Widget postBtn() {
     return InkWell(
-      onTap: () {},
+      onTap: () async {
+        if (formKey.currentState.validate()) {
+          final post = await context.read(postProvider).createAPost({
+            'imgSrc': _service.user.imgSrc,
+            'customerId': _service.user.id,
+            'location': location,
+            'paymentMethod': paymentMethod,
+            'cancelationFee': cancelationFee.text,
+            'description': description.text,
+            'username': _service.user.firstName + " " + _service.user.lastName,
+            'tags': tags
+          });
+
+          if (post != null) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text('post has been saved')));
+          } else {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text('failed to save post')));
+          }
+        }
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Container(

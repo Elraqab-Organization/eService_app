@@ -28,7 +28,11 @@ class _CustomReturnBarState extends State<CustomReturnBar> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, "/landing", (Route<dynamic> route) => false);
+                  setState(() {});
+                },
                 child: Container(
                   width: 50.0,
                   height: 50.0,

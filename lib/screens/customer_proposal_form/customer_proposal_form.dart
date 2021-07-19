@@ -1,8 +1,11 @@
 import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/components/custom_btn.dart';
 import 'package:e_service_app/components/custom_return_bar.dart';
+import 'package:e_service_app/model/post.dart';
 import 'package:e_service_app/providers/login/login_viewmodel.dart';
+import 'package:e_service_app/providers/post_provider/post_action.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomerProposalForm extends StatefulWidget {
   @override
@@ -10,34 +13,36 @@ class CustomerProposalForm extends StatefulWidget {
 }
 
 class _CustomerProposalFormState extends State<CustomerProposalForm> {
-  String paymentMethod = "cash";
-  String location = "Johor";
-  List tags = [];
-
   LoginViewmodel get _service => dependency();
 
-  TextEditingController description = new TextEditingController();
-  TextEditingController cancelationFee = new TextEditingController();
-  TextEditingController imgSrc = new TextEditingController();
-  TextEditingController customerId = new TextEditingController();
+  // global key for validation
+  final formKey = GlobalKey<FormState>();
 
-  //
+  TextEditingController description = new TextEditingController();
+  TextEditingController fees = new TextEditingController();
+  TextEditingController step1 = new TextEditingController();
+  TextEditingController step2 = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final postObj = ModalRoute.of(context).settings.arguments as Post;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomReturnBar(),
-              _buildFee(),
-              _buildDescription(),
-              _buildStep1(),
-              _buildStep2(),
-              postBtn(),
-            ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomReturnBar(),
+                _buildFee(),
+                _buildDescription(),
+                _buildStep1(),
+                _buildStep2(),
+                postBtn(postObj),
+              ],
+            ),
           ),
           decoration: BoxDecoration(
             color: Color(0xff212738),
@@ -108,10 +113,10 @@ class _CustomerProposalFormState extends State<CustomerProposalForm> {
         Padding(
           padding: const EdgeInsets.only(bottom: 20, left: 16, right: 16),
           child: TextFormField(
-            controller: cancelationFee,
+            controller: fees,
             validator: (String value) {
               if (value.isEmpty) {
-                return 'fee 25.00';
+                return 'fees is required';
               }
               return null;
             },
@@ -149,10 +154,10 @@ class _CustomerProposalFormState extends State<CustomerProposalForm> {
         Padding(
           padding: const EdgeInsets.only(bottom: 20, left: 16, right: 16),
           child: TextFormField(
-            controller: cancelationFee,
+            controller: step1,
             validator: (String value) {
               if (value.isEmpty) {
-                return 'fee 25.00';
+                return 'step 1 is required';
               }
               return null;
             },
@@ -190,10 +195,10 @@ class _CustomerProposalFormState extends State<CustomerProposalForm> {
         Padding(
           padding: const EdgeInsets.only(bottom: 20, left: 16, right: 16),
           child: TextFormField(
-            controller: cancelationFee,
+            controller: step2,
             validator: (String value) {
               if (value.isEmpty) {
-                return 'fee 25.00';
+                return 'step description is required';
               }
               return null;
             },
@@ -216,7 +221,7 @@ class _CustomerProposalFormState extends State<CustomerProposalForm> {
     );
   }
 
-  Widget postBtn() {
+  Widget postBtn(post) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20, right: 10),
       child: Row(
@@ -232,7 +237,26 @@ class _CustomerProposalFormState extends State<CustomerProposalForm> {
                 color: Colors.white,
               )),
           InkWell(
-            onTap: () {},
+            onTap: () async {
+              if (formKey.currentState.validate()) {
+                final proposal = await context
+                    .read(postProvider)
+                    .createAProposal(post.id.toString(), {
+                  'serviceProviderId': _service.user.id.toString(),
+                  'diagnosisFee': fees.text,
+                  'description': description.text,
+                  'steps': [step1.text, step2.text]
+                });
+
+                if (proposal != null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('post has been saved')));
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('failed to save post')));
+                }
+              }
+            },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Container(

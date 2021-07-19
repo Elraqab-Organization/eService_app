@@ -7,7 +7,6 @@ class RestService {
 
   // Send a GET request to retrieve data from a REST server
   Future get(dynamic endpoint) async {
-    // final response = await http.get(Uri.parse('$_baseUrl/$endpoint'));
     final response = await http.get(
       Uri.parse('$_baseUrl/$endpoint'),
       headers: {"Content-Type": "application/json"},
