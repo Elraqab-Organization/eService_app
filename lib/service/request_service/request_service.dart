@@ -22,4 +22,9 @@ class RequestsService {
 
     return request;
   }
+
+  Future<Request> acceptRequest(id) async {}
+
+  Future<Request> cancelRequest(id) async {}
+  Future<Request> rejectRequest(id) async {}
 }

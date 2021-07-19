@@ -11,6 +11,15 @@ final requestList = FutureProvider.autoDispose<List<Request>>((ref) async {
   return data;
 });
 
+final dashboardRequestList =
+    FutureProvider.autoDispose<List<Request>>((ref) async {
+  final list = ref.read(requestProvider);
+
+  final data = list.getDashboardRequest();
+
+  return data;
+});
+
 final updateRequestProvider = FutureProvider.autoDispose<bool>((ref) async {
   final status = ref.read(requestProvider);
 

@@ -19,21 +19,21 @@ class InnerNavigationTabs extends StatefulWidget {
   _InnerNavigationTabsState createState() => _InnerNavigationTabsState();
 }
 
-class _InnerNavigationTabsState extends State<InnerNavigationTabs>
-    with SingleTickerProviderStateMixin {
-  TabController _tabController;
+class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
+  //   with SingleTickerProviderStateMixin {
+  // TabController _tabController;
 
-  @override
-  void initState() {
-    _tabController = TabController(length: 5, vsync: this);
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   _tabController = TabController(length: 5, vsync: this);
+  //   super.initState();
+  // }
 
-  @override
-  void dispose() {
-    super.dispose();
-    _tabController.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   _tabController.dispose();
+  // }
 
   final widgets = [
     CustomerServiceScreen(),
@@ -53,42 +53,47 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs>
         SizedBox(
           height: 50.0,
         ),
-        Expanded(
-          child: Container(
-            child: Column(
-              children: [
-                Container(
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(33, 39, 56, 1),
-                  ),
-                  child: TabBar(
-                    controller: _tabController,
-                    indicator: BoxDecoration(
-                      color: Color.fromRGBO(249, 112, 104, 1),
+        DefaultTabController(
+          length: 5,
+          child: Expanded(
+            child: Container(
+              child: Column(
+                children: [
+                  Container(
+                    height: 45,
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(33, 39, 56, 1),
                     ),
-                    labelColor: Colors.white,
-                    unselectedLabelColor: Colors.white,
-                    tabs: [
-                      for (var i = 0; i < type.length; i++)
-                        Tab(
-                          text: type[i],
-                        ),
-                    ],
+                    child: TabBar(
+                      indicator: BoxDecoration(
+                        color: Color.fromRGBO(249, 112, 104, 1),
+                      ),
+                      labelColor: Colors.white,
+                      unselectedLabelColor: Colors.white,
+                      tabs: [
+                        for (var i = 0; i < type.length; i++)
+                          Tab(
+                            text: type[i],
+                          ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 30.0,
-                ),
-                Expanded(
-                  child: TabBarView(
-                    controller: _tabController,
-                    children: [
-                      for (var i = 0; i < widgets.length; i++) widgets[i],
-                    ],
+                  SizedBox(
+                    height: 30.0,
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: TabBarView(
+                      children: [
+                        CustomerServiceScreen(),
+                        CustomerPostsServiceScreen(),
+                        CustomerOrderScreen(),
+                        CustomerRequestScreen(),
+                        CustomerRequestScreen()
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

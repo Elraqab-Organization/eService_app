@@ -1,19 +1,17 @@
 import 'package:e_service_app/components/card_request.dart';
-import 'package:e_service_app/components/custom_return_bar.dart';
-import 'package:e_service_app/components/text_component.dart';
 import 'package:e_service_app/providers/requests/requests_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RequestList extends StatefulWidget {
-  const RequestList();
+class DashboardRequest extends StatefulWidget {
+  const DashboardRequest();
 
   @override
   _RequestListState createState() => _RequestListState();
 }
 
-class _RequestListState extends State<RequestList>
+class _RequestListState extends State<DashboardRequest>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
 
@@ -34,15 +32,14 @@ class _RequestListState extends State<RequestList>
     return Scaffold(
       body: Column(
         children: [
-          CustomReturnBar(),
-          SizedBox(
-            height: 50.0,
-          ),
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 30.0,
+                  ),
                   Container(
                     height: 45,
                     decoration: BoxDecoration(
@@ -66,12 +63,14 @@ class _RequestListState extends State<RequestList>
                           text: 'Pending',
                         ),
                         Tab(
-                          text: 'Served',
+                          text: 'All',
                         ),
                       ],
                     ),
                   ),
-                  // tab bar view here
+                  SizedBox(
+                    height: 30.0,
+                  ),
                   Expanded(
                     child: TabBarView(
                       controller: _tabController,
@@ -79,25 +78,20 @@ class _RequestListState extends State<RequestList>
                         Expanded(
                           child: Consumer(
                             builder: (context, watch, child) {
-                              final data = watch(requestProvider).pendingList();
-                              return CardRequest(
-                                isCustomer: true,
-                                data: data,
+                              final data = watch(dashboardRequestList);
+                              return data.map(
+                                data: (data) => CardRequest(
+                                  isCustomer: false,
+                                  data: data.value,
+                                ),
+                                loading: (_) =>
+                                    Center(child: CircularProgressIndicator()),
+                                error: (_) => Text("Error"),
                               );
                             },
                           ),
                         ),
-                        Expanded(
-                          child: Consumer(
-                            builder: (context, watch, child) {
-                              final data = watch(requestProvider).servedList();
-                              return CardRequest(
-                                isCustomer: true,
-                                data: data,
-                              );
-                            },
-                          ),
-                        ),
+                        Text("data"),
                       ],
                     ),
                   ),

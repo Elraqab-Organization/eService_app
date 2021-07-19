@@ -39,6 +39,22 @@ class RequestViewmodel extends ChangeNotifier {
     return requests;
   }
 
+  Future cancelRequest(id) async {}
+
+  Future acceptRequest(id) async {
+
+    
+  }
+
+  Future rejectRequest(id) async {}
+
+  Future<List<Request>> getDashboardRequest() async {
+    requests =
+        await _service.fetchRequests(id: _userSession.user.id, type: "true");
+
+    return requests;
+  }
+
   Future<bool> updateRequest() async {
     bool status;
     return status;
