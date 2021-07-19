@@ -1,5 +1,7 @@
+import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/components/custom_btn.dart';
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:e_service_app/providers/login/login_viewmodel.dart';
 import 'package:e_service_app/providers/post_provider/post_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,6 +13,9 @@ class PostsCard extends StatefulWidget {
 }
 
 class _PostsCardState extends State<PostsCard> {
+  //
+  LoginViewmodel get _service => dependency();
+
   var moment = new Moment.now();
   bool isShown = false;
   @override
@@ -33,7 +38,14 @@ class _PostsCardState extends State<PostsCard> {
                     child: Stack(clipBehavior: Clip.none, children: [
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, "/proposals_view");
+                          if (response.value[index].customerId ==
+                              _service.user.id) {
+                            Navigator.pushNamed(context, "/proposals_view",
+                                arguments: response.value[index]);
+                          } else {
+                            Navigator.pushNamed(context, "/proposal_form",
+                                arguments: response.value[index]);
+                          }
                         },
                         child: Card(
                           elevation: 12,
@@ -103,11 +115,11 @@ class _PostsCardState extends State<PostsCard> {
                           ),
                         ),
                       ),
-                      postOption(25, 340, "more_vert",
-                          _moreOptionsServiceProviderModalSheet),
-                      isShown
-                          ? postOption(67, 340, "share", _moreOptionsModalSheet)
-                          : Text("")
+                      response.value[index].customerId != _service.user.id
+                          ? postOption(25, 340, "more_vert",
+                              _moreOptionsServiceProviderModalSheet)
+                          : postOption(
+                              67, 340, "more_vert", _moreOptionsModalSheet)
                     ]),
                   ),
                 ),
@@ -189,7 +201,6 @@ class _PostsCardState extends State<PostsCard> {
                   color: Colors.white,
                 ),
                 optionValues("Send regular proposal"),
-                Divider(color: Colors.white),
               ],
             ),
           );

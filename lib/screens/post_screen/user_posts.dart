@@ -9,6 +9,8 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
+  bool f;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
