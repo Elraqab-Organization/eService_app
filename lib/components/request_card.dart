@@ -1,7 +1,7 @@
 import 'package:e_service_app/providers/requests/requests_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:e_service_app/components/card.dart';
+// import 'package:e_service_app/components/card.dart';
 
 class RequestCard extends StatefulWidget {
   @override
@@ -17,9 +17,10 @@ class _RequestCardState extends State<RequestCard> {
         return data.map(
           data: (request) {
             print(request.value);
-            return CardComponent(
-              data: request.value,
-            );
+            return Text("added to pass");
+            // return CardComponent(
+            //   data: request.value,
+            // );
           },
           loading: (_) => Expanded(
             child: Center(
