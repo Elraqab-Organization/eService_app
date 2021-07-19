@@ -3,6 +3,7 @@ import 'package:e_service_app/components/square_button.dart';
 import 'package:e_service_app/screens/Customer_Posts_Screen/customer_posts_service.dart';
 import 'package:e_service_app/screens/Customer_order_screen/customer_ordder_screen.dart';
 import 'package:e_service_app/screens/customer_Service_screen/customer_service_screen.dart';
+import 'package:e_service_app/screens/customer_requests_screen/customer_request_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -33,6 +34,9 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
         break;
       case 2:
         return CustomerOrderScreen();
+        break;
+      case 3:
+        return CustomerRequestScreen();
         break;
     }
   }

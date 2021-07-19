@@ -1,5 +1,7 @@
+import 'package:e_service_app/components/card.dart';
+import 'package:e_service_app/providers/orders/order.action.dart';
 import 'package:flutter/material.dart';
-import '../../components/order_card.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomerOrderScreen extends StatelessWidget {
   final onTap;
@@ -40,7 +42,28 @@ class CustomerOrderScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Ordercard()
+            // Ordercard()
+            Consumer(
+              builder: (context, watch, child) {
+                final data = watch(ordersListProvider);
+                print(data);
+                return data.map(
+                  data: (value) => CardComponent(
+                    data: value.value,
+                  ),
+                  loading: (_) => Expanded(
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                  error: (_) => Expanded(
+                    child: Center(
+                      child: Text("Network error"),
+                    ),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
