@@ -23,9 +23,7 @@ class CustomerRequestScreen extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, "/requests");
-                  },
+                  onTap: () => {Navigator.pushNamed(context, "/requests_list")},
                   child: Text(
                     "See all",
                     style: TextStyle(
@@ -37,33 +35,13 @@ class CustomerRequestScreen extends StatelessWidget {
               ],
             ),
           ),
-          // Ordercard()
-          // Consumer(
-          //   builder: (context, watch, child) {
-          //     final data = watch(requestList);
-          //     print(data);
-          //     return data.map(
-          //       data: (value) => CardComponent(
-          //         data: value.value,
-          //       ),
-          //       loading: (_) => Expanded(
-          //         child: Center(
-          //           child: CircularProgressIndicator(),
-          //         ),
-          //       ),
-          //       error: (_) => Expanded(
-          //         child: Center(
-          //           child: Text("Network error"),
-          //         ),
-          //       ),
-          //     );
-          //   },
-          // ),
           Consumer(
             builder: (context, watch, child) {
               final data = watch(requestList);
               return data.map(
                 data: (value) => CardComponent(
+                  functionCount: 1,
+                  functions: [() => null],
                   data: value.value,
                 ),
                 loading: (_) => Expanded(

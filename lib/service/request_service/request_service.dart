@@ -5,22 +5,20 @@ import '../rest_service.dart';
 class RequestsService {
   RestService get rest => dependency();
 
-  Future<List<RequestModel>> getRequestsList(id, isServiceProvider) async {
-    print(id);
-    print(isServiceProvider);
-    final json = await rest.get('requests/?type=$isServiceProvider&id=$id');
-    if (json == null || json.length == 0) return null;
+  Future<List<Request>> fetchRequests({String id, String type}) async {
+    final List jsonPosts = await rest.getPosts('requests/?id=$id&type=$type');
+    if (jsonPosts == null || jsonPosts.length == 0) return null;
 
-    final order = json.map((doc) => RequestModel.fromJson(doc)).toList();
+    final requestList = jsonPosts.map((doc) => Request.fromJson(doc)).toList();
 
-    return order;
+    return requestList;
   }
 
-  Future<RequestModel> makeRequest(data) async {
+  Future<Request> makeRequest(data) async {
     final json = await rest.post('requests/create', data);
     if (json == null || json.length == 0) return null;
 
-    final request = RequestModel.fromJson(json);
+    final request = Request.fromJson(json);
 
     return request;
   }

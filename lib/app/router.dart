@@ -1,3 +1,4 @@
+import 'package:e_service_app/screens/all_requests_screen/all_requests_screen.dart';
 import 'package:e_service_app/screens/customer_post_form/customer_post_form.dart';
 import 'package:e_service_app/screens/customer_proposal_form/customer_proposal_form.dart';
 import 'package:e_service_app/screens/customer_view_proposals/customer_view_proposal.dart';
@@ -65,6 +66,9 @@ class RouteManager {
         break;
       case "/proposals_view":
         builder = (BuildContext context) => CustomerViewProposal();
+        break;
+      case "/requests_list":
+        builder = (BuildContext context) => RequestList();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

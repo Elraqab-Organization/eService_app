@@ -1,6 +1,6 @@
 import 'package:e_service_app/model/User.dart';
 
-class RequestModel {
+class Request {
   String id;
   String customerId;
   String serviceProviderId;
@@ -14,7 +14,7 @@ class RequestModel {
   User customer;
   User serviceProvider;
 
-  RequestModel({
+  Request({
     this.id,
     this.customerId,
     this.serviceProviderId,
@@ -29,7 +29,7 @@ class RequestModel {
     this.serviceProvider,
   });
 
-  RequestModel.fromJson(Map<String, dynamic> json) {
+  Request.fromJson(Map<String, dynamic> json) {
     id = json['_id'];
     customerId = json['customerId'];
     serviceProviderId = json['serviceProviderId'];
