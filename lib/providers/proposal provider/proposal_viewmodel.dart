@@ -16,6 +16,11 @@ class ProposalViewmodel extends ChangeNotifier {
     return proposalList;
   }
 
+  Future<List<Proposal>> getCustomerProposals(final customerId) async {
+    proposalList = await _service.fetchCustomerProposals(customerId);
+    return proposalList;
+  }
+
   Future<Proposal> acceptProposal(final id) async {
     final updatedProposal = await _service.updateProposalAccept(id);
     if (updatedProposal != null) {

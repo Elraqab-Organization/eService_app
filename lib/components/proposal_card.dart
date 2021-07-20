@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:e_service_app/providers/proposal%20provider/proposal_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -86,7 +84,6 @@ class _ProposalCardState extends State<ProposalCard> {
           InkWell(
             onTap: () async {
               await watch(propsProvider).acceptProposal(proposalObj.id);
-              Navigator.pop(context);
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -108,7 +105,6 @@ class _ProposalCardState extends State<ProposalCard> {
           InkWell(
             onTap: () async {
               await watch(propsProvider).rejectProposal(proposalObj.id);
-              Navigator.pop(context);
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4),

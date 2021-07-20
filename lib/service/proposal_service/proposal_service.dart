@@ -13,6 +13,14 @@ class ProposalService {
     return proposals;
   }
 
+  Future<List<Proposal>> fetchCustomerProposals(final id) async {
+    final List jsonProposals = await rest.get('proposals/$id/false');
+    if (jsonProposals == null || jsonProposals.length == 0) return null;
+    final proposals =
+        jsonProposals.map((doc) => Proposal.fromJson(doc)).toList();
+    return proposals;
+  }
+
   Future<Proposal> updateProposalAccept(final id) async {
     final jsonProposal = await rest.patch('proposals/$id/accept', data: {});
     if (jsonProposal == null) return null;
