@@ -7,7 +7,6 @@ class RestService {
 
   // Send a GET request to retrieve data from a REST server
   Future get(dynamic endpoint) async {
-    // final response = await http.get(Uri.parse('$_baseUrl/$endpoint'));
     final response = await http.get(
       Uri.parse('$_baseUrl/$endpoint'),
       headers: {"Content-Type": "application/json"},
@@ -43,22 +42,21 @@ class RestService {
     }
   }
 
-  Future patch(dynamic endpoint, Map<String, dynamic> data) async {
+  Future patch(String endpoint, {dynamic data}) async {
     final response = await http.patch(Uri.parse('$_baseUrl/$endpoint'),
         headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));
 
-    if (response.statusCode == 200) {
-      return jsonDecode(response.body);
-    } else {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return jsonDecode(response.body);
     }
+    return null;
   }
 
-  Future delete(dynamic endpoint) async {
+  Future delete(String endpoint) async {
     final response = await http.delete(Uri.parse('$_baseUrl/$endpoint'));
 
-    if (response.statusCode == 200) {
-      return;
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return jsonDecode(response.body);
     }
     throw response;
   }

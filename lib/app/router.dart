@@ -1,16 +1,16 @@
 import 'package:e_service_app/screens/account_information_screen/account_information_screen.dart';
 import 'package:e_service_app/screens/change_language_screen/change_language_screen.dart';
 import 'package:e_service_app/screens/customer_address_screen/customer_address_screen.dart';
-import 'package:e_service_app/screens/customer_chat_screen/customer_chat_screen.dart';
-import 'package:e_service_app/screens/customer_favourite_screen/customer_favourite_screen.dart';
-import 'package:e_service_app/screens/customer_notification_screen/customer_notification_screen.dart';
 import 'package:e_service_app/screens/customer_post_form/customer_post_form.dart';
 import 'package:e_service_app/screens/customer_profile/customer_profile_screen.dart';
+import 'package:e_service_app/screens/all_orders_screen/all_orders_screen.dart';
+import 'package:e_service_app/screens/all_proposals_screen/proposals_screen.dart';
+import 'package:e_service_app/screens/all_requests_screen/all_requests_screen.dart';
+import 'package:e_service_app/screens/customer_post_form/customer_post_form.dart';
 import 'package:e_service_app/screens/customer_proposal_form/customer_proposal_form.dart';
 import 'package:e_service_app/screens/customer_view_proposals/customer_view_proposal.dart';
 import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
-import 'package:e_service_app/screens/password_reset_screen/password_reset_screen.dart';
 import 'package:e_service_app/screens/post_screen/user_posts.dart';
 import 'package:e_service_app/screens/profile_notification_screen/profile_notification_screen.dart';
 import 'package:e_service_app/screens/register/register_screen.dart';
@@ -34,13 +34,15 @@ class RouteManager {
         builder = (BuildContext context) => App(currentIndex: "0");
         break;
       case "/service_providers":
-        builder = (BuildContext context) => ServiceProviders();
+        builder = (BuildContext context) =>
+            ServiceProviders(data: settings.arguments);
         break;
       case "/service_branches":
         builder = (BuildContext context) => ServiceBranches();
         break;
       case "/service_provider_profile":
-        builder = (BuildContext context) => ServiceProviderProfile();
+        builder = (BuildContext context) =>
+            ServiceProviderProfile(data: settings.arguments);
         break;
       case "/service_provider_reviews":
         builder = (BuildContext context) => ServiceProviderReviews();
@@ -57,11 +59,11 @@ class RouteManager {
       case "/search_view":
         builder = (BuildContext context) => SearchView();
         break;
-      case "/customer_notification":
-        builder = (BuildContext context) => CustomerNotificationScreen();
+      case "/posts":
+        builder = (BuildContext context) => PostScreen();
         break;
-      case "/customer_favourite":
-        builder = (BuildContext context) => CustomerFavouriteScreen();
+      case "/post_form":
+        builder = (BuildContext context) => CustomerPostForm();
         break;
       case "/posts":
         builder = (BuildContext context) => PostScreen();
@@ -79,27 +81,30 @@ class RouteManager {
       case "/proposals_view":
         builder = (BuildContext context) => CustomerViewProposal();
         break;
-
-      case "/customer_chat":
-        builder = (BuildContext context) => CustomerChatScreen();
+      case "/request_form":
+        builder =
+            (BuildContext context) => RequestForm(data: settings.arguments);
         break;
-      case "/PasswordReset":
-        builder = (BuildContext context) => PasswordResetScreen();
+      case "/proposal_form":
+        builder = (BuildContext context) => CustomerProposalForm();
         break;
-      case "/AccountInfo":
-        builder = (BuildContext context) => AccountInformationScreen();
+      case "/proposals_view":
+        builder = (BuildContext context) => CustomerViewProposal();
         break;
-      case "/Profile":
-        builder = (BuildContext context) => ProfileScreen();
+      case "/requests_list":
+        builder = (BuildContext context) => RequestList();
         break;
-      case "/MyAddress":
-        builder = (BuildContext context) => CustomerAddressScreen();
+      case "/proposals_list":
+        builder = (BuildContext context) => ProposalsHistory();
         break;
       case "/changeLanguage":
         builder = (BuildContext context) => ChangeLanguageScreen();
         break;
       case "/ProfileNotification":
         builder = (BuildContext context) => ProfileNotification();
+        break;
+      case "/orders_list":
+        builder = (BuildContext context) => OrderList();
         break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);

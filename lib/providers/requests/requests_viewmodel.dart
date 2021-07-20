@@ -1,5 +1,7 @@
 import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/model/request.dart';
+import 'package:e_service_app/providers/login/login_viewmodel.dart';
+import 'package:e_service_app/screens/all_requests_screen/all_requests_screen.dart';
 import 'package:e_service_app/service/request_service/request_service.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -9,7 +11,8 @@ class RequestViewmodel extends ChangeNotifier {
   bool _message = false;
   String _res;
 
-  RequestService get _service => dependency();
+  RequestsService get _service => dependency();
+  LoginViewmodel get _userSession => dependency();
 
   get message => _message;
   set message(value) {
@@ -30,12 +33,72 @@ class RequestViewmodel extends ChangeNotifier {
   }
 
   Future<List<Request>> getRequest() async {
+    requests =
+        await _service.fetchRequests(id: _userSession.user.id, type: "false");
+
+    return requests;
+  }
+
+  // Future cancelRequest(id) async {
+  //   loading = true;
+  //   final response = await _service.cancelRequest(id);
+
+  //   print(response);
+  //   if (response != null) {
+  //     loading = false;
+  //   } else {
+  //     loading = false;
+  //   }
+  // }
+
+  Future acceptRequest(id, type) async {
+    loading = true;
+    final response = await _service.acceptRequest(id, type);
+
+    print(response);
+    if (response != null) {
+      loading = false;
+    } else {
+      loading = false;
+    }
+  }
+
+  // Future rejectRequest(id) async {
+  //   loading = true;
+  //   final response = await _service.rejectRequest(id);
+
+  //   print(response);
+  //   if (response != null) {
+  //     loading = false;
+  //   } else {
+  //     loading = false;
+  //   }
+  // }
+
+  Future<List<Request>> getDashboardRequest() async {
+    requests =
+        await _service.fetchRequests(id: _userSession.user.id, type: "true");
+
     return requests;
   }
 
   Future<bool> updateRequest() async {
     bool status;
     return status;
+  }
+
+  pendingList() {
+    final list = requests
+        .where((element) => element.status.toLowerCase() == "pending")
+        .toList();
+    return list;
+  }
+
+  servedList() {
+    final list = requests
+        .where((element) => element.status.toLowerCase() == "accepted")
+        .toList();
+    return list;
   }
 
   Future makeRequest(Map data) async {

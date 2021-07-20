@@ -6,7 +6,7 @@ class ProfileService {
   RestService get rest => dependency();
 
   Future<User> updateUser({user, id}) async {
-    final json = await rest.patch('users/$id', user);
+    final json = await rest.patch('users/$id', data: user);
     return User.fromJson(json);
   }
 

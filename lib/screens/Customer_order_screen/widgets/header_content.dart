@@ -1,10 +1,13 @@
 import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class HeaderContent extends StatelessWidget {
+  final bool isCustomer;
+  final data;
   const HeaderContent({
+    this.isCustomer,
+    this.data,
     Key key,
   }) : super(key: key);
 
@@ -17,20 +20,23 @@ class HeaderContent extends StatelessWidget {
             child: ListTile(
               leading: CircleAvatar(
                 radius: 29,
-                child: SvgPicture.asset(
-                  "lib/assets/icon/1.svg",
-                  fit: BoxFit.cover,
+                backgroundImage: NetworkImage(
+                  isCustomer
+                      ? data.customer.imgSrc
+                      : data.serviceProvider.imgSrc,
                 ),
               ),
               title: TextComponent(
-                title: "John Williams",
+                title: isCustomer
+                    ? "${data.serviceProvider.firstName} ${data.serviceProvider.lastName}"
+                    : "${data.customer.firstName} ${data.customer.lastName}",
                 fontSize: 14,
                 weight: FontWeight.w700,
                 textColor: Colors.black,
                 align: TextAlign.start,
               ),
               subtitle: TextComponent(
-                title: "2 hrs ago / Johor Bahru",
+                title: "${data.time} / ${data.location}",
                 fontSize: 12,
                 weight: FontWeight.w600,
                 textColor: Colors.black,
@@ -39,7 +45,7 @@ class HeaderContent extends StatelessWidget {
               trailing: Padding(
                 padding: const EdgeInsets.only(right: 50.0, top: 0),
                 child: TextComponent(
-                  title: "25\$",
+                  title: "${data.fees}\$",
                   fontSize: 14,
                   weight: FontWeight.w700,
                   textColor: Colors.black,

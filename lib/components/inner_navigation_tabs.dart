@@ -1,10 +1,12 @@
 import 'package:e_service_app/components/custom_app_bar/custom_app_bar.dart';
-import 'package:e_service_app/components/square_button.dart';
+// import 'package:e_service_app/components/square_button.dart';
 import 'package:e_service_app/screens/Customer_Posts_Screen/customer_posts_service.dart';
 import 'package:e_service_app/screens/Customer_order_screen/customer_ordder_screen.dart';
 import 'package:e_service_app/screens/customer_Service_screen/customer_service_screen.dart';
+import 'package:e_service_app/screens/customer_proposals_screen/customer_proposals_screen.dart';
+import 'package:e_service_app/screens/customer_requests_screen/customer_request_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // ignore: must_be_immutable
 class InnerNavigationTabs extends StatefulWidget {
@@ -19,68 +21,83 @@ class InnerNavigationTabs extends StatefulWidget {
 }
 
 class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
-  onTab(index) {
-    setState(() => {widget.tabIndex = index});
-  }
+  //   with SingleTickerProviderStateMixin {
+  // TabController _tabController;
 
-  callTab(index) {
-    switch (index) {
-      case 0:
-        return CustomerServiceScreen();
-        break;
-      case 1:
-        return CustomerPostsServiceScreen();
-        break;
-      case 2:
-        return CustomerOrderScreen();
-        break;
-    }
-  }
+  // @override
+  // void initState() {
+  //   _tabController = TabController(length: 5, vsync: this);
+  //   super.initState();
+  // }
 
-  List<String> type = ['Services', 'Posts', 'Orders', 'Requests'];
-  List<Color> colors = [
-    Color.fromRGBO(87, 196, 229, 1),
-    Color.fromRGBO(33, 39, 56, 1),
-    Color.fromRGBO(87, 196, 229, 1),
-    Color.fromRGBO(33, 39, 56, 1)
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   _tabController.dispose();
+  // }
+
+  final widgets = [
+    CustomerServiceScreen(),
+    CustomerPostsServiceScreen(),
+    CustomerOrderScreen(),
+    CustomerRequestScreen(),
+    CustomerProposalScreen()
   ];
-  List<IconData> icons = [
-    FontAwesomeIcons.wrench,
-    FontAwesomeIcons.database,
-    FontAwesomeIcons.truckLoading,
-    FontAwesomeIcons.networkWired
-  ];
+
+  List<String> type = ['Services', 'Posts', 'Orders', 'Requests', 'Proposals'];
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CustomAppBar(),
         SizedBox(
-          height: 10.0,
+          height: 50.0,
         ),
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Row(
-            children: [
-              for (var i = 0; i < 4; i++)
-                Expanded(
-                  child: SquareButton(
-                    height: 80,
-                    route: onTab,
-                    index: i,
-                    icon: Icon(
-                      icons[i],
-                      size: 20.0,
-                      color: Colors.white,
+        DefaultTabController(
+          length: 5,
+          child: Expanded(
+            child: Container(
+              child: Column(
+                children: [
+                  Container(
+                    height: 45,
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(33, 39, 56, 1),
                     ),
-                    title: type[i],
-                    color: Color.fromRGBO(249, 112, 104, 1),
+                    child: TabBar(
+                      indicator: BoxDecoration(
+                        color: Color.fromRGBO(249, 112, 104, 1),
+                      ),
+                      labelColor: Colors.white,
+                      unselectedLabelColor: Colors.white,
+                      tabs: [
+                        for (var i = 0; i < type.length; i++)
+                          Tab(
+                            text: type[i],
+                          ),
+                      ],
+                    ),
                   ),
-                ),
-            ],
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  Expanded(
+                    child: TabBarView(
+                      children: [
+                        CustomerServiceScreen(),
+                        CustomerPostsServiceScreen(),
+                        CustomerOrderScreen(),
+                        CustomerRequestScreen(),
+                        CustomerProposalScreen()
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-        callTab(widget.tabIndex)
       ],
     );
   }
