@@ -38,6 +38,19 @@ class OrderViewmodel extends ChangeNotifier {
     return orders;
   }
 
+  Future<Order> giveFeedback(id, feedback, rate) async {
+    loading = true;
+    final order =
+        await rest.giveFeedback(id, {"feedback": feedback, "rate": rate});
+    if (order == null) {
+      loading = false;
+    } else {
+      loading = false;
+    }
+
+    return order;
+  }
+
   Future<Order> markAsDone(id) async {
     loading = true;
     final order = await rest.markAsDone(id);

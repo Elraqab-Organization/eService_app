@@ -123,7 +123,11 @@ class _CardComponentState extends State<OrderRequest> {
                     ),
             );
           },
-          loading: (_) => Center(child: CircularProgressIndicator()),
+          loading: (_) => Expanded(
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
           error: (_) => Text("Error"),
         );
       },
