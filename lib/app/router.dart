@@ -106,6 +106,9 @@ class RouteManager {
       case "/orders_list":
         builder = (BuildContext context) => OrderList();
         break;
+      case "/AccountInfo":
+        builder = (BuildContext context) => AccountInformationScreen();
+        break;
       default:
       // builder = (BuildContext context) => App(currentIndex: settings.name);
     }
