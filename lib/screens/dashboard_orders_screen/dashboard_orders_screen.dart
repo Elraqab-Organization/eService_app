@@ -1,4 +1,5 @@
-import 'package:e_service_app/components/custom_return_bar.dart';
+import 'package:e_service_app/components/card_order/card_order.dart';
+import 'package:e_service_app/components/card_request/card_request.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -30,14 +31,14 @@ class _RequestListState extends State<DashboardOrder>
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(
-            height: 30.0,
-          ),
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 30.0,
+                  ),
                   Container(
                     height: 45,
                     decoration: BoxDecoration(
@@ -61,18 +62,30 @@ class _RequestListState extends State<DashboardOrder>
                           text: 'In Progress',
                         ),
                         Tab(
-                          text: 'Served',
+                          text: 'History',
                         ),
                       ],
                     ),
                   ),
-                  // tab bar view here
+                  SizedBox(
+                    height: 30.0,
+                  ),
                   Expanded(
                     child: TabBarView(
                       controller: _tabController,
                       children: [
-                        Text("data"),
-                        Text("data"),
+                        Expanded(
+                          child: OrderRequest(
+                            isCustomer: false,
+                            data: 1,
+                          ),
+                        ),
+                        Expanded(
+                          child: OrderRequest(
+                            isCustomer: false,
+                            data: 2,
+                          ),
+                        ),
                       ],
                     ),
                   ),

@@ -8,7 +8,7 @@ class OrderService {
   Future<List<Order>> getOrders(id, isServiceProvider) async {
     print(id);
     print(isServiceProvider);
-    final json = await rest.get('orders/?type=$isServiceProvider&id=$id');
+    final List json = await rest.get('orders/?type=$isServiceProvider&id=$id');
     if (json == null || json.length == 0) return null;
 
     final order = json.map((doc) => Order.fromJson(doc)).toList();

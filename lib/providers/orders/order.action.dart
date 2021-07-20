@@ -12,3 +12,11 @@ final ordersListProvider =
 
   return data;
 });
+final dashboardOrders =
+    FutureProvider.autoDispose<List<Order>>((ref) async {
+  final list = ref.read(orderProvider);
+
+  final data = list.getDashboardOrders();
+
+  return data;
+});

@@ -37,4 +37,10 @@ class OrderViewmodel extends ChangeNotifier {
 
     return orders;
   }
+
+  Future<List<Order>> getDashboardOrders() async {
+    orders = await rest.getOrders(_userSession.user.id, "true");
+
+    return orders;
+  }
 }

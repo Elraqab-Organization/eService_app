@@ -1,9 +1,7 @@
-import 'package:e_service_app/components/card_request/card_request.dart';
+import 'package:e_service_app/components/card_order/card_order.dart';
 import 'package:e_service_app/components/custom_return_bar.dart';
-import 'package:e_service_app/providers/requests/requests_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class OrderList extends StatefulWidget {
   const OrderList();
@@ -65,7 +63,7 @@ class _RequestListState extends State<OrderList>
                           text: 'In Progress',
                         ),
                         Tab(
-                          text: 'History',
+                          text: 'Done',
                         ),
                       ],
                     ),
@@ -75,8 +73,18 @@ class _RequestListState extends State<OrderList>
                     child: TabBarView(
                       controller: _tabController,
                       children: [
-                        Text("none"),
-                        Text("none"),
+                        Expanded(
+                          child: OrderRequest(
+                            isCustomer: true,
+                            data: 1,
+                          ),
+                        ),
+                        Expanded(
+                          child: OrderRequest(
+                            isCustomer: true,
+                            data: 2,
+                          ),
+                        ),
                       ],
                     ),
                   ),
