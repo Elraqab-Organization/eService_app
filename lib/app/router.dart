@@ -1,3 +1,5 @@
+import 'package:e_service_app/components/bottom_sheet_container.dart';
+import 'package:e_service_app/model/proposal.dart';
 import 'package:e_service_app/screens/account_information_screen/account_information_screen.dart';
 import 'package:e_service_app/screens/change_language_screen/change_language_screen.dart';
 import 'package:e_service_app/screens/customer_address_screen/customer_address_screen.dart';
@@ -13,6 +15,7 @@ import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
 import 'package:e_service_app/screens/post_screen/user_posts.dart';
 import 'package:e_service_app/screens/profile_notification_screen/profile_notification_screen.dart';
+import 'package:e_service_app/screens/profile_password_rest_screen/password_resest_screen.dart';
 import 'package:e_service_app/screens/register/register_screen.dart';
 import 'package:e_service_app/screens/request_form_screen/request_form.dart';
 import 'package:e_service_app/screens/search_view_screen/search_view_screen.dart';
@@ -85,8 +88,20 @@ class RouteManager {
         builder =
             (BuildContext context) => RequestForm(data: settings.arguments);
         break;
+      case "/bottomsheet":
+        builder = (BuildContext context) => BottomSheetContainer();
+        break;
       case "/proposal_form":
         builder = (BuildContext context) => CustomerProposalForm();
+        break;
+      case "/AccountInfo":
+        builder = (BuildContext context) => AccountInformationScreen();
+        break;
+      case "/MyAddress":
+        builder = (BuildContext context) => CustomerAddressScreen();
+        break;
+      case "/PasswordReset":
+        builder = (BuildContext context) => PasswordResetScreen();
         break;
       case "/proposals_view":
         builder = (BuildContext context) => CustomerViewProposal();

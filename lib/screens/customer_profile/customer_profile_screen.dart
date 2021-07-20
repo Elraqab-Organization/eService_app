@@ -1,4 +1,5 @@
 import 'package:e_service_app/app/dependency.dart';
+import 'package:e_service_app/components/bottom_sheet_container.dart';
 import 'package:e_service_app/providers/login/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -50,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           showModalBottomSheet(
                             context: context,
                             builder: (context) {
-                              return Container();
+                              return BottomSheetContainer();
                             },
                           )
                         },
@@ -175,6 +176,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         trailing: Icon(
                           FontAwesomeIcons.angleRight,
                         ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/bottomsheet');
+                        },
                       ),
                       ListTile(
                         leading: Icon(FontAwesomeIcons.key),

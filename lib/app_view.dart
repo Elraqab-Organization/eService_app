@@ -1,12 +1,6 @@
 import 'package:e_service_app/app/router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:flutter_localizations/flutter_localizations.dart';
-import './l10n/l10n.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-=======
->>>>>>> 78ef7ea313121a624181c830d7e0a7c2c7e1e35a
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AppView extends StatefulWidget {
@@ -28,18 +22,6 @@ class _AppViewState extends State<AppView> {
         onGenerateRoute: RouteManager.generateRoute,
         // initialRoute: '/posts',
         initialRoute: '/',
-<<<<<<< HEAD
-        // initialRoute: '/register',
-        // initialRoute: kRestaurantHomePage,
-        // supportedLocales: L10n.all,
-        // localizationsDelegates: [
-        //   AppLocalizations.delegate,
-        //   GlobalMaterialLocalizations.delegate,
-        //   GlobalCupertinoLocalizations.delegate,
-        //   GlobalWidgetsLocalizations.delegate,
-        // ],
-=======
->>>>>>> 78ef7ea313121a624181c830d7e0a7c2c7e1e35a
       ),
     );
   }
