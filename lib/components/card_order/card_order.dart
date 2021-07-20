@@ -44,11 +44,11 @@ class _CardComponentState extends State<OrderRequest> {
             widget.data == 1
                 ? result = data.value
                     .where(
-                        (element) => element.status.toLowerCase() == "ingoing")
+                        (element) => element.status.toLowerCase() == "accepted")
                     .toList()
                 : result = data.value
                     .where(
-                        (element) => element.status.toLowerCase() != "ingoing")
+                        (element) => element.status.toLowerCase() != "accepted")
                     .toList();
             return Expanded(
               child: result.length != 0

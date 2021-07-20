@@ -18,7 +18,7 @@ class CardOrderAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, watch, child) {
-        return result[index].status.toLowerCase() == "ingoing"
+        return result[index].status.toLowerCase() == "accepted"
             ? watch(orderProvider).loading && activeIndex == index
                 ? Positioned(
                     left: 140,
