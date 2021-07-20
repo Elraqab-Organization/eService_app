@@ -15,6 +15,8 @@ class Order {
   String location;
   String provisionDate;
   String responseTime;
+  String feedback;
+  int rate;
   User customer;
   User serviceProvider;
   bool isFeedbackGiven;
@@ -34,6 +36,8 @@ class Order {
     this.paymentMethod,
     this.location,
     this.isFeedbackGiven,
+    this.feedback,
+    this.rate,
     this.provisionDate,
     this.responseTime,
     this.steps,
@@ -43,12 +47,14 @@ class Order {
 
   factory Order.fromJson(Map<String, dynamic> json) {
     return Order(
-      id: json['id'],
+      id: json['_id'],
       customerId: json['customerId'],
       serviceProviderId: json['serviceProviderId'],
       postId: json['postId'],
       feedbackId: json['feedbackId'],
       status: json['status'],
+      feedback: json['feedback'],
+      rate: json['rate'],
       isFeedbackGiven: json['isFeedbackGiven'],
       problemDescription: json['problemDescription'],
       serviceDescription: json['serviceDescription'],

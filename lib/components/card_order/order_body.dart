@@ -34,6 +34,30 @@ class OrderBody extends StatelessWidget {
               weight: FontWeight.w500,
               title: "Service Description: ${result[index].serviceDescription}",
             ),
+            result[index].isFeedbackGiven
+                ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextComponent(
+                        align: TextAlign.start,
+                        textColor: Colors.black,
+                        line: 4,
+                        fontSize: 12,
+                        weight: FontWeight.w500,
+                        title: "Feedback: ${result[index].feedback}",
+                      ),
+                      TextComponent(
+                        align: TextAlign.start,
+                        textColor: Colors.black,
+                        line: 4,
+                        fontSize: 12,
+                        weight: FontWeight.w500,
+                        title:
+                            "Rate: ${result[index].rate}",
+                      ),
+                    ],
+                  )
+                : SizedBox(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

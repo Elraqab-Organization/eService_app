@@ -7,12 +7,16 @@ class CustomerTextField extends StatelessWidget {
   final Function onChanged;
   final int lines;
   final bool validate;
+  final Color color;
+  final Color borderColor;
   CustomerTextField({
     this.onChanged,
     this.controller,
     this.lines = 1,
     this.labelText,
     this.validate,
+    this.borderColor = Colors.white,
+    this.color = Colors.white,
     this.error = "can't be invalid!",
   });
 
@@ -22,24 +26,24 @@ class CustomerTextField extends StatelessWidget {
       onChanged: onChanged,
       controller: controller,
       maxLines: lines,
-      style: TextStyle(color: Colors.white),
+      style: TextStyle(color: color),
       decoration: InputDecoration(
         errorText: validate ? error : null,
         errorStyle: TextStyle(color: Colors.white),
         contentPadding: EdgeInsets.symmetric(horizontal: 1),
         labelText: labelText,
-        labelStyle: TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: color),
         focusedBorder: new UnderlineInputBorder(
-          borderSide: new BorderSide(color: Colors.white),
+          borderSide: new BorderSide(color: borderColor),
         ),
         disabledBorder: new UnderlineInputBorder(
-          borderSide: new BorderSide(color: Colors.white),
+          borderSide: new BorderSide(color: borderColor),
         ),
         enabledBorder: new UnderlineInputBorder(
-          borderSide: new BorderSide(color: Colors.white),
+          borderSide: new BorderSide(color: borderColor),
         ),
         border: new UnderlineInputBorder(
-          borderSide: new BorderSide(color: Colors.white),
+          borderSide: new BorderSide(color: borderColor),
         ),
         floatingLabelBehavior: FloatingLabelBehavior.never,
       ),
