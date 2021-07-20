@@ -1,7 +1,5 @@
-import 'package:e_service_app/components/card_request.dart';
-import 'package:e_service_app/providers/requests/requests_action.dart';
+import 'package:e_service_app/components/card_request/card_request.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomerRequestScreen extends StatelessWidget {
   @override
@@ -35,26 +33,9 @@ class CustomerRequestScreen extends StatelessWidget {
               ],
             ),
           ),
-          Consumer(
-            builder: (context, watch, child) {
-              final data = watch(requestList);
-              return data.map(
-                data: (value) => CardRequest(
-                  isCustomer: true,
-                  data: value.value,
-                ),
-                loading: (_) => Expanded(
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                ),
-                error: (_) => Expanded(
-                  child: Center(
-                    child: Text(_.error.toString()),
-                  ),
-                ),
-              );
-            },
+          CardRequest(
+            isCustomer: true,
+            data: 1,
           ),
         ]),
       ),

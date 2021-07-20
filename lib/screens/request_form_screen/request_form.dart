@@ -76,8 +76,14 @@ class _RequestFormState extends State<RequestForm> {
                   bottom: 50.0,
                   duration: Duration(milliseconds: 200),
                   onEnd: () {
-                    Timer(Duration(seconds: 1),
-                        () => watch(requestProvider).message = false);
+                    Timer(
+                      Duration(seconds: 1),
+                      () => {
+                        watch(requestProvider).message = false,
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            '/landing', (Route<dynamic> route) => false)
+                      },
+                    );
                   },
                   child: Container(
                     height: 50.0,

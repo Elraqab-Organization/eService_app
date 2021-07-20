@@ -23,8 +23,35 @@ class RequestsService {
     return request;
   }
 
-  Future<Request> acceptRequest(id) async {}
+  Future<Request> acceptRequest(id, type) async {
+    final request = await rest.patch('requests/$id', data: {'status': type});
 
-  Future<Request> cancelRequest(id) async {}
-  Future<Request> rejectRequest(id) async {}
+    if (request == null) return null;
+
+    final req = Request.fromJson(request);
+
+    return req;
+  }
+
+  // Future<Request> cancelRequest(id) async {
+  //   final request =
+  //       await rest.patch('requests/$id', data: {'status': 'Canceled'});
+
+  //   if (request == null) return null;
+
+  //   final req = Request.fromJson(request);
+
+  //   return req;
+  // }
+
+  // Future<Request> rejectRequest(id) async {
+  //   final request =
+  //       await rest.patch('requests/$id', data: {'status': 'Rejected'});
+
+  //   if (request == null) return null;
+
+  //   final req = Request.fromJson(request);
+
+  //   return req;
+  // }
 }

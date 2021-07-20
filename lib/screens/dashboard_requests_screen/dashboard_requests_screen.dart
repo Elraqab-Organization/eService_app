@@ -1,4 +1,4 @@
-import 'package:e_service_app/components/card_request.dart';
+import 'package:e_service_app/components/card_request/card_request.dart';
 import 'package:e_service_app/providers/requests/requests_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -76,22 +76,17 @@ class _RequestListState extends State<DashboardRequest>
                       controller: _tabController,
                       children: [
                         Expanded(
-                          child: Consumer(
-                            builder: (context, watch, child) {
-                              final data = watch(dashboardRequestList);
-                              return data.map(
-                                data: (data) => CardRequest(
-                                  isCustomer: false,
-                                  data: data.value,
-                                ),
-                                loading: (_) =>
-                                    Center(child: CircularProgressIndicator()),
-                                error: (_) => Text("Error"),
-                              );
-                            },
+                          child: CardRequest(
+                            isCustomer: false,
+                            data: 1,
                           ),
                         ),
-                        Text("data"),
+                        Expanded(
+                          child: CardRequest(
+                            isCustomer: false,
+                            data: 2,
+                          ),
+                        ),
                       ],
                     ),
                   ),

@@ -1,4 +1,4 @@
-import 'package:e_service_app/components/card_request.dart';
+import 'package:e_service_app/components/card_request/card_request.dart';
 import 'package:e_service_app/components/custom_return_bar.dart';
 // import 'package:e_service_app/components/text_component.dart';
 import 'package:e_service_app/providers/requests/requests_action.dart';
@@ -77,25 +77,15 @@ class _RequestListState extends State<RequestList>
                       controller: _tabController,
                       children: [
                         Expanded(
-                          child: Consumer(
-                            builder: (context, watch, child) {
-                              final data = watch(requestProvider).pendingList();
-                              return CardRequest(
-                                isCustomer: true,
-                                data: data,
-                              );
-                            },
+                          child: CardRequest(
+                            isCustomer: true,
+                            data: 1,
                           ),
                         ),
                         Expanded(
-                          child: Consumer(
-                            builder: (context, watch, child) {
-                              final data = watch(requestProvider).servedList();
-                              return CardRequest(
-                                isCustomer: true,
-                                data: data,
-                              );
-                            },
+                          child: CardRequest(
+                            isCustomer: true,
+                            data: 2,
                           ),
                         ),
                       ],
