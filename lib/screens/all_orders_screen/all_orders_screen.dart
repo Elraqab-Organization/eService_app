@@ -1,4 +1,4 @@
-import 'package:e_service_app/components/card_request.dart';
+import 'package:e_service_app/components/card_request/card_request.dart';
 import 'package:e_service_app/components/custom_return_bar.dart';
 import 'package:e_service_app/providers/requests/requests_action.dart';
 import 'package:flutter/cupertino.dart';
