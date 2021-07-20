@@ -11,6 +11,8 @@ class ServiceProviderService {
 
     final services = json.map((doc) => User.fromJson(doc)).toList();
 
-    return services;
+    final users =
+        services.where((element) => element.isServiceProvider == true).toList();
+    return users;
   }
 }

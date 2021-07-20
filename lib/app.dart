@@ -1,5 +1,7 @@
+import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/components/bottom_navigation_bar.dart';
 import 'package:e_service_app/components/inner_navigation_tabs.dart';
+import 'package:e_service_app/providers/login/login_viewmodel.dart';
 import 'package:e_service_app/screens/customer_profile/customer_profile_screen.dart';
 import 'package:e_service_app/screens/dashboard_screen/dashboard_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +24,7 @@ class _AppState extends State<App> {
     });
   }
 
+  LoginViewmodel get _userSession => dependency();
   // ignore: missing_return
   Widget callPage(index) {
     switch (index) {

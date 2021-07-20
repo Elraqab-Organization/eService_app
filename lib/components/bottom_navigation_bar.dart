@@ -1,5 +1,7 @@
 import 'package:delayed_display/delayed_display.dart';
+import 'package:e_service_app/app/dependency.dart';
 import 'package:e_service_app/components/text_component.dart';
+import 'package:e_service_app/providers/login/login_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -34,7 +36,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       'title': 'Profile',
     },
   ];
-
+  
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -25,13 +25,7 @@ class AppHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextComponent(
-                fontSize: 25,
-                textColor: Colors.white,
-                title: 'Hi' + " " + _userSession.user.firstName,
-                weight: FontWeight.w600,
-                align: TextAlign.start,
-              ),
+            
               TextComponent(
                 fontSize: 20,
                 textColor: Colors.white,
