@@ -4,7 +4,6 @@ import 'package:e_service_app/components/text_component.dart';
 import 'package:e_service_app/providers/requests/requests_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RequestList extends StatefulWidget {
   const RequestList();

@@ -28,15 +28,15 @@ class HeaderContent extends StatelessWidget {
               ),
               title: TextComponent(
                 title: isCustomer
-                    ? "${data.customer.firstName} ${data.customer.lastName}"
-                    : "${data.serviceProvider.firstName} ${data.serviceProvider.lastName}",
+                    ? "${data.serviceProvider.firstName} ${data.serviceProvider.lastName}"
+                    : "${data.customer.firstName} ${data.customer.lastName}",
                 fontSize: 14,
                 weight: FontWeight.w700,
                 textColor: Colors.black,
                 align: TextAlign.start,
               ),
               subtitle: TextComponent(
-                title: "${data.time} / ${data.location}",
+                title: "${data.responseTime} / ${data.location}",
                 fontSize: 12,
                 weight: FontWeight.w600,
                 textColor: Colors.black,
@@ -45,7 +45,7 @@ class HeaderContent extends StatelessWidget {
               trailing: Padding(
                 padding: const EdgeInsets.only(right: 50.0, top: 0),
                 child: TextComponent(
-                  title: "${data.fees}\$",
+                  title: "${data.serviceFees}\$",
                   fontSize: 14,
                   weight: FontWeight.w700,
                   textColor: Colors.black,
