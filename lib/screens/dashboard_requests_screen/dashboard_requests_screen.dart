@@ -76,14 +76,49 @@ class _RequestListState extends State<DashboardRequest>
                       controller: _tabController,
                       children: [
                         Expanded(
+                          // child: Consumer(
+                          //   builder: (context, watch, child) {
+                          //     final data = watch(dashboardRequestList);
+                          //     return data.map(
+                          //       data: (data) {
+                          //         final result = data.value
+                          //             .where((element) =>
+                          //                 element.status.toLowerCase() ==
+                          //                 "pending")
+                          //             .toList();
+                          //         return CardRequest(
+                          //             isCustomer: false,
+                          //             data: result,
+                          //           );
+                          //         },
+                          //         loading: (_) =>
+                          //             Center(child: CircularProgressIndicator()),
+                          //         error: (_) => Text("Error"),
+                          //       );
+                          //     },
+                          //   ),
+                          // ),
+                          child: CardRequest(
+                            isCustomer: false,
+                            data: null,
+                          ),
+                        ),
+                        Expanded(
                           child: Consumer(
                             builder: (context, watch, child) {
                               final data = watch(dashboardRequestList);
                               return data.map(
-                                data: (data) => CardRequest(
-                                  isCustomer: false,
-                                  data: data.value,
-                                ),
+                                data: (data) {
+                                  final result = data.value
+                                      .where((element) =>
+                                          element.status.toLowerCase() !=
+                                          "pending")
+                                      .toList();
+                                  return CardRequest(
+                                    isCustomer: false,
+                                    data: result,
+                                  );
+                                },
                                 loading: (_) =>
                                     Center(child: CircularProgressIndicator()),
                                 error: (_) => Text("Error"),
@@ -91,7 +126,6 @@ class _RequestListState extends State<DashboardRequest>
                             },
                           ),
                         ),
-                        Text("data"),
                       ],
                     ),
                   ),

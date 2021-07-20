@@ -42,8 +42,15 @@ class RequestViewmodel extends ChangeNotifier {
   Future cancelRequest(id) async {}
 
   Future acceptRequest(id) async {
+    loading = true;
+    final response = await _service.acceptRequest(id);
 
-    
+    print(response);
+    if (response != null) {
+      loading = false;
+    } else {
+      loading = false;
+    }
   }
 
   Future rejectRequest(id) async {}

@@ -13,7 +13,7 @@ final requestList = FutureProvider.autoDispose<List<Request>>((ref) async {
 
 final dashboardRequestList =
     FutureProvider.autoDispose<List<Request>>((ref) async {
-  final list = ref.read(requestProvider);
+  final list = ref.watch(requestProvider);
 
   final data = list.getDashboardRequest();
 

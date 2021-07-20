@@ -49,7 +49,7 @@ class RestService {
     if (response.statusCode == 200 || response.statusCode == 201) {
       return jsonDecode(response.body);
     }
-    throw response;
+    return jsonDecode(response.body);
   }
 
   Future delete(String endpoint) async {
