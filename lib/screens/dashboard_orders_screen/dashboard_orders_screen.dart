@@ -1,19 +1,15 @@
-import 'package:e_service_app/components/card_request/card_request.dart';
 import 'package:e_service_app/components/custom_return_bar.dart';
-import 'package:e_service_app/components/text_component.dart';
-import 'package:e_service_app/providers/requests/requests_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RequestList extends StatefulWidget {
-  const RequestList();
+class DashboardOrder extends StatefulWidget {
+  const DashboardOrder();
 
   @override
   _RequestListState createState() => _RequestListState();
 }
 
-class _RequestListState extends State<RequestList>
+class _RequestListState extends State<DashboardOrder>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
 
@@ -34,9 +30,8 @@ class _RequestListState extends State<RequestList>
     return Scaffold(
       body: Column(
         children: [
-          CustomReturnBar(),
           SizedBox(
-            height: 50.0,
+            height: 30.0,
           ),
           Expanded(
             child: Container(
@@ -63,7 +58,7 @@ class _RequestListState extends State<RequestList>
                       unselectedLabelColor: Colors.black,
                       tabs: [
                         Tab(
-                          text: 'Pending',
+                          text: 'In Progress',
                         ),
                         Tab(
                           text: 'Served',
@@ -76,18 +71,8 @@ class _RequestListState extends State<RequestList>
                     child: TabBarView(
                       controller: _tabController,
                       children: [
-                        Expanded(
-                          child: CardRequest(
-                            isCustomer: true,
-                            data: 1,
-                          ),
-                        ),
-                        Expanded(
-                          child: CardRequest(
-                            isCustomer: true,
-                            data: 2,
-                          ),
-                        ),
+                        Text("data"),
+                        Text("data"),
                       ],
                     ),
                   ),

@@ -39,6 +39,49 @@ class RequestViewmodel extends ChangeNotifier {
     return requests;
   }
 
+  // Future cancelRequest(id) async {
+  //   loading = true;
+  //   final response = await _service.cancelRequest(id);
+
+  //   print(response);
+  //   if (response != null) {
+  //     loading = false;
+  //   } else {
+  //     loading = false;
+  //   }
+  // }
+
+  Future acceptRequest(id, type) async {
+    loading = true;
+    final response = await _service.acceptRequest(id, type);
+
+    print(response);
+    if (response != null) {
+      loading = false;
+    } else {
+      loading = false;
+    }
+  }
+
+  // Future rejectRequest(id) async {
+  //   loading = true;
+  //   final response = await _service.rejectRequest(id);
+
+  //   print(response);
+  //   if (response != null) {
+  //     loading = false;
+  //   } else {
+  //     loading = false;
+  //   }
+  // }
+
+  Future<List<Request>> getDashboardRequest() async {
+    requests =
+        await _service.fetchRequests(id: _userSession.user.id, type: "true");
+
+    return requests;
+  }
+
   Future<bool> updateRequest() async {
     bool status;
     return status;

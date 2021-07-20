@@ -116,10 +116,10 @@ class _PostsCardState extends State<PostsCard> {
                         ),
                       ),
                       response.value[index].customerId != _service.user.id
-                          ? postOption(25, 340, "more_vert",
+                          ? postOptionServiceProvider(25, 340, "more_vert",
                               _moreOptionsServiceProviderModalSheet)
-                          : postOption(
-                              67, 340, "more_vert", _moreOptionsModalSheet)
+                          : postOptionCustomer(
+                              67, 340, "more_vert", response.value[index].id)
                     ]),
                   ),
                 ),
@@ -127,44 +127,6 @@ class _PostsCardState extends State<PostsCard> {
             );
           });
     });
-  }
-
-  _moreOptionsModalSheet() {
-    return showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (context) {
-          return Container(
-            padding: EdgeInsets.all(24.0),
-            height: MediaQuery.of(context).size.height * 0.21,
-            decoration: new BoxDecoration(
-              borderRadius: new BorderRadius.only(
-                topLeft: const Radius.circular(25.0),
-                topRight: const Radius.circular(25.0),
-              ),
-              color: Color(0xff212738),
-              boxShadow: [
-                BoxShadow(
-                  spreadRadius: 2,
-                  color: Colors.grey[300],
-                  offset: Offset(0, 5),
-                  blurRadius: 4,
-                ),
-              ],
-            ),
-            child: Column(
-              children: [
-                optionValues("Remove post"),
-                Divider(
-                  color: Colors.white,
-                ),
-                optionValues("Edit post"),
-                Divider(color: Colors.white),
-                optionValues("share post on"),
-              ],
-            ),
-          );
-        });
   }
 
   _moreOptionsServiceProviderModalSheet() {
@@ -218,7 +180,76 @@ class _PostsCardState extends State<PostsCard> {
     ));
   }
 
-  Widget postOption(
+  Widget postOptionCustomer(double top, double left, String icon, final id) {
+    return Positioned(
+      top: top,
+      right: -10,
+      child: GestureDetector(
+        onTap: () => {
+          showModalBottomSheet(
+              backgroundColor: Colors.transparent,
+              context: context,
+              builder: (context) {
+                return Container(
+                  padding: EdgeInsets.all(24.0),
+                  height: MediaQuery.of(context).size.height * 0.21,
+                  decoration: new BoxDecoration(
+                    borderRadius: new BorderRadius.only(
+                      topLeft: const Radius.circular(25.0),
+                      topRight: const Radius.circular(25.0),
+                    ),
+                    color: Color(0xff212738),
+                    boxShadow: [
+                      BoxShadow(
+                        spreadRadius: 2,
+                        color: Colors.grey[300],
+                        offset: Offset(0, 5),
+                        blurRadius: 4,
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      InkWell(
+                          onTap: () async {
+                            final deletedPost = await context
+                                .read(postProvider)
+                                .deleteAPost(id);
+                            if (deletedPost != null) {
+                              Navigator.pushNamedAndRemoveUntil(context,
+                                  "/landing", (Route<dynamic> route) => false);
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text('failed to delete post')));
+                            }
+                          },
+                          child: optionValues("Remove post")),
+                      Divider(
+                        color: Colors.white,
+                      ),
+                      optionValues("Edit post"),
+                      Divider(color: Colors.white),
+                      optionValues("share post on"),
+                    ],
+                  ),
+                );
+              })
+        },
+        child: OptionButton(
+          color: Colors.black,
+          icon: Icon(
+            icon == "share" ? Icons.reply : Icons.more_vert,
+            color: Colors.white70,
+          ),
+          width: 40.0,
+          height: 40.0,
+        ),
+      ),
+    );
+  }
+
+  Widget postOptionServiceProvider(
       double top, double left, String icon, Function _moreOptionsModalSheet) {
     return Positioned(
       top: top,
