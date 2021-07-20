@@ -1,4 +1,5 @@
-import 'package:e_service_app/components/card.dart';
+import 'package:e_service_app/components/card_order.dart';
+import 'package:e_service_app/components/card_request/card_request.dart';
 import 'package:e_service_app/providers/orders/order.action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,7 +30,7 @@ class CustomerOrderScreen extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, "/orders");
+                      Navigator.pushNamed(context, "/orders_list");
                     },
                     child: Text(
                       "See all",
@@ -48,7 +49,7 @@ class CustomerOrderScreen extends StatelessWidget {
                 final data = watch(ordersListProvider);
                 print(data);
                 return data.map(
-                  data: (value) => CardComponent(
+                  data: (value) => CardOrder(
                     data: value.value,
                   ),
                   loading: (_) => Expanded(

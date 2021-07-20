@@ -1,7 +1,7 @@
-import 'package:e_service_app/components/card_request/card_request.dart';
+import 'package:e_service_app/components/cards_proposals.dart';
 import 'package:flutter/material.dart';
 
-class CustomerRequestScreen extends StatelessWidget {
+class CustomerProposalScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -12,18 +12,20 @@ class CustomerRequestScreen extends StatelessWidget {
             height: 10.0,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Last Requests",
+                  "current",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 InkWell(
-                  onTap: () => {Navigator.pushNamed(context, "/requests_list")},
+                  onTap: () {
+                    Navigator.pushNamed(context, "/proposals_list");
+                  },
                   child: Text(
-                    "See all",
+                    "history",
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.deepOrangeAccent,
@@ -33,10 +35,7 @@ class CustomerRequestScreen extends StatelessWidget {
               ],
             ),
           ),
-          CardRequest(
-            isCustomer: true,
-            data: 1,
-          ),
+          Expanded(child: CardProposal())
         ]),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:e_service_app/providers/proposal%20provider/proposal_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:simple_moment/simple_moment.dart';
 
 class ProposalCard extends StatefulWidget {
   final String postId;
@@ -10,7 +11,7 @@ class ProposalCard extends StatefulWidget {
 }
 
 class _ProposalCardState extends State<ProposalCard> {
-  String status = "Pending";
+  var moment = new Moment.now();
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, child) {
@@ -37,23 +38,33 @@ class _ProposalCardState extends State<ProposalCard> {
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-                            subtitle:
-                                Text("24 minutes ago / Johor Bahru / Free"),
+                            subtitle: Text(
+                                "${moment.from(response.value[index].timestamp)} / ${response.value[index].post.location} / ${response.value[index].diagnosisFee} RM"),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                left: 15, right: 15, bottom: 20, top: 10),
-                            child: Text(
-                              "dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into",
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w500),
+                                left: 15, right: 15, bottom: 20),
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                response.value[index].description,
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w500),
+                              ),
                             ),
                           ),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              status == "Pending" ? postBtn() : acceptedBtn(),
+                              if (response.value[index].status == "Pending")
+                                postBtn(response.value[index])
+                              else if (response.value[index].status ==
+                                  "Accepted")
+                                acceptedBtn()
+                              else if (response.value[index].status ==
+                                  "rejected")
+                                rejectedBtn()
                             ],
                           ),
                           Divider(
@@ -66,49 +77,55 @@ class _ProposalCardState extends State<ProposalCard> {
     });
   }
 
-  Widget postBtn() {
-    return Row(
-      children: [
-        InkWell(
-          onTap: () {},
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Container(
-              width: 80,
-              height: 32,
-              child: Center(
-                  child: Text(
-                "Accept",
-                style: TextStyle(color: Colors.white),
-              )),
-              decoration: BoxDecoration(
-                color: Color(0xff57C4E5),
-                borderRadius: BorderRadius.circular(40),
+  Widget postBtn(proposalObj) {
+    return Consumer(builder: (context, watch, child) {
+      return Row(
+        children: [
+          InkWell(
+            onTap: () async {
+              await watch(propsProvider).acceptProposal(proposalObj.id);
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Container(
+                width: 80,
+                height: 32,
+                child: Center(
+                    child: Text(
+                  "Accept",
+                  style: TextStyle(color: Colors.white),
+                )),
+                decoration: BoxDecoration(
+                  color: Color(0xff57C4E5),
+                  borderRadius: BorderRadius.circular(40),
+                ),
               ),
             ),
           ),
-        ),
-        InkWell(
-          onTap: () {},
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Container(
-              width: 80,
-              height: 32,
-              child: Center(
-                  child: Text(
-                "Reject",
-                style: TextStyle(color: Colors.white),
-              )),
-              decoration: BoxDecoration(
-                color: Color(0xff57C4E5),
-                borderRadius: BorderRadius.circular(40),
+          InkWell(
+            onTap: () async {
+              await watch(propsProvider).rejectProposal(proposalObj.id);
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Container(
+                width: 80,
+                height: 32,
+                child: Center(
+                    child: Text(
+                  "Reject",
+                  style: TextStyle(color: Colors.white),
+                )),
+                decoration: BoxDecoration(
+                  color: Color(0xff57C4E5),
+                  borderRadius: BorderRadius.circular(40),
+                ),
               ),
             ),
-          ),
-        )
-      ],
-    );
+          )
+        ],
+      );
+    });
   }
 
   Widget rejectBtn() {
@@ -135,12 +152,14 @@ class _ProposalCardState extends State<ProposalCard> {
 
   Widget acceptedBtn() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, '/landing');
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4),
         child: Container(
-          width: 80,
-          height: 32,
+          width: 100,
+          height: 39,
           child: Center(
               child: Text(
             "check orders",
@@ -161,8 +180,8 @@ class _ProposalCardState extends State<ProposalCard> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4),
         child: Container(
-          width: 80,
-          height: 32,
+          width: 100,
+          height: 39,
           child: Center(
               child: Text(
             "rejected",
