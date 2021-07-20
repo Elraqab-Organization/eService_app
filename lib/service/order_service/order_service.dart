@@ -15,4 +15,14 @@ class OrderService {
 
     return order;
   }
+
+  Future<Order> markAsDone(id) async {
+    final order = await rest.patch('orders/$id', data: {'status': "Done"});
+
+    if (order == null) return null;
+
+    final req = Order.fromJson(order);
+
+    return req;
+  }
 }

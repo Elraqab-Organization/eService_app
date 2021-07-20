@@ -38,6 +38,18 @@ class OrderViewmodel extends ChangeNotifier {
     return orders;
   }
 
+  Future<Order> markAsDone(id) async {
+    loading = true;
+    final order = await rest.markAsDone(id);
+    if (order == null) {
+      loading = false;
+    } else {
+      loading = false;
+    }
+
+    return order;
+  }
+
   Future<List<Order>> getDashboardOrders() async {
     orders = await rest.getOrders(_userSession.user.id, "true");
 

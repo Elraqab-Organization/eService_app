@@ -41,9 +41,8 @@ class CardOrderAction extends StatelessWidget {
                               ),
                             )
                           : InkWell(
-                              // onTap: () => watch(requestProvider)
-                              //     .acceptRequest(
-                              //         result[index].id, "Accepted"),
+                              onTap: () => watch(orderProvider)
+                                  .markAsDone(result[index].id),
                               child: Container(
                                 child: Text(
                                   "Mark as done",
@@ -58,7 +57,7 @@ class CardOrderAction extends StatelessWidget {
                             ),
                     ),
                   )
-            : isCustomer 
+            : isCustomer
                 ? result[index].isFeedbackGiven
                     ? SizedBox()
                     : Positioned(
