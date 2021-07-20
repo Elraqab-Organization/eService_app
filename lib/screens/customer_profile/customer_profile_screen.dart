@@ -46,7 +46,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color: Colors.white,
                           ),
                         ),
-                        onTap: () => {},
+                        onTap: () => {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Container();
+                            },
+                          )
+                        },
                       ),
                       InkWell(
                         child: Container(

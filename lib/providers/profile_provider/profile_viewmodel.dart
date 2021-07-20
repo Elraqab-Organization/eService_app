@@ -59,13 +59,21 @@ class ProfileViewmodel extends ChangeNotifier {
     loading = true;
 
     Map<String, dynamic> data = {
-      "firstName": firstName,
-      "lastName": lastName,
-      "email": email,
-      "gender": gender,
-      "phoneNumber": phoneNumber,
+      "firstName": firstName == null ? _userSession.user.firstName : firstName,
+      "lastName": lastName == null ? _userSession.user.lastName : lastName,
+      "email": email == null ? _userSession.user.email : email,
+      "gender": gender == null ? _userSession.user.gender : gender,
+      "phoneNumber":
+          phoneNumber == null ? _userSession.user.phoneNumber : phoneNumber,
     };
 
-    _userSession.user = await _service.updateUser(user: data);
+    final user =
+        await _service.updateUser(user: data, id: _userSession.user.id);
+    if (user == null) {
+      loading = false;
+    } else {
+      _userSession.user = user;
+      loading = false;
+    }
   }
 }
