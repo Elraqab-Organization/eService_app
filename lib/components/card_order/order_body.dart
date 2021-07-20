@@ -36,7 +36,7 @@ class OrderBody extends StatelessWidget {
             ),
             result[index].isFeedbackGiven
                 ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextComponent(
                         align: TextAlign.start,
@@ -52,8 +52,7 @@ class OrderBody extends StatelessWidget {
                         line: 4,
                         fontSize: 12,
                         weight: FontWeight.w500,
-                        title:
-                            "Rate: ${result[index].rate}",
+                        title: "Rate: ${result[index].rate}",
                       ),
                     ],
                   )

@@ -1,12 +1,10 @@
 import 'package:e_service_app/components/custom_app_bar/custom_app_bar.dart';
-// import 'package:e_service_app/components/square_button.dart';
 import 'package:e_service_app/screens/Customer_Posts_Screen/customer_posts_service.dart';
 import 'package:e_service_app/screens/Customer_order_screen/customer_ordder_screen.dart';
 import 'package:e_service_app/screens/customer_Service_screen/customer_service_screen.dart';
 import 'package:e_service_app/screens/customer_proposals_screen/customer_proposals_screen.dart';
 import 'package:e_service_app/screens/customer_requests_screen/customer_request_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // ignore: must_be_immutable
 class InnerNavigationTabs extends StatefulWidget {
@@ -48,16 +46,15 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        CustomAppBar(),
-        SizedBox(
-          height: 50.0,
-        ),
-        DefaultTabController(
-          length: 5,
-          child: Expanded(
+        Positioned(
+          top: 200,
+          child: DefaultTabController(
+            length: 5,
             child: Container(
+              height: 500,
+              width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
                   Container(
@@ -98,6 +95,7 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
             ),
           ),
         ),
+        CustomAppBar(),
       ],
     );
   }

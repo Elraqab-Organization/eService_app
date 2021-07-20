@@ -30,6 +30,7 @@ class DropDownList extends StatelessWidget {
                 value: value,
                 child: Text(
                   value.toString(),
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(color: Colors.black),
                 ),
               );

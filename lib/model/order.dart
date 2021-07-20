@@ -1,4 +1,4 @@
-import 'package:e_service_app/model/User.dart';
+import 'package:e_service_app/model/user.dart';
 
 class Order {
   String id;
