@@ -1,3 +1,4 @@
+import 'package:e_service_app/components/search_view_screen/modal_search_view.dart';
 import 'package:e_service_app/providers/service_providers/search_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +29,22 @@ class SearchInputField extends StatelessWidget {
             ],
           ),
           child: TextField(
+            onSubmitted: (value) => {
+              watch(searchProvider).searchValue = value,
+              watch(searchProvider).open = false,
+              watch(searchProvider).show = false,
+              showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  builder: (BuildContext context) {
+                    return ShowModalBottom();
+                  })
+
+              // showModalBottomSheet(context: context, builder: (context) => );
+            },
             keyboardType: TextInputType.text,
             onTap: () => {
-              // viewmodel.state = true,
+              viewmodel.open = true,
             },
             cursorHeight: 25,
             textAlign: TextAlign.start,

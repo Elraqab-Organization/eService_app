@@ -45,16 +45,15 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        CustomAppBar(),
-        SizedBox(
-          height: 50.0,
-        ),
-        DefaultTabController(
-          length: 5,
-          child: Expanded(
+        Positioned(
+          top: 200,
+          child: DefaultTabController(
+            length: 5,
             child: Container(
+              height: 500,
+              width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
                   Container(
@@ -95,6 +94,7 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
             ),
           ),
         ),
+        CustomAppBar(),
       ],
     );
   }
