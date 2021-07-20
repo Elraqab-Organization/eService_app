@@ -15,7 +15,7 @@ class CardOrderAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, watch, child) {
-        return result[index].status.toLowerCase() == "in progress"
+        return result[index].status.toLowerCase() == "ingoing"
             ? watch(orderProvider).loading && activeIndex == index
                 ? Positioned(
                     left: 140,
@@ -58,7 +58,7 @@ class CardOrderAction extends StatelessWidget {
                             ),
                     ),
                   )
-            : !isCustomer
+            : isCustomer 
                 ? result[index].isFeedbackGiven
                     ? SizedBox()
                     : Positioned(

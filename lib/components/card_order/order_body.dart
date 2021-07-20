@@ -24,7 +24,15 @@ class OrderBody extends StatelessWidget {
               line: 4,
               fontSize: 12,
               weight: FontWeight.w500,
-              title: "Problem: ${result[index].description}",
+              title: "Problem: ${result[index].problemDescription}",
+            ),
+            TextComponent(
+              align: TextAlign.start,
+              textColor: Colors.black,
+              line: 4,
+              fontSize: 12,
+              weight: FontWeight.w500,
+              title: "Service Description: ${result[index].serviceDescription}",
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +51,7 @@ class OrderBody extends StatelessWidget {
                   line: 4,
                   fontSize: 12,
                   weight: FontWeight.w500,
-                  title: "Payment: ${result[index].payment}",
+                  title: "Payment: ${result[index].paymentMethod}",
                 ),
                 TextComponent(
                   align: TextAlign.start,

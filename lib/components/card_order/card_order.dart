@@ -1,11 +1,13 @@
 import 'package:e_service_app/components/card_order/card_action_button.dart';
+import 'package:e_service_app/components/card_order/order_body.dart';
 import 'package:e_service_app/providers/orders/order.action.dart';
-import 'package:e_service_app/screens/Customer_order_screen/widgets/header_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'order_card_header.dart';
 
 class OrderRequest extends StatefulWidget {
   final data;
@@ -41,12 +43,12 @@ class _CardComponentState extends State<OrderRequest> {
               );
             widget.data == 1
                 ? result = data.value
-                    .where((element) =>
-                        element.status.toLowerCase() == "ingoing")
+                    .where(
+                        (element) => element.status.toLowerCase() == "ingoing")
                     .toList()
                 : result = data.value
-                    .where((element) =>
-                        element.status.toLowerCase() != "ingoing")
+                    .where(
+                        (element) => element.status.toLowerCase() != "ingoing")
                     .toList();
             return Expanded(
               child: result.length != 0
@@ -77,7 +79,7 @@ class _CardComponentState extends State<OrderRequest> {
                                     SizedBox(
                                       height: 6,
                                     ),
-                                    HeaderContent(
+                                    OrderHeaderCard(
                                       isCustomer: widget.isCustomer,
                                       data: result[index],
                                     ),
@@ -85,12 +87,12 @@ class _CardComponentState extends State<OrderRequest> {
                                 ),
                               ),
                             ),
-                            // activeIndex == index
-                            //     ? RequestBody(
-                            //         index: index,
-                            //         result: result,
-                            //       )
-                            //     : SizedBox(),
+                            activeIndex == index
+                                ? OrderBody(
+                                    index: index,
+                                    result: result,
+                                  )
+                                : SizedBox(),
                             activeIndex == index
                                 ? CardOrderAction(
                                     activeIndex: activeIndex,
