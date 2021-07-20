@@ -7,7 +7,7 @@ final postProvider =
     ChangeNotifierProvider((ref) => CustomerPostsViewmodel()); //
 
 final postsList = FutureProvider.autoDispose<List<Post>>((ref) async {
-  final list = ref.read(postProvider);
+  final list = ref.watch(postProvider);
 
   final data = list.getPosts();
   return data;

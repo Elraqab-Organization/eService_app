@@ -17,3 +17,11 @@ final proposalsCustomerList =
   final data = list.getCustomerProposals(customerId);
   return data;
 });
+
+final serviceProviderProposalsList =
+    FutureProvider.autoDispose.family((ref, serviceProviderId) async {
+  final list = ref.watch(propsProvider);
+
+  final data = list.getServiceProvidersProposals(serviceProviderId);
+  return data;
+});

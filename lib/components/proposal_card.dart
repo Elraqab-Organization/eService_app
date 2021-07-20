@@ -20,59 +20,65 @@ class _ProposalCardState extends State<ProposalCard> {
           error: (_) => Text("Error"),
           loading: (_) => Center(child: CircularProgressIndicator()),
           data: (response) {
-            return Container(
-                height: MediaQuery.of(context).size.height - 480,
-                child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    itemCount: response.value.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          ListTile(
-                            leading: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  response.value[index].serviceProvider.imgSrc),
-                            ),
-                            title: Text(
-                              "${response.value[index].serviceProvider.firstName + " " + response.value[index].serviceProvider.lastName}",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            subtitle: Text(
-                                "${moment.from(response.value[index].timestamp)} / ${response.value[index].post.location} / ${response.value[index].diagnosisFee} RM"),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15, right: 15, bottom: 20),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                response.value[index].description,
+            if (response.value != null)
+              return Container(
+                  height: MediaQuery.of(context).size.height - 480,
+                  child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: response.value.length,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            ListTile(
+                              leading: CircleAvatar(
+                                backgroundImage: NetworkImage(response
+                                    .value[index].serviceProvider.imgSrc),
+                              ),
+                              title: Text(
+                                "${response.value[index].serviceProvider.firstName + " " + response.value[index].serviceProvider.lastName}",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w500),
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: Text(
+                                  "${moment.from(response.value[index].timestamp)} / ${response.value[index].post.location} / ${response.value[index].diagnosisFee} RM"),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 15, right: 15, bottom: 20),
+                              child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  response.value[index].description,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
+                                ),
                               ),
                             ),
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              if (response.value[index].status == "Pending")
-                                postBtn(response.value[index])
-                              else if (response.value[index].status ==
-                                  "Accepted")
-                                acceptedBtn()
-                              else if (response.value[index].status ==
-                                  "rejected")
-                                rejectedBtn()
-                            ],
-                          ),
-                          Divider(
-                            color: Colors.black,
-                          ),
-                        ],
-                      );
-                    }));
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                if (response.value[index].status == "Pending")
+                                  postBtn(response.value[index])
+                                else if (response.value[index].status ==
+                                    "Accepted")
+                                  acceptedBtn()
+                                else if (response.value[index].status ==
+                                    "rejected")
+                                  rejectedBtn()
+                                else if (response.value[index].status ==
+                                    "canceled")
+                                  canceledBtn()
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.black,
+                            ),
+                          ],
+                        );
+                      }));
+            return Center(child: Text("No proposal found"));
           });
     });
   }
@@ -191,6 +197,25 @@ class _ProposalCardState extends State<ProposalCard> {
             color: Color(0xffF97068),
             borderRadius: BorderRadius.circular(40),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget canceledBtn() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: Container(
+        width: 100,
+        height: 39,
+        child: Center(
+            child: Text(
+          "canceled",
+          style: TextStyle(color: Colors.white),
+        )),
+        decoration: BoxDecoration(
+          color: Color(0xffF97068),
+          borderRadius: BorderRadius.circular(40),
         ),
       ),
     );

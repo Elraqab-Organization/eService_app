@@ -27,104 +27,107 @@ class _PostsCardState extends State<PostsCard> {
           loading: (_) =>
               Expanded(child: Center(child: CircularProgressIndicator())),
           data: (response) {
-            return Expanded(
-              child: Container(
-                child: ListView.builder(
-                  padding: EdgeInsets.only(bottom: 16.0),
-                  itemCount: response.value.length,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.only(
-                        top: 2, bottom: 5, left: 16, right: 25),
-                    child: Stack(clipBehavior: Clip.none, children: [
-                      InkWell(
-                        onTap: () {
-                          if (response.value[index].customerId ==
-                              _service.user.id) {
-                            Navigator.pushNamed(context, "/proposals_view",
-                                arguments: response.value[index]);
-                          } else {
-                            Navigator.pushNamed(context, "/proposal_form",
-                                arguments: response.value[index]);
-                          }
-                        },
-                        child: Card(
-                          elevation: 12,
-                          shadowColor: Colors.black54,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          clipBehavior: Clip.antiAlias,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ListTile(
-                                leading: CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                    response.value[index].imgSrc.toString(),
+            if (response.value != null)
+              return Expanded(
+                child: Container(
+                  child: ListView.builder(
+                    padding: EdgeInsets.only(bottom: 16.0),
+                    itemCount: response.value.length,
+                    itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.only(
+                          top: 2, bottom: 5, left: 16, right: 25),
+                      child: Stack(clipBehavior: Clip.none, children: [
+                        InkWell(
+                          onTap: () {
+                            if (response.value[index].customerId ==
+                                _service.user.id) {
+                              Navigator.pushNamed(context, "/proposals_view",
+                                  arguments: response.value[index]);
+                            } else {
+                              Navigator.pushNamed(context, "/proposal_form",
+                                  arguments: response.value[index]);
+                            }
+                          },
+                          child: Card(
+                            elevation: 12,
+                            shadowColor: Colors.black54,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            clipBehavior: Clip.antiAlias,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ListTile(
+                                  leading: CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                      response.value[index].imgSrc.toString(),
+                                    ),
                                   ),
-                                ),
-                                title: Text(response.value[index].username),
-                                subtitle: Text(
-                                  moment.from(response.value[index].timestamp) +
-                                      ' / ${response.value[index].location} / cancelation fee: ${response.value[index].cancelationFee}',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black.withOpacity(0.6)),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 18, bottom: 18, left: 14),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(right: 20),
-                                  child: Text(
-                                    '${response.value[index].description}',
+                                  title: Text(response.value[index].username),
+                                  subtitle: Text(
+                                    moment.from(
+                                            response.value[index].timestamp) +
+                                        ' / ${response.value[index].location} / cancelation fee: ${response.value[index].cancelationFee}',
                                     style: TextStyle(
+                                        fontSize: 12,
                                         color: Colors.black.withOpacity(0.6)),
                                   ),
                                 ),
-                              ),
-                              ButtonBar(
-                                alignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: 15,
-                                  ),
-                                  InkWell(
-                                    splashColor: Colors.blue.withAlpha(30),
-                                    onTap: () {
-                                      // Perform some action
-                                    },
-                                    child: Row(
-                                      children: [
-                                        if (response
-                                                .value[index].proposal.length !=
-                                            0)
-                                          _stackOfAvatars(
-                                              response.value[index].proposal),
-                                        Text(
-                                          '   ${response.value[index].proposal.length} proposals',
-                                          style: TextStyle(fontSize: 12),
-                                        ),
-                                      ],
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 18, bottom: 18, left: 14),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 20),
+                                    child: Text(
+                                      '${response.value[index].description}',
+                                      style: TextStyle(
+                                          color: Colors.black.withOpacity(0.6)),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ],
+                                ),
+                                ButtonBar(
+                                  alignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    InkWell(
+                                      splashColor: Colors.blue.withAlpha(30),
+                                      onTap: () {
+                                        // Perform some action
+                                      },
+                                      child: Row(
+                                        children: [
+                                          if (response.value[index].proposal
+                                                  .length !=
+                                              0)
+                                            _stackOfAvatars(
+                                                response.value[index].proposal),
+                                          Text(
+                                            '   ${response.value[index].proposal.length} proposals',
+                                            style: TextStyle(fontSize: 12),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      response.value[index].customerId != _service.user.id
-                          ? postOptionServiceProvider(25, 340, "more_vert",
-                              _moreOptionsServiceProviderModalSheet)
-                          : postOptionCustomer(
-                              67, 340, "more_vert", response.value[index].id)
-                    ]),
+                        response.value[index].customerId != _service.user.id
+                            ? postOptionServiceProvider(25, 340, "more_vert",
+                                _moreOptionsServiceProviderModalSheet)
+                            : postOptionCustomer(
+                                67, 340, "more_vert", response.value[index].id)
+                      ]),
+                    ),
                   ),
                 ),
-              ),
-            );
+              );
+            return Center(child: Text("no post found"));
           });
     });
   }
