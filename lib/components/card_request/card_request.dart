@@ -32,6 +32,12 @@ class _CardComponentState extends State<CardRequest> {
             : watch(dashboardRequestList);
         return data.map(
           data: (data) {
+            if (data.value == null)
+              return Expanded(
+                child: Center(
+                  child: Text("Request List Is Empty!"),
+                ),
+              );
             final result = widget.data == 1
                 ? data.value
                     .where(
