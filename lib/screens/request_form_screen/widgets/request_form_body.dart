@@ -80,7 +80,9 @@ class RequestFormBody extends StatelessWidget {
               child: Consumer(
                 builder: (context, watch, child) {
                   final data = watch(requestProvider).loading;
-                  return data ? Center(child: CircularProgressIndicator()) : SizedBox();
+                  return data
+                      ? Center(child: CircularProgressIndicator())
+                      : SizedBox();
                 },
               ),
             ),

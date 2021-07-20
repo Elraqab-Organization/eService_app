@@ -79,7 +79,9 @@ class RegisterationForm extends StatelessWidget {
                 final data = watch(serviceProvider).services;
                 print(data.keys);
                 return DropDownList(
-                    selected: selected, data: data.keys.toList(), onselected: onselected);
+                    selected: selected,
+                    data: data.keys.toList(),
+                    onselected: onselected);
               })
             : SizedBox(),
         SizedBox(

@@ -31,7 +31,14 @@ class _AppState extends State<App> {
         );
         break;
       case "1":
+<<<<<<< HEAD
+        return Container(
+          color: Colors.red,
+          height: 100.0,
+        );
+=======
         return Dashboard();
+>>>>>>> 78ef7ea313121a624181c830d7e0a7c2c7e1e35a
         break;
       case "2":
         return Container(
