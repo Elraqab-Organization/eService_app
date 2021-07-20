@@ -251,6 +251,7 @@ class _CustomerProposalFormState extends State<CustomerProposalForm> {
                 if (proposal != null) {
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('proposal has been sent')));
+                  Navigator.pop(context);
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('failed to send proposal')));

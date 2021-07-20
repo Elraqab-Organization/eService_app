@@ -1,46 +1,54 @@
-import 'package:e_service_app/components/card_request/card__action_button.dart';
-import 'package:e_service_app/components/card_request/request_body.dart';
-import 'package:e_service_app/components/text_component.dart';
-import 'package:e_service_app/providers/requests/requests_action.dart';
-import 'package:e_service_app/screens/Customer_order_screen/widgets/header_content.dart';
+import 'package:e_service_app/components/card_order/card_action_button.dart';
+import 'package:e_service_app/components/card_order/order_body.dart';
+import 'package:e_service_app/providers/orders/order.action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CardRequest extends StatefulWidget {
+import 'order_card_header.dart';
+
+class OrderRequest extends StatefulWidget {
   final data;
   final bool isCustomer;
 
-  CardRequest({this.data, this.isCustomer});
+  OrderRequest({this.data, this.isCustomer});
   @override
   _CardComponentState createState() => _CardComponentState();
 }
 
-class _CardComponentState extends State<CardRequest> {
+class _CardComponentState extends State<OrderRequest> {
   // add one more functionality button. -- optional.
   final labels = ['reject', 'accept'];
 
   var activeIndex;
+  var result;
   bool containerHeight = false;
   @override
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, watch, child) {
         final data = widget.isCustomer
-            ? watch(requestList)
-            : watch(dashboardRequestList);
+            ? watch(ordersListProvider)
+            : watch(dashboardOrders);
         return data.map(
           data: (data) {
-            final result = widget.data == 1
-                ? data.value
+            print(data.value);
+            if (data.value == null)
+              return Expanded(
+                child: Center(
+                  child: Text("Empty Orders List"),
+                ),
+              );
+            widget.data == 1
+                ? result = data.value
                     .where(
-                        (element) => element.status.toLowerCase() == "pending")
+                        (element) => element.status.toLowerCase() == "ingoing")
                     .toList()
-                : data.value
+                : result = data.value
                     .where(
-                        (element) => element.status.toLowerCase() != "pending")
+                        (element) => element.status.toLowerCase() != "ingoing")
                     .toList();
             return Expanded(
               child: result.length != 0
@@ -71,7 +79,7 @@ class _CardComponentState extends State<CardRequest> {
                                     SizedBox(
                                       height: 6,
                                     ),
-                                    HeaderContent(
+                                    OrderHeaderCard(
                                       isCustomer: widget.isCustomer,
                                       data: result[index],
                                     ),
@@ -80,13 +88,13 @@ class _CardComponentState extends State<CardRequest> {
                               ),
                             ),
                             activeIndex == index
-                                ? RequestBody(
+                                ? OrderBody(
                                     index: index,
                                     result: result,
                                   )
                                 : SizedBox(),
                             activeIndex == index
-                                ? CardActionButton(
+                                ? CardOrderAction(
                                     activeIndex: activeIndex,
                                     result: result,
                                     isCustomer: widget.isCustomer,
@@ -111,7 +119,7 @@ class _CardComponentState extends State<CardRequest> {
                       ),
                     )
                   : Expanded(
-                      child: Center(child: Text("No Pending Requests")),
+                      child: Center(child: Text("No Current Orders")),
                     ),
             );
           },

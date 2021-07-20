@@ -48,6 +48,26 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          // Changed this to a Column from a ListView
+          children: <Widget>[
+            // _createHeader(),
+            ListTile(title: Text('Sericify App')),
+            Expanded(
+                child:
+                    Container()), // Add this to force the bottom items to the lowest point
+            Column(
+              children: <Widget>[
+                _createFooterItem(
+                    icon: Icons.event,
+                    text: 'Logout',
+                    onTap: () => Navigator.pushReplacementNamed(context, '/'))
+              ],
+            ),
+          ],
+        ),
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
@@ -59,6 +79,22 @@ class _AppState extends State<App> {
         currentIndex: widget.currentIndex,
         callBack: _onItemTapped,
       ),
+    );
+  }
+
+  Widget _createFooterItem(
+      {IconData icon, String text, GestureTapCallback onTap}) {
+    return ListTile(
+      title: Row(
+        children: <Widget>[
+          Icon(icon),
+          Padding(
+            padding: EdgeInsets.only(left: 8.0),
+            child: Text(text),
+          )
+        ],
+      ),
+      onTap: onTap,
     );
   }
 }

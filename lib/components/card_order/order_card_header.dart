@@ -2,10 +2,10 @@ import 'package:e_service_app/components/text_component.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HeaderContent extends StatelessWidget {
+class OrderHeaderCard extends StatelessWidget {
   final bool isCustomer;
   final data;
-  const HeaderContent({
+  const OrderHeaderCard({
     this.isCustomer,
     this.data,
     Key key,
@@ -36,7 +36,7 @@ class HeaderContent extends StatelessWidget {
                 align: TextAlign.start,
               ),
               subtitle: TextComponent(
-                title: "${data.time} / ${data.location}",
+                title: "${data.responseTime} / ${data.location}",
                 fontSize: 12,
                 weight: FontWeight.w600,
                 textColor: Colors.black,
@@ -45,7 +45,7 @@ class HeaderContent extends StatelessWidget {
               trailing: Padding(
                 padding: const EdgeInsets.only(right: 50.0, top: 0),
                 child: TextComponent(
-                  title: "${data.fees}\$",
+                  title: "${data.serviceFees}\$",
                   fontSize: 14,
                   weight: FontWeight.w700,
                   textColor: Colors.black,

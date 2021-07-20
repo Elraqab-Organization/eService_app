@@ -21,6 +21,13 @@ class ProposalViewmodel extends ChangeNotifier {
     return proposalList;
   }
 
+  Future<List<Proposal>> getServiceProvidersProposals(
+      final serviceProviderId) async {
+    proposalList =
+        await _service.fetchServiceProviderProposals(serviceProviderId);
+    return proposalList;
+  }
+
   Future<Proposal> acceptProposal(final id) async {
     final updatedProposal = await _service.updateProposalAccept(id);
     if (updatedProposal != null) {
@@ -31,6 +38,14 @@ class ProposalViewmodel extends ChangeNotifier {
 
   Future<Proposal> rejectProposal(final id) async {
     final updatedProposal = await _service.updateProposalReject(id);
+    if (updatedProposal != null) {
+      notifyListeners();
+    }
+    return updatedProposal;
+  }
+
+  Future<Proposal> cancelProposal(final id) async {
+    final updatedProposal = await _service.updateProposalCancelation(id);
     if (updatedProposal != null) {
       notifyListeners();
     }

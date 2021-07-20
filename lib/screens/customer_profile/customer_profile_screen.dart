@@ -46,7 +46,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color: Colors.white,
                           ),
                         ),
-                        onTap: () => {},
+                        onTap: () => {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Container();
+                            },
+                          )
+                        },
                       ),
                       InkWell(
                         child: Container(
@@ -74,7 +81,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                   child: Text(
-                    "Ahmed Mousa",
+                    _userSession.user.firstName +
+                        " " +
+                        _userSession.user.lastName,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14,
@@ -156,6 +165,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         trailing: Icon(
                           FontAwesomeIcons.angleRight,
                         ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/ProfileNotification');
+                        },
                       ),
                       ListTile(
                         leading: Icon(FontAwesomeIcons.userLock),
@@ -180,6 +192,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         trailing: Icon(
                           FontAwesomeIcons.angleRight,
                         ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/changeLanguage');
+                        },
                       ),
                       ListTile(
                         leading: Icon(FontAwesomeIcons.creditCard),

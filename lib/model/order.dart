@@ -1,3 +1,5 @@
+import 'package:e_service_app/model/User.dart';
+
 class Order {
   String id;
   String customerId;
@@ -7,11 +9,17 @@ class Order {
   String status;
   String problemDescription;
   String serviceDescription;
-  double diagnosingFees;
-  double serviceFees;
+  int diagnosingFees;
+  int serviceFees;
   String paymentMethod;
-  DateTime provisionDate;
-  DateTime responseTime;
+  String location;
+  String provisionDate;
+  String responseTime;
+  String feedback;
+  int rate;
+  User customer;
+  User serviceProvider;
+  bool isFeedbackGiven;
   List<String> steps;
 
   Order({
@@ -26,19 +34,28 @@ class Order {
     this.diagnosingFees,
     this.serviceFees,
     this.paymentMethod,
+    this.location,
+    this.isFeedbackGiven,
+    this.feedback,
+    this.rate,
     this.provisionDate,
     this.responseTime,
     this.steps,
+    this.customer,
+    this.serviceProvider,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) {
     return Order(
-      id: json['id'],
+      id: json['_id'],
       customerId: json['customerId'],
       serviceProviderId: json['serviceProviderId'],
       postId: json['postId'],
       feedbackId: json['feedbackId'],
       status: json['status'],
+      feedback: json['feedback'],
+      rate: json['rate'],
+      isFeedbackGiven: json['isFeedbackGiven'],
       problemDescription: json['problemDescription'],
       serviceDescription: json['serviceDescription'],
       diagnosingFees: json['diagnosingFees'],
@@ -46,7 +63,13 @@ class Order {
       paymentMethod: json['paymentMethod'],
       provisionDate: json['provisionDate'],
       responseTime: json['responseTime'],
-      steps: json['steps'],
+      location: json['location'],
+      steps: List<String>.from(json["steps"].map((x) => x)),
+      customer:
+          json['customer'] != null ? new User.fromJson(json['customer']) : null,
+      serviceProvider: json['serviceProvider'] != null
+          ? new User.fromJson(json['serviceProvider'])
+          : null,
     );
   }
 

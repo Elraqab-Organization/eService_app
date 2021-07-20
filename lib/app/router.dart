@@ -1,3 +1,8 @@
+import 'package:e_service_app/screens/account_information_screen/account_information_screen.dart';
+import 'package:e_service_app/screens/change_language_screen/change_language_screen.dart';
+import 'package:e_service_app/screens/customer_address_screen/customer_address_screen.dart';
+import 'package:e_service_app/screens/customer_post_form/customer_post_form.dart';
+import 'package:e_service_app/screens/customer_profile/customer_profile_screen.dart';
 import 'package:e_service_app/screens/all_orders_screen/all_orders_screen.dart';
 import 'package:e_service_app/screens/all_proposals_screen/proposals_screen.dart';
 import 'package:e_service_app/screens/all_requests_screen/all_requests_screen.dart';
@@ -7,6 +12,7 @@ import 'package:e_service_app/screens/customer_view_proposals/customer_view_prop
 import 'package:e_service_app/screens/login/login_screen.dart';
 import 'package:e_service_app/screens/main_services/main_services.dart';
 import 'package:e_service_app/screens/post_screen/user_posts.dart';
+import 'package:e_service_app/screens/profile_notification_screen/profile_notification_screen.dart';
 import 'package:e_service_app/screens/register/register_screen.dart';
 import 'package:e_service_app/screens/request_form_screen/request_form.dart';
 import 'package:e_service_app/screens/search_view_screen/search_view_screen.dart';
@@ -59,6 +65,22 @@ class RouteManager {
       case "/post_form":
         builder = (BuildContext context) => CustomerPostForm();
         break;
+      case "/posts":
+        builder = (BuildContext context) => PostScreen();
+        break;
+      case "/post_form":
+        builder = (BuildContext context) => CustomerPostForm();
+        break;
+      case "/request_form":
+        builder =
+            (BuildContext context) => RequestForm(data: settings.arguments);
+        break;
+      case "/proposal_form":
+        builder = (BuildContext context) => CustomerProposalForm();
+        break;
+      case "/proposals_view":
+        builder = (BuildContext context) => CustomerViewProposal();
+        break;
       case "/request_form":
         builder =
             (BuildContext context) => RequestForm(data: settings.arguments);
@@ -74,6 +96,12 @@ class RouteManager {
         break;
       case "/proposals_list":
         builder = (BuildContext context) => ProposalsHistory();
+        break;
+      case "/changeLanguage":
+        builder = (BuildContext context) => ChangeLanguageScreen();
+        break;
+      case "/ProfileNotification":
+        builder = (BuildContext context) => ProfileNotification();
         break;
       case "/orders_list":
         builder = (BuildContext context) => OrderList();
