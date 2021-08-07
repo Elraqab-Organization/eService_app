@@ -13,49 +13,48 @@ class _PostScreenState extends State<PostScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       body: Column(
-        children: [
-          CustomReturnBar(),
-          SizedBox(
-            height: 25,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "latest News",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                OptionButton(
-                  color: Colors.black,
-                  icon: Icon(Icons.more_vert, color: Colors.white),
-                  width: 50.0,
-                  height: 50.0,
-                ),
-              ],
+    children: [
+      CustomReturnBar(),
+      SizedBox(
+        height: 25,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "latest News",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          PostsCard()
-        ],
+            OptionButton(
+              color: Colors.black,
+              icon: Icon(Icons.more_vert, color: Colors.white),
+              width: 50.0,
+              height: 50.0,
+            ),
+          ],
+        ),
+      ),
+      SizedBox(
+        height: 20,
+      ),
+      PostsCard()
+    ],
       ),
       floatingActionButton: GestureDetector(
-        child: OptionButton(
-          color: Colors.deepOrangeAccent,
-          icon: Icon(Icons.add, color: Colors.white),
-          width: 55.0,
-          height: 55.0,
-        ),
-        onTap: () {
-          Navigator.pushNamed(context, "/post_form");
-        },
+    child: OptionButton(
+      color: Colors.deepOrangeAccent,
+      icon: Icon(Icons.add, color: Colors.white),
+      width: 55.0,
+      height: 55.0,
+    ),
+    onTap: () {
+      Navigator.pushNamed(context, "/post_form");
+    },
       ),
-    ));
+    );
   }
 }

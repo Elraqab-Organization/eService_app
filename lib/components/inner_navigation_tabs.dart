@@ -9,10 +9,7 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class InnerNavigationTabs extends StatefulWidget {
   int tabIndex;
-  InnerNavigationTabs({
-    this.tabIndex = 0,
-    Key key,
-  }) : super(key: key);
+  InnerNavigationTabs({this.tabIndex = 0});
 
   @override
   _InnerNavigationTabsState createState() => _InnerNavigationTabsState();
@@ -48,53 +45,50 @@ class _InnerNavigationTabsState extends State<InnerNavigationTabs> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(
-          top: 200,
-          child: DefaultTabController(
-            length: 5,
-            child: Expanded(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 200.0,
+        DefaultTabController(
+          length: 5,
+          child: Expanded(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 200.0,
+                  ),
+                  Container(
+                    height: 45,
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(33, 39, 56, 1),
                     ),
-                    Container(
-                      height: 45,
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(33, 39, 56, 1),
+                    child: TabBar(
+                      indicator: BoxDecoration(
+                        color: Color.fromRGBO(249, 112, 104, 1),
                       ),
-                      child: TabBar(
-                        indicator: BoxDecoration(
-                          color: Color.fromRGBO(249, 112, 104, 1),
-                        ),
-                        labelColor: Colors.white,
-                        unselectedLabelColor: Colors.white,
-                        tabs: [
-                          for (var i = 0; i < type.length; i++)
-                            Tab(
-                              text: type[i],
-                            ),
-                        ],
-                      ),
+                      labelColor: Colors.white,
+                      unselectedLabelColor: Colors.white,
+                      tabs: [
+                        for (var i = 0; i < type.length; i++)
+                          Tab(
+                            text: type[i],
+                          ),
+                      ],
                     ),
-                    SizedBox(
-                      height: 30.0,
+                  ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  Expanded(
+                    child: TabBarView(
+                      children: [
+                        CustomerServiceScreen(),
+                        CustomerPostsServiceScreen(),
+                        CustomerOrderScreen(),
+                        CustomerRequestScreen(),
+                        CustomerProposalScreen()
+                      ],
                     ),
-                    Expanded(
-                      child: TabBarView(
-                        children: [
-                          CustomerServiceScreen(),
-                          CustomerPostsServiceScreen(),
-                          CustomerOrderScreen(),
-                          CustomerRequestScreen(),
-                          CustomerProposalScreen()
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

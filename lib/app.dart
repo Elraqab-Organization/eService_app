@@ -24,6 +24,7 @@ class _AppState extends State<App> {
     });
   }
 
+  // ignore: unused_element
   LoginViewmodel get _userSession => dependency();
   // ignore: missing_return
   Widget callPage(index) {
