@@ -23,87 +23,86 @@ class _ProposalsHistoryState extends State<ProposalsHistory> {
       body: Column(
         children: [
           CustomReturnBar(),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            height: 300,
-            child: Consumer(builder: (context, watch, child) {
-              final proposals = watch(proposalsCustomerList(_service.user.id));
-              return proposals.map(
-                  loading: (_) => Center(child: CircularProgressIndicator()),
-                  error: (_) => Text(_.error.toString()),
-                  data: (response) {
-                    if (response.value != null)
-                      return ListView.builder(
-                          itemCount: response.value.length,
-                          itemBuilder: (context, index) {
-                            if (response.value[index].status != "Pending") {
-                              return Container(
-                                height: 190,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
-                                  clipBehavior: Clip.antiAlias,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ListTile(
-                                        leading: CircleAvatar(
-                                          backgroundImage: NetworkImage(
-                                            response.value[index]
-                                                .serviceProvider.imgSrc,
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
+              child: Consumer(builder: (context, watch, child) {
+                final proposals = watch(proposalsCustomerList(_service.user.id));
+                return proposals.map(
+                    loading: (_) => Center(child: CircularProgressIndicator()),
+                    error: (_) => Text(_.error.toString()),
+                    data: (response) {
+                      if (response.value != null)
+                        return ListView.builder(
+                            itemCount: response.value.length,
+                            itemBuilder: (context, index) {
+                              if (response.value[index].status != "Pending") {
+                                return Container(
+                                  height: 190,
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                    clipBehavior: Clip.antiAlias,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        ListTile(
+                                          leading: CircleAvatar(
+                                            backgroundImage: NetworkImage(
+                                              response.value[index]
+                                                  .serviceProvider.imgSrc,
+                                            ),
                                           ),
-                                        ),
-                                        title: Text(
-                                            '${response.value[index].serviceProvider.firstName} ${response.value[index].serviceProvider.lastName}'),
-                                        subtitle: Text(
-                                          '${moment.from(response.value[index].timestamp)}' +
-                                              ' / ${response.value[index].post.location} /' +
-                                              '${response.value[index].diagnosisFee} RM',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.black
-                                                  .withOpacity(0.6)),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 18, bottom: 18, left: 14),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 20),
-                                          child: Text(
-                                            '${response.value[index].description}',
+                                          title: Text(
+                                              '${response.value[index].serviceProvider.firstName} ${response.value[index].serviceProvider.lastName}'),
+                                          subtitle: Text(
+                                            '${moment.from(response.value[index].timestamp)}' +
+                                                ' / ${response.value[index].post.location} /' +
+                                                '${response.value[index].diagnosisFee} RM',
                                             style: TextStyle(
+                                                fontSize: 12,
                                                 color: Colors.black
                                                     .withOpacity(0.6)),
                                           ),
                                         ),
-                                      ),
-                                      if (response.value[index].status ==
-                                          "Accepted")
-                                        acceptedBtn()
-                                      else if (response.value[index].status ==
-                                          "rejected")
-                                        rejectedBtn()
-                                      else if (response.value[index].status ==
-                                          "canceled")
-                                        canceledBtn()
-                                    ],
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 18, bottom: 18, left: 14),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(right: 20),
+                                            child: Text(
+                                              '${response.value[index].description}',
+                                              style: TextStyle(
+                                                  color: Colors.black
+                                                      .withOpacity(0.6)),
+                                            ),
+                                          ),
+                                        ),
+                                        if (response.value[index].status ==
+                                            "Accepted")
+                                          acceptedBtn()
+                                        else if (response.value[index].status ==
+                                            "rejected")
+                                          rejectedBtn()
+                                        else if (response.value[index].status ==
+                                            "canceled")
+                                          canceledBtn()
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              );
-                            }
-                            return Text("");
-                          });
-                    return Center(
-                      child: Text("Nothing in History"),
-                    );
-                  });
-            }),
+                                );
+                              }
+                              return Text("");
+                            });
+                      return Center(
+                        child: Text("Nothing in History"),
+                      );
+                    });
+              }),
+            ),
           ),
         ],
       ),

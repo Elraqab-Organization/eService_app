@@ -127,7 +127,7 @@ class _PostsCardState extends State<PostsCard> {
                   ),
                 ),
               );
-            return Center(child: Text("no post found"));
+            return Expanded(child: Center(child: Text("no post found")));
           });
     });
   }

@@ -36,10 +36,8 @@ class _CardComponentState extends State<OrderRequest> {
           data: (data) {
             print(data.value);
             if (data.value == null)
-              return Expanded(
-                child: Center(
-                  child: Text("Empty Orders List"),
-                ),
+              return Center(
+                child: Text("Empty Orders List"),
               );
             widget.data == 1
                 ? result = data.value
@@ -50,83 +48,77 @@ class _CardComponentState extends State<OrderRequest> {
                     .where(
                         (element) => element.status.toLowerCase() != "accepted")
                     .toList();
-            return Expanded(
-              child: result.length != 0
-                  ? ListView.builder(
-                      clipBehavior: Clip.hardEdge,
-                      itemCount: result.length,
-                      itemBuilder: (context, index) => InkWell(
-                        onTap: () => setState(() => {activeIndex = index}),
-                        child: Stack(
-                          clipBehavior: Clip.hardEdge,
-                          children: [
-                            Card(
-                              elevation: 5.0,
-                              shape: RoundedRectangleBorder(
+            return result.length != 0
+                ? ListView.builder(
+                    clipBehavior: Clip.hardEdge,
+                    itemCount: result.length,
+                    itemBuilder: (context, index) => InkWell(
+                      onTap: () => setState(() => {activeIndex = index}),
+                      child: Stack(
+                        clipBehavior: Clip.hardEdge,
+                        children: [
+                          Card(
+                            elevation: 5.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                            ),
+                            child: AnimatedContainer(
+                              duration: Duration(milliseconds: 300),
+                              height: activeIndex == index ? 250.0 : 82.0,
+                              clipBehavior: Clip.hardEdge,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
-                              child: AnimatedContainer(
-                                duration: Duration(milliseconds: 300),
-                                height: activeIndex == index ? 250.0 : 82.0,
-                                clipBehavior: Clip.hardEdge,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(25.0),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 6,
-                                    ),
-                                    OrderHeaderCard(
-                                      isCustomer: widget.isCustomer,
-                                      data: result[index],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            activeIndex == index
-                                ? OrderBody(
-                                    index: index,
-                                    result: result,
-                                  )
-                                : SizedBox(),
-                            activeIndex == index
-                                ? CardOrderAction(
-                                    activeIndex: activeIndex,
-                                    result: result,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 6,
+                                  ),
+                                  OrderHeaderCard(
                                     isCustomer: widget.isCustomer,
-                                    index: index,
-                                  )
-                                : SizedBox(),
-                            Positioned(
-                              bottom: 5,
-                              left: MediaQuery.of(context).size.width / 2 - 30,
-                              child: Transform.rotate(
-                                angle: activeIndex == index
-                                    ? (math.pi / 1)
-                                    : (math.pi * 2),
-                                child: Icon(
-                                  Icons.keyboard_arrow_down_outlined,
-                                  size: 14.0,
-                                ),
+                                    data: result[index],
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                          activeIndex == index
+                              ? OrderBody(
+                                  index: index,
+                                  result: result,
+                                )
+                              : SizedBox(),
+                          activeIndex == index
+                              ? CardOrderAction(
+                                  activeIndex: activeIndex,
+                                  result: result,
+                                  isCustomer: widget.isCustomer,
+                                  index: index,
+                                )
+                              : SizedBox(),
+                          Positioned(
+                            bottom: 5,
+                            left: MediaQuery.of(context).size.width / 2 - 30,
+                            child: Transform.rotate(
+                              angle: activeIndex == index
+                                  ? (math.pi / 1)
+                                  : (math.pi * 2),
+                              child: Icon(
+                                Icons.keyboard_arrow_down_outlined,
+                                size: 14.0,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    )
-                  : Expanded(
-                      child: Center(child: Text("No Current Orders")),
                     ),
-            );
+                  )
+                : Center(child: Text("No Current Orders"));
           },
-          loading: (_) => Expanded(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
+          loading: (_) => Center(
+            child: CircularProgressIndicator(),
           ),
           error: (_) => Text("Error"),
         );

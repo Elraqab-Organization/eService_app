@@ -23,58 +23,60 @@ class _CardComponentState extends State<CardProposal> {
           error: (_) => Text(_.error.toString()),
           data: (response) {
             if (response.value != null)
-              return ListView.builder(
-                  itemCount: response.value.length,
-                  itemBuilder: (context, index) {
-                    if (response.value[index].status == "Pending") {
-                      return Container(
-                        height: 190,
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          clipBehavior: Clip.antiAlias,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ListTile(
-                                leading: CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                    response
-                                        .value[index].serviceProvider.imgSrc,
+              return Expanded(
+                child: ListView.builder(
+                    itemCount: response.value.length,
+                    itemBuilder: (context, index) {
+                      if (response.value[index].status == "Pending") {
+                        return Container(
+                          height: 190,
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            clipBehavior: Clip.antiAlias,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ListTile(
+                                  leading: CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                      response
+                                          .value[index].serviceProvider.imgSrc,
+                                    ),
                                   ),
-                                ),
-                                title: Text(
-                                    '${response.value[index].serviceProvider.firstName} ${response.value[index].serviceProvider.lastName}'),
-                                subtitle: Text(
-                                  '${moment.from(response.value[index].timestamp)}' +
-                                      ' / ${response.value[index].post.location} /' +
-                                      '${response.value[index].diagnosisFee} RM',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black.withOpacity(0.6)),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 18, bottom: 18, left: 14),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(right: 20),
-                                  child: Text(
-                                    '${response.value[index].description}',
+                                  title: Text(
+                                      '${response.value[index].serviceProvider.firstName} ${response.value[index].serviceProvider.lastName}'),
+                                  subtitle: Text(
+                                    '${moment.from(response.value[index].timestamp)}' +
+                                        ' / ${response.value[index].post.location} /' +
+                                        '${response.value[index].diagnosisFee} RM',
                                     style: TextStyle(
+                                        fontSize: 12,
                                         color: Colors.black.withOpacity(0.6)),
                                   ),
                                 ),
-                              ),
-                              proposalBtnsActions(response.value[index].id)
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 18, bottom: 18, left: 14),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 20),
+                                    child: Text(
+                                      '${response.value[index].description}',
+                                      style: TextStyle(
+                                          color: Colors.black.withOpacity(0.6)),
+                                    ),
+                                  ),
+                                ),
+                                proposalBtnsActions(response.value[index].id)
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    }
-                    return Text("");
-                  });
+                        );
+                      }
+                      return Text("");
+                    }),
+              );
             return Center(
               child: Text("No Proposal available"),
             );

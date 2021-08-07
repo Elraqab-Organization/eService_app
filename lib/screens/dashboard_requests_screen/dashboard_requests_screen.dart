@@ -30,14 +30,14 @@ class _RequestListState extends State<DashboardRequest>
     return Scaffold(
       body: Column(
         children: [
+          SizedBox(
+            height: 30.0,
+          ),
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 30.0,
-                  ),
                   Container(
                     height: 45,
                     decoration: BoxDecoration(
@@ -73,17 +73,13 @@ class _RequestListState extends State<DashboardRequest>
                     child: TabBarView(
                       controller: _tabController,
                       children: [
-                        Expanded(
-                          child: CardRequest(
-                            isCustomer: false,
-                            data: 1,
-                          ),
+                        CardRequest(
+                          isCustomer: false,
+                          data: 1,
                         ),
-                        Expanded(
-                          child: CardRequest(
-                            isCustomer: false,
-                            data: 2,
-                          ),
+                        CardRequest(
+                          isCustomer: false,
+                          data: 2,
                         ),
                       ],
                     ),

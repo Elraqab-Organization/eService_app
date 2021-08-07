@@ -73,17 +73,13 @@ class _RequestListState extends State<OrderList>
                     child: TabBarView(
                       controller: _tabController,
                       children: [
-                        Expanded(
-                          child: OrderRequest(
-                            isCustomer: true,
-                            data: 1,
-                          ),
+                        OrderRequest(
+                          isCustomer: true,
+                          data: 1,
                         ),
-                        Expanded(
-                          child: OrderRequest(
-                            isCustomer: true,
-                            data: 2,
-                          ),
+                        OrderRequest(
+                          isCustomer: true,
+                          data: 2,
                         ),
                       ],
                     ),
