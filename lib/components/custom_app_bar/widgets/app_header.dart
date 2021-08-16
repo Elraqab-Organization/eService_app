@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppHeader extends StatelessWidget {
+  // ignore: unused_element
   LoginViewmodel get _userSession => dependency();
   @override
   Widget build(BuildContext context) {

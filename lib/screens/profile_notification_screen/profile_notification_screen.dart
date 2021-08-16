@@ -1,7 +1,6 @@
 import 'package:e_service_app/components/custom_return_bar.dart';
 import 'package:e_service_app/components/profile_notification_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:list_tile_switch/list_tile_switch.dart';
 
 class ProfileNotification extends StatefulWidget {
   @override
@@ -14,7 +13,6 @@ class _ProfileNotificationState extends State<ProfileNotification> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
         body: Stack(

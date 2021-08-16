@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
 
+// ignore: must_be_immutable
 class ProfileNotificationTile extends StatelessWidget {
   List<bool> switchValues = List.generate(7, (_) => false);
   final String title;

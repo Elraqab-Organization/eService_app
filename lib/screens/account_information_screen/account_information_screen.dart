@@ -5,6 +5,7 @@ import 'package:e_service_app/providers/profile_provider/profile_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// ignore: must_be_immutable
 class AccountInformationScreen extends StatefulWidget {
   LoginViewmodel get _userSession => dependency();
 

@@ -14,6 +14,7 @@ class CustomAppBar extends StatefulWidget {
 
 class _CustomAppBarState extends State<CustomAppBar> {
   SearchViewmodel get _service => dependency();
+  // ignore: missing_return
   Future<bool> _onBackPressed() {
     if (_service.open) {
       _service.show = false;

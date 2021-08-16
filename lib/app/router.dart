@@ -1,12 +1,9 @@
 import 'package:e_service_app/screens/account_information_screen/account_information_screen.dart';
 import 'package:e_service_app/screens/change_language_screen/change_language_screen.dart';
-import 'package:e_service_app/screens/customer_address_screen/customer_address_screen.dart';
 import 'package:e_service_app/screens/customer_post_form/customer_post_form.dart';
-import 'package:e_service_app/screens/customer_profile/customer_profile_screen.dart';
 import 'package:e_service_app/screens/all_orders_screen/all_orders_screen.dart';
 import 'package:e_service_app/screens/all_proposals_screen/proposals_screen.dart';
 import 'package:e_service_app/screens/all_requests_screen/all_requests_screen.dart';
-import 'package:e_service_app/screens/customer_post_form/customer_post_form.dart';
 import 'package:e_service_app/screens/customer_proposal_form/customer_proposal_form.dart';
 import 'package:e_service_app/screens/customer_view_proposals/customer_view_proposal.dart';
 import 'package:e_service_app/screens/login/login_screen.dart';

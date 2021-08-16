@@ -1,4 +1,3 @@
-import 'package:e_service_app/model/user.dart';
 import 'package:e_service_app/providers/profile_provider/profile_viewmodel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
