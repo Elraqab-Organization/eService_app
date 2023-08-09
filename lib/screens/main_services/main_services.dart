@@ -21,6 +21,7 @@ class MainServices extends StatelessWidget {
                   ),
                   Consumer(builder: (context, watch, child) {
                     final data = watch(serviceProvider).services;
+                    // final data = context.read(getServices);
                     return CategoryGrid(data: data);
                   }),
                 ],

@@ -8,26 +8,42 @@ class ServicesViewmodel extends ChangeNotifier {
 
   List<User> serviceProviders;
 
-  final services = {
-    'Home Improvment': [],
-    'Home Maintenance': [],
-    'Cleaning & Disinfection': [],
-    'Events & Weddings': [],
-    'Lessons': [],
-    'Wellness': [],
-    'Business': [],
-    'Tech & Repair': [],
-    'Personal & Family': [],
-    'Legal': [],
-    'Design & Web': [],
-  };
+  // var services = {
+  //   'Home Improvment': [],
+  //   'Home Maintenance': [],
+  //   'Cleaning & Disinfection': [],
+  //   'Events & Weddings': [],
+  //   'Lessons': [],
+  //   'Wellness': [],
+  //   'Business': [],
+  //   'Tech & Repair': [],
+  //   'Personal & Family': [],
+  //   'Legal': [],
+  //   'Design & Web': [],
+  // };
+  var services;
+
   Future<Map> getServices() async {
     serviceProviders = await _service.getServices();
 
-    serviceProviders.forEach((e) {
-      services["${e.jobName}"].add(e);
-    });
+    try {
+      Map<String, List<User>> _data = {};
 
-    return services;
+      serviceProviders.forEach((e) {
+        if (_data.containsKey(e.jobName)) {
+          _data[e.jobName].add(e);
+        } else {
+          _data.addEntries({
+            e.jobName: [e]
+          }.entries);
+        }
+      });
+
+      if (_data.isNotEmpty && serviceProviders.isNotEmpty) services = _data;
+
+      return services;
+    } catch (e) {
+      print(e);
+    }
   }
 }
